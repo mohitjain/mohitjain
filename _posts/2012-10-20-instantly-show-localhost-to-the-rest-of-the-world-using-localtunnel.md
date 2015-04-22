@@ -3,9 +3,6 @@ title: Instantly show localhost to the rest of the world using localtunnel
 author: Mohit Jain
 layout: post
 comments: true
-
-
-
 permalink: /2012/10/instantly-show-localhost-to-the-rest-of-the-world-using-localtunnel/
 description: Instantly show localhost to the rest of the world using localtunnel
 keywords:  localhost, localmachine as server

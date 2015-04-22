@@ -2,9 +2,6 @@
 title: Know on which git branch you are, right from your terminal, basically git branch prompt
 layout: post
 comments: true
-
-
-
 permalink:  /2012/10/know-on-which-git-branch-you-are-right-from-your-terminal-basically-git-branch-prompt/
 description: display git branch in terminal prompt
 keywords: git, terminal, tips and tricks

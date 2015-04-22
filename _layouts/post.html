@@ -36,7 +36,7 @@ layout: default
     <header class="wrapper">
         <h2>
         	{% for category in page.categories %}
-				{{ category }} 
+				{{ category }}
           	{% endfor %}
         </h2>
         <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
@@ -50,12 +50,12 @@ layout: default
 
 <section class="posts wrapper">
     <article class="post {% if page.featured == true %} featured {% endif %}">
-        
+
         <header>
             <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
             <h2>
             	{% for category in page.categories %}
-					{{ category }} 
+					{{ category }}
           		{% endfor %}
             </h2>
             <h1 id="posttitle"><a href="#">{{ page.title }}</a></h1>
@@ -115,13 +115,12 @@ layout: default
             </div>
         </div>
 
-        {% if page.comments %}
+
         <div class="comments">
             <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
             <div id="disqus_thread"></div>
             <div id="g-comments"></div>
         </div>
-        {% endif %}
 
     </article>
 
