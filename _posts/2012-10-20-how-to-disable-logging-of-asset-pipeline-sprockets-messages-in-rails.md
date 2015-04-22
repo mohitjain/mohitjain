@@ -2,6 +2,7 @@
 title: How to disable logging of asset pipeline (sprockets) messages in Rails.
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

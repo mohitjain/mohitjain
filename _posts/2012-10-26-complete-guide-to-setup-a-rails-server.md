@@ -2,6 +2,7 @@
 title: Complete guide to setup a rails server
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/10/complete-guide-to-setup-a-rails-server/
 
 summary: extra_long

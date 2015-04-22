@@ -2,6 +2,7 @@
 title: Rotating Rails Log Files
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

@@ -2,6 +2,7 @@
 title: How to implement action caching in ruby on rails with ajax enabled
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

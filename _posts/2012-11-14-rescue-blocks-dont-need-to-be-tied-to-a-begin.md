@@ -2,6 +2,7 @@
 title: 'Rescue blocks don&#8217;t need to be tied to a &#8216;begin&#8217;'
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/rescue-blocks-dont-need-to-be-tied-to-a-begin/
 
 categories: General optimization quick-solution tips-and-tricks

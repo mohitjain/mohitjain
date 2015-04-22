@@ -4,6 +4,7 @@ title: >
   rails
 author: Mohit Jain
 layout: post
+comments: true
 
 
 permalink:  /2012/12/clear-your-logs-in-development-automatically-when-they-are-too-large-in-ruby-on-rails/

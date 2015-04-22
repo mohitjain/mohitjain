@@ -1,6 +1,7 @@
 ---
 title: How to change default port in rails
 layout: post
+comments: true
 
 
 

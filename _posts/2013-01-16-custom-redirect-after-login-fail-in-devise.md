@@ -2,6 +2,7 @@
 title: Custom redirect after login fail in devise
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/custom-redirect-after-login-fail-in-devise/
 
 

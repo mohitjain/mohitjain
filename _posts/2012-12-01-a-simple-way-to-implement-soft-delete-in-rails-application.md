@@ -2,6 +2,7 @@
 title: A simple way to implement soft delete in rails application.
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/a-simple-way-to-implement-soft-delete-in-rails-application/
 
 

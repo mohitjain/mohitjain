@@ -2,6 +2,7 @@
 title: Modules as application model in ruby on rails or refactor your code.
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/modules-as-application-model-in-Ruby on Rails-or-refactor-your-code/
 
 summary: extra_long

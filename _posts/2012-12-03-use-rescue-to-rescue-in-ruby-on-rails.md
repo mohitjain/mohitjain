@@ -2,6 +2,7 @@
 title: Use rescue to rescue in ruby on rails
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/use-rescue-to-rescue-in-Ruby on Rails/
 
 categories: optimization performance quick-solution tips-and-tricks

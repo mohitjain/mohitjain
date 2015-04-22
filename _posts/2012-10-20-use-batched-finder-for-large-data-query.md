@@ -2,6 +2,7 @@
 title: Use batched finder for large data query
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

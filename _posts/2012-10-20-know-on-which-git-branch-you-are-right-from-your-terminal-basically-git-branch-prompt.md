@@ -1,6 +1,7 @@
 ---
 title: Know on which git branch you are, right from your terminal, basically git branch prompt
 layout: post
+comments: true
 
 
 

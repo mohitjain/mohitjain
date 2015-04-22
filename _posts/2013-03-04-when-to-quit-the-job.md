@@ -3,6 +3,7 @@ title: >
   When to quit the job
 author: Mohit Jain
 layout: post
+comments: true
 
 permalink: /2013/03/when-to-quit-the-job/
 categories: General

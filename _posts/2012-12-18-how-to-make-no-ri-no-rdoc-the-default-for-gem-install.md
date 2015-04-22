@@ -2,6 +2,7 @@
 title: 'How to make &#8211;no-ri &#8211;no-rdoc the default for gem install?'
 author: Mohit Jain
 layout: post
+comments: true
 categories: optimization quick-solution tips-and-tricks
 ---
 

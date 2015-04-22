@@ -1,6 +1,7 @@
 ---
 title: Use say and say_with_time in migrations to make a useful migration log
 layout: post
+comments: true
 
 permalink: /2012/10/use-say-and-say_with_time-in-migrations-to-make-a-useful-migration-log/
 description: How to output migrations logs to understand the migration stuff

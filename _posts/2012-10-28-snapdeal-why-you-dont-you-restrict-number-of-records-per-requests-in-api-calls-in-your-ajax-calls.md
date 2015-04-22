@@ -2,6 +2,7 @@
 title: 'Snapdeal &#8211; Why don&#8217;t you restrict number of record per requests in API calls? Visible from ajax calls..!!!'
 author: Mohit Jain
 layout: post
+comments: true
 
 
 permalink:  /2012/10/snapdeal-why-you-dont-you-restrict-number-of-records-per-requests-in-api-calls-in-your-ajax-calls/

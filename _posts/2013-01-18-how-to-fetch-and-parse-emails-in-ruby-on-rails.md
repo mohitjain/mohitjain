@@ -2,6 +2,7 @@
 title: How to fetch and parse emails in ruby on rails
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/how-to-fetch-and-parse-emails-in-ruby-on-rails/
 
 

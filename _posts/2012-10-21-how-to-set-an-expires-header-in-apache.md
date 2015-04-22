@@ -1,6 +1,7 @@
 ---
 title: How to Set an Expires Header in Apache
 layout: post
+comments: true
 
 permalink: /2012/10/how-to-set-an-expires-header-in-apache/
 description: How to ebable mod_expires in apache to set expires headers in apache

@@ -2,6 +2,7 @@
 title: 'Ajaxify your site with remote => true and respond_to block'
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/ajaxify-your-site-with-remote-true/
 
 

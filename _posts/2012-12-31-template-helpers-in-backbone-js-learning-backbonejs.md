@@ -2,6 +2,7 @@
 title: '10. Template helpers in backbone js &#8211; Learning BackboneJs'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js optimization
 banner_image: "/media/backbone.jpg"
 featured: true

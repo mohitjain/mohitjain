@@ -2,6 +2,7 @@
 title: Pagination with ajax using will paginate in ruby on rails
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/pagination-with-ajax-using-will-paginate-in-ruby-on-rails/
 
 

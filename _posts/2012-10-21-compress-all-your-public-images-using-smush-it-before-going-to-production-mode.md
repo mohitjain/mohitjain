@@ -2,6 +2,7 @@
 title: Compress all your public images using smush it, before going to production mode
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

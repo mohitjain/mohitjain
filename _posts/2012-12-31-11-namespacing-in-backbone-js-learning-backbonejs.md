@@ -2,6 +2,7 @@
 title: '11. Namespacing in backbone js &#8211; Learning backbonejs'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

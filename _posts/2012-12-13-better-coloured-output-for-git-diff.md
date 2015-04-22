@@ -2,6 +2,7 @@
 title: Better coloured output for git diff
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/better-coloured-output-for-git-diff/
 
 

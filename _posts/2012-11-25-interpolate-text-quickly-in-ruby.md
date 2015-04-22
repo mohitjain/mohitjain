@@ -2,6 +2,7 @@
 title: Interpolate text quickly in ruby
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/interpolate-text-quickly-in-ruby/
 
 categories: General quick-solution tips-and-tricks

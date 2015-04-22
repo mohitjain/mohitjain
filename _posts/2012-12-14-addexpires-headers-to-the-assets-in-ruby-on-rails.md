@@ -2,6 +2,7 @@
 title: Add Expires headers to the assets in ruby on rails.
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/addexpires-headers-to-the-assets-in-Ruby on Rails/
 
 categories: optimization performance quick-solution Server tips-and-tricks

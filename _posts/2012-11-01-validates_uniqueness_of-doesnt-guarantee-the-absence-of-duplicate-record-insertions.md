@@ -2,6 +2,7 @@
 title: 'validates_uniqueness_of doesn&#8217;t guarantee the absence of duplicate record insertions'
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2012/11/validates_uniqueness_of-doesnt-guarantee-the-absence-of-duplicate-record-insertions/
 
 

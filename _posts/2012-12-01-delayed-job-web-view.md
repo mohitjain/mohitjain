@@ -2,6 +2,7 @@
 title: Delayed job web view
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/delayed-job-web-view/
 
 

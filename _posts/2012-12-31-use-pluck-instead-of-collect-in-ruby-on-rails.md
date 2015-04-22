@@ -2,6 +2,7 @@
 title: Use pluck instead of collect in ruby on rails.
 author: Mohit Jain
 layout: post
+comments: true
 categories: optimization performance quick-solution tips-and-tricks utilities
 ---
 

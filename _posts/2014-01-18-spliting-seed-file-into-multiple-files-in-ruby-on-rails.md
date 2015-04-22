@@ -1,6 +1,7 @@
 ---
 title: "Spliting Seed files into multiple file in Ruby on Rails"
 layout: post
+comments: true
 date: 2014-01-18 23:55:53 +0530
 permalink: /2014/01/spliting-seed-file-into-multiple-files-in-ruby-on-rails/
 description: How to manage long seed file of your project. How you can split them into multiple files

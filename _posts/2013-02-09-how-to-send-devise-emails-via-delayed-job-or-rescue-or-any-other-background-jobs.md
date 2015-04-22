@@ -2,6 +2,7 @@
 title: How to send devise emails via delayed job or rescue or any other background jobs
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/02/how-to-send-devise-emails-via-delayed-job-or-rescue-or-any-other-background-jobs/
 categories: optimization performance tips-and-tricks
 ---

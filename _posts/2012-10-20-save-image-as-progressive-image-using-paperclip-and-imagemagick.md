@@ -2,6 +2,7 @@
 title: Save image as progressive image using paperclip and imageMagick
 author: Mohit Jain
 layout: post
+comments: true
 
 permalink: /2012/10/save-image-as-progressive-image-using-paperclip-and-imagemagick/
 keywords: How to reduce the size of image. How to save images as progressive image using paperclip and imagemagick in ruby on rails.

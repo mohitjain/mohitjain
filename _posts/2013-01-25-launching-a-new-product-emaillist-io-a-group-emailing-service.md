@@ -2,6 +2,7 @@
 title: 'Launching a new product EmailList.io &#8211; a group emailing service'
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/launching-a-new-product-emaillist-io-a-group-emailing-service/
 
 

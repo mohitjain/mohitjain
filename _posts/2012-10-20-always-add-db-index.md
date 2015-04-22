@@ -1,6 +1,8 @@
 ---
 title: Always add DB index
 layout: post
+comments: true
+comments: true
 description: How to add database index in ruby on rails to optimize your database performance
 keywords: performance, mysql, index,  optimizations, query optimizations
 categories: Performance ruby-on-rails

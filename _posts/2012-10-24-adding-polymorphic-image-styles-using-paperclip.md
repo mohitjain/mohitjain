@@ -2,6 +2,7 @@
 title: Adding polymorphic image styles using paperclip
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/10/adding-polymorphic-image-styles-using-paperclip/
 categories: optimization tips-and-tricks
 ---

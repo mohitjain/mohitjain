@@ -2,6 +2,7 @@
 title: Validating email address by defining custom validations in ruby on rails.
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2012/11/validating-email-address-by-defining-custom-validations-in-rubyon-rails/
 
 

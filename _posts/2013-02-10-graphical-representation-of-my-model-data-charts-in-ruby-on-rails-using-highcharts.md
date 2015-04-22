@@ -2,6 +2,7 @@
 title: Graphical Representation of my model data ie charts in ruby on rails using highcharts
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

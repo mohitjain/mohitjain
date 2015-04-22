@@ -2,6 +2,7 @@
 title: Better Rails error page customization, display more information
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/better-rails-error-page-customization/
 
 

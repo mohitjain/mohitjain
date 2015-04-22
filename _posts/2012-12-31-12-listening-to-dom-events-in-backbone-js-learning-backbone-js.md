@@ -2,6 +2,7 @@
 title: '12 Listening to DOM events in backbone js  &#8211; Learning Backbone js'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

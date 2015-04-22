@@ -2,6 +2,7 @@
 title: Use after_commit instead of active record callbacks to avoid unexpected errors
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2012/11/use-after_commit-instead-of-active-record-callbacks-to-avoid-unexpected-errors/
 
 

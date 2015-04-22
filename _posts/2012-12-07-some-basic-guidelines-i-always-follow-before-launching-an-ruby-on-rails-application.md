@@ -4,6 +4,7 @@ title: >
   application.
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2012/12/some-basic-guidelines-i-always-follow-before-launching-an-Ruby on Rails-application/
 
 

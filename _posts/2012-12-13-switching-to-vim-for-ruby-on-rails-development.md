@@ -2,6 +2,7 @@
 title: Switching to VIM for Ruby on Rails Development
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/switching-to-vim-for-Ruby on Rails-development/
 
 

@@ -2,6 +2,7 @@
 title: Change browser url in case of ajax request using HTML5 pushState
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

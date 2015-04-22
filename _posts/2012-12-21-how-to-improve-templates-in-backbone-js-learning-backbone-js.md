@@ -2,6 +2,7 @@
 title: '7. How to improve templates in backbone js &#8211; Learning backbone js'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

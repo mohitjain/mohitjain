@@ -2,6 +2,7 @@
 title: Track changes in your active record object using Dirty Objects in Rails
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2012/11/track-changes-in-your-active-record-object-using-dirty-objects-in-rails/
 
 

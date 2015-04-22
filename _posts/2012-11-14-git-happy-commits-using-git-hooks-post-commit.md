@@ -2,6 +2,7 @@
 title: Git Happy Commits using git/hooks/post-commit
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/git-happy-commits-using-git-hooks-post-commit/
 
 

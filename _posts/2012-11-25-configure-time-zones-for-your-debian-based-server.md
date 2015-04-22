@@ -2,6 +2,7 @@
 title: Configure time zones for your debian based server
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/configure-time-zones-for-your-debian-based-server/
 
 categories:  Server

@@ -1,6 +1,7 @@
 ---
 title: Rails Remove empty helpers
 layout: post
+comments: true
 
 
 

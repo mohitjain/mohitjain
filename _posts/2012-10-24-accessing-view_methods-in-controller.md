@@ -2,6 +2,7 @@
 title: Accessing view methods in controller
 author: Mohit Jain
 layout: post
+comments: true
 
 permalink: /2012/10/accessing-view_methods-in-controller/
 categories: tips-and-tricks

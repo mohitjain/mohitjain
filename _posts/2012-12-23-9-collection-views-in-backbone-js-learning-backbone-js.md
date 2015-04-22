@@ -2,6 +2,7 @@
 title: '9. Collection views in backbone js &#8211; Learning Backbone js'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

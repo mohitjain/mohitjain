@@ -2,6 +2,7 @@
 title: How to deploy assets on Amazon S3 and why deploying assets to Amazon S3 is important.
 author: Mohit Jain
 layout: post
+comments: true
 
 
 

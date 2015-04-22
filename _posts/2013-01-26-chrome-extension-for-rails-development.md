@@ -2,6 +2,7 @@
 title: Chrome extension for Rails development
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/chrome-extension-for-rails-development/
 
 

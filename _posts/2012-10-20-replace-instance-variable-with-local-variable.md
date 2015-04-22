@@ -2,6 +2,7 @@
 title: Replace instance variable with local variable
 description: Replace instance variable with local variable to make your code more optimized
 layout: post
+comments: true
 
 permalink: /2012/10/replace-instance-variable-with-local-variable/
 keywords: ruby,  code optimizations, performance

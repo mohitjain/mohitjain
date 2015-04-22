@@ -2,6 +2,7 @@
 title: '2. Representing your data in javascript &#8211; Learning Backbone js'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

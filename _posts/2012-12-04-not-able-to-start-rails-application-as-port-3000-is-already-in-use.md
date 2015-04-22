@@ -2,6 +2,7 @@
 title: Not able to start rails application as port 3000 is already in use.
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/not-able-to-start-rails-application-as-port-3000-is-already-in-use/
 
 

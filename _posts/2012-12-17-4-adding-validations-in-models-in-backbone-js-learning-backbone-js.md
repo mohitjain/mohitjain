@@ -2,6 +2,7 @@
 title: 4. Adding Validations in models in backbone js – Learning Backbone js
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js Validations
 banner_image: "/media/backbone.jpg"
 featured: true

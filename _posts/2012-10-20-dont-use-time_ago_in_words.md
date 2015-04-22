@@ -1,6 +1,7 @@
 ---
 title: 'Dont use time_ago_in_words'
 layout: post
+comments: true
 
 permalink: /2012/10/dont-use-time_ago_in_words/
 description: Prefer now to use time_ago_in_words in ruby on rails.

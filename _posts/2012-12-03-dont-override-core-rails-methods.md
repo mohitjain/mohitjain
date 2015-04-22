@@ -2,6 +2,7 @@
 title: 'Don&#8217;t override core Rails methods'
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/12/dont-override-core-rails-methods/
 
 categories: tips-and-tricks

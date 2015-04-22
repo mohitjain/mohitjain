@@ -2,6 +2,7 @@
 title: Rollback all database changes on exit
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/rollback-all-database-changes-on-exit/
 
 categories: General quick-solution tips-and-tricks utilities

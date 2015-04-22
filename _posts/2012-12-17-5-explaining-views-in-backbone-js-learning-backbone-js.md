@@ -2,6 +2,7 @@
 title: '5. Explaining views in backbone js &#8211; Learning Backbone Js'
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

@@ -1,6 +1,7 @@
 ---
 title: How to add cache-control, expires headers to images (Content) served by S3
 layout: post
+comments: true
 
 
 

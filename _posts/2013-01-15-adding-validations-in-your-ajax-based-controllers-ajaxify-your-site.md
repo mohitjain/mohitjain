@@ -2,6 +2,7 @@
 title: 'Adding validations in your ajax based controllers &#8211; Ajaxify your site &#8211; Part 2'
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/adding-validations-in-your-ajax-based-controllers-ajaxify-your-site/
 
 

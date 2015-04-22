@@ -2,6 +2,7 @@
 title: 'Steve Jobs Vision of the World'
 author: Mohit Jain
 layout: post
+comments: true
 
 permalink: /2012/10/steve-jobs-vision-of-the-world/
 keywords: steve jobs, thoughts

@@ -2,6 +2,7 @@
 title: 3. Defining models in backbone js – Learning Backbone js
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true

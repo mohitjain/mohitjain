@@ -2,6 +2,7 @@
 title: Quick way to setup memcached in Ruby on Rails application
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/quick-way-to-setup-memcached-in-Ruby on Rails-application/
 
 

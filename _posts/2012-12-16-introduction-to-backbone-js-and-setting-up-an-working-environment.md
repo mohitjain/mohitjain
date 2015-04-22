@@ -2,6 +2,7 @@
 title: '1. Introduction to backbone js and setting up an working environment &#8211; Learning Backbone js'
 author: Mohit Jain
 layout: post
+comments: true
 banner_image: "/media/backbone.jpg"
 featured: true
 categories: Backbone.js

@@ -2,6 +2,7 @@
 title: A complete guide for learning backbone js
 author: Mohit Jain
 layout: post
+comments: true
 categories: Backbone.js Validations
 banner_image: "/media/backbone.jpg"
 featured: true

@@ -2,6 +2,7 @@
 title: '13 Routers in backbone js &#8211; Learning backbone js'
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/routers-in-backbone-js-learning-backbone-js/
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"

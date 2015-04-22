@@ -2,6 +2,7 @@
 title: Converting Ruby time function into a database friendly format to compare time.
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2013/01/converting-ruby-time-function-into-a-database-friendly-format-to-compare-time/
 
 categories: optimization  tips-and-tricks utilities

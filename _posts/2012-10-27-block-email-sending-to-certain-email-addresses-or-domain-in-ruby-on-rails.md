@@ -2,6 +2,7 @@
 title: Block email sending to certain email addresses or domain in ruby on rails?
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2012/10/block-email-sending-to-certain-email-addresses-or-domain-in-Ruby on Rails/
 
 

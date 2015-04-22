@@ -2,6 +2,7 @@
 title: Use cookie-free domains for components in ruby on rails application.
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/use-cookie-free-domains-for-components-in-ruby-on-rails-application/
 
 

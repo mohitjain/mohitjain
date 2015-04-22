@@ -2,6 +2,7 @@
 title: Day 1 experience with Vim. :)
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2012/11/day-1-experience-with-vim/
 
 

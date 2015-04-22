@@ -2,6 +2,7 @@
 title: Not able to call group model methods in delayed job perform method
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/not-able-to-call-group-model-methods-in-delayed-job-perform-method/
 
 categories: quick-solution tips-and-tricks utilities

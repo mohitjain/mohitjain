@@ -2,6 +2,7 @@
 title: How to use screen in ubuntu
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/how-to-use-screen-in-ubuntu/
 
 

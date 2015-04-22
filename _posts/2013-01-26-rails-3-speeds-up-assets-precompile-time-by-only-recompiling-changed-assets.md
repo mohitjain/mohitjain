@@ -2,6 +2,7 @@
 title: Rails 3 Speeds up assets precompile time by only recompiling changed assets
 author: Mohit Jain
 layout: post
+comments: true
 permalink:  /2013/01/rails-3-speeds-up-assets-precompile-time-by-only-recompiling-changed-assets/
 
 

@@ -2,6 +2,7 @@
 title: How to test emails in development mode in ruby on rails
 author: Mohit Jain
 layout: post
+comments: true
 permalink: /2013/01/how-to-test-emails-in-development-mode-in-ruby-on-rails/
 
 
