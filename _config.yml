@@ -1,7 +1,5 @@
 gems:
- - jekyll-sitemap
- - jekyll-redirect-from
- - jekyll-paginate
+  - jekyll-paginate
 
 # Site Settings
 title: 						"Codebeerstartups"
