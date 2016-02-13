@@ -1,4 +1,6 @@
-
+gems:
+  - jekyll-sitemap
+  - jekyll-redirect-from
 
 # Site Settings
 title: 						"Codebeerstartups"
