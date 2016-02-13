@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page2/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					ruby-on-rails 
+					
+					bundler 
+					
+				</h2>
+				<h1><a href="/2013/09/parallel-gem-installing-using-bundler/">Parallel gem installing using Bundler</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-09-02">September 2, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p><img src="/wp-content/images/bundler.png" alt="My bundler is running" /></p>
+
+<p>No more waiting time. Bundler supports faster gem install as it <a href="https://github.com/bundler/bundler/pull/2481">adds support for parallel installation</a>. You can pass in –jobs=SIZE (or -jSIZE) as a parameter to bundle install</p>
+
+
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					validations, 
+					
+					associations 
+					
+				</h2>
+				<h1><a href="/2013/07/use-belongs-to-with-presence-validator/">Use belongs_to with presence validator</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-07-13">July 13, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Assume we have two models: User and Image. User has one image and image belongs to user. The code below:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">has_one</span> <span class="ss">:image</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:user</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Now we want to add validation for image to check if user is there or not.</p>
+
+
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					omniauth 
+					
+					facebook 
+					
+					ruby 
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2013/07/better-way-to-parse-user-info-from-omniauth-hash/">Better way to parse user info from omniauth hash</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-07-10">July 10, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Lets assume we have to parse this hash. There can be case we are not getting the keys as a response. So this post is about handling those cases.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">auth</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">:provider</span> <span class="o">=&gt;</span> <span class="s1">&#39;facebook&#39;</span><span class="p">,</span>
+  <span class="ss">:uid</span> <span class="o">=&gt;</span> <span class="s1">&#39;1234567&#39;</span><span class="p">,</span>
+  <span class="ss">:info</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">:nickname</span> <span class="o">=&gt;</span> <span class="s1">&#39;jbloggs&#39;</span><span class="p">,</span>
+    <span class="ss">:email</span> <span class="o">=&gt;</span> <span class="s1">&#39;joe@bloggs.com&#39;</span><span class="p">,</span>
+    <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Joe Bloggs&#39;</span><span class="p">,</span>
+    <span class="ss">:first_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Joe&#39;</span><span class="p">,</span>
+    <span class="ss">:last_name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bloggs&#39;</span><span class="p">,</span>
+    <span class="ss">:image</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://graph.facebook.com/1234567/picture?type=square&#39;</span><span class="p">,</span>
+    <span class="ss">:urls</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:Facebook</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://www.facebook.com/jbloggs&#39;</span> <span class="p">},</span>
+    <span class="ss">:location</span> <span class="o">=&gt;</span> <span class="s1">&#39;Palo Alto, California&#39;</span><span class="p">,</span>
+    <span class="ss">:verified</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+  <span class="p">},</span>
+  <span class="ss">:credentials</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="s1">&#39;ABCDEF...&#39;</span><span class="p">,</span> <span class="c1"># OAuth 2.0 access_token, which you may wish to store</span>
+    <span class="ss">:expires_at</span> <span class="o">=&gt;</span> <span class="mi">1321747205</span><span class="p">,</span> <span class="c1"># when the access token expires (it always will)</span>
+    <span class="ss">:expires</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="c1"># this will always be true</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					nokogiri 
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2013/07/warning-nokogiri-was-built-against-libxml-version-2-9-0-but-has-dynamically-loaded-2-7-8/">WARNING: Nokogiri was built against LibXML version 2.9.0, but has dynamically loaded 2.7.8</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-07-10">July 10, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Have you ever seen this message while the Rails was loading up?</p>
+
+<blockquote>
+  <p>WARNING: Nokogiri was built against LibXML version x.x.x, but has dynamically loaded y.y.y</p>
+</blockquote>
+
+<p>This will help you:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bundle</span> <span class="nb">exec</span> <span class="n">gem</span> <span class="n">pristine</span> <span class="n">nokogiri</span></code></pre></div>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					ruby 
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2013/06/long-integer-literals-in-ruby/">Long integer literals in ruby</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-06-30">June 30, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>I am here to share a small tip that I just come to know about ruby. A simple question. How many zeros are there integer written below?</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">100000000000</span></code></pre></div>
+
+<p>Difficult to count right? In normal day to day practice we generally use comma to separate the digits, for example in US standard we use comma every 3 digits. So number written above can be re-written as:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">100</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span></code></pre></div>
+
+<p>Now same thing can be done with long integers in ruby using an underscore, something like this:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">100_000_000_000</span></code></pre></div>
+
+<p>which is actually same as writing 100000000000, but using underscore makes things more easy to read;)</p>
+
+<p>I hope you will find this technique somewhere useful ;)</p>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page3" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/index.html" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

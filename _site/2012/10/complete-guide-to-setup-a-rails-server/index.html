@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Complete guide to setup a rails server</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/10/complete-guide-to-setup-a-rails-server/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">Complete guide to setup a rails server</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				server
+          	
+        </h2>
+        <h1><a href="/2012/10/complete-guide-to-setup-a-rails-server/">Complete guide to setup a rails server</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-10-26">October 26, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					server
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">Complete guide to setup a rails server</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-10-26">October 26, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p><strong>This guide is written by Mohit Jain (http://codebeerstartups.com). It worked fine for me in more than 15 deployments. Use this guide at your own risk, if your server explode, it will not be my fault ;-)</strong></p>
+
+<p><em>If something went wrong, drop me message, I will try to help you :)</em></p>
+
+<h2 id="stack">Stack</h2>
+
+<ol>
+  <li>Ubuntu .</li>
+  <li>Rails 3</li>
+  <li>Mysql</li>
+  <li>Apache</li>
+  <li>Passenger</li>
+</ol>
+
+<h2 id="step-1-creating-a-deployer-account">Step 1: (Creating a deployer account)</h2>
+
+<ol>
+  <li>Ssh into the system using the root credentials</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ssh</span> <span class="n">root</span><span class="vi">@ip_address</span></code></pre></div>
+
+<ol>
+  <li>Create new user/s and switch to that one.</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Add deployer user - deployer is the username of the user you are creating. Change it as per your needs</span>
+<span class="n">adduser</span> <span class="n">deployer</span> <span class="o">--</span><span class="n">ingroup</span> <span class="n">admin</span>
+<span class="n">su</span> <span class="n">deployer</span>
+<span class="n">cd</span>
+
+
+<span class="no">OR</span>
+
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">groupadd</span> <span class="n">deployers</span>  <span class="c1">#Create new group for deployers</span>
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">visudo</span>
+<span class="c1">## Allows people in group deployers to run all commands</span>
+<span class="o">%</span><span class="n">deployers</span>  <span class="no">ALL</span><span class="o">=</span><span class="p">(</span><span class="no">ALL</span><span class="p">)</span><span class="no">ALL</span>
+<span class="c1">#Save and Exit.</span>
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">adduser</span> <span class="n">deployer</span>  <span class="c1">#Create new user</span>
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">deployers</span> <span class="n">deployer</span>  <span class="c1">#Add deployer user to deployers group</span>
+<span class="c1">#Logout and login as deployer</span></code></pre></div>
+
+<ol>
+  <li>(Optional but preferable). Logout using logout and login as deployer i.e.</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ssh</span> <span class="n">deployer</span><span class="vi">@ip_address</span></code></pre></div>
+
+<ol>
+  <li>Generate SSH keys and public key in deployment keys on github/bitbucket</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="s2">&quot;your_email_address&quot;</span>
+<span class="n">cat</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span><span class="o">.</span><span class="n">pub</span></code></pre></div>
+
+<ol>
+  <li>Copy your public key to authorised key, (SO that you don’t need to enter password next time when you try to login on server from your machine. DONT do this in case you don’t want to give this current machine access of the server.):</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cat</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="o">|</span> <span class="n">ssh</span> <span class="n">deployer</span><span class="vi">@your_ip</span> <span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span></code></pre></div>
+
+<p><strong>Step 2: (Preparing the stack)</strong></p>
+
+<ol>
+  <li>Update and Upgrade the system</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span></code></pre></div>
+
+<ol>
+  <li>Install MySQL and libmysqlclient16-dev [dependency for mysql2 gem]</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span> <span class="n">mysql</span><span class="o">-</span><span class="n">client</span> <span class="n">libmysqlclient16</span><span class="o">-</span><span class="n">dev</span></code></pre></div>
+
+<ol>
+  <li>Install Apache</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">apache2</span></code></pre></div>
+
+<ol>
+  <li>Install Git, Curl and build-essential [to compile ruby]</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libxslt1</span><span class="o">.</span><span class="mi">1</span> <span class="n">libxslt1</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span> <span class="n">ruby</span><span class="o">-</span><span class="n">full</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span> <span class="n">libmysqlclient</span><span class="o">-</span><span class="n">dev</span> <span class="n">libmysql</span><span class="o">-</span><span class="n">ruby</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libopenssl</span><span class="o">-</span><span class="n">ruby</span> <span class="n">libcurl4</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dev</span> <span class="n">imagemagick</span> <span class="n">libmagickwand</span><span class="o">-</span><span class="n">dev</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="n">libffi</span><span class="o">-</span><span class="n">dev</span> <span class="n">libffi</span><span class="o">-</span><span class="n">ruby</span> <span class="n">rubygems</span> <span class="n">libsqlite3</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpq</span><span class="o">-</span><span class="n">dev</span> <span class="n">libreadline5</span> <span class="n">openjdk</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">jre</span> <span class="n">nodejs</span> <span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">openssl</span> <span class="n">libreadline6</span> <span class="n">libreadline6</span><span class="o">-</span><span class="n">dev</span> <span class="n">curl</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">zlib1g</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libyaml</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">dev</span> <span class="n">autoconf</span> <span class="n">libc6</span><span class="o">-</span><span class="n">dev</span> <span class="n">automake</span> <span class="n">libtool</span> <span class="n">bison</span>  <span class="n">curl</span></code></pre></div>
+
+<ol>
+  <li>Install RVM <em>I dont prefer that one liner for rvm ruby rails as i keep getting issue for readline etc.</em></li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bash</span> <span class="o">&lt;</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">curl</span> <span class="o">-</span><span class="n">sk</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">wayneeseguin</span><span class="o">/</span><span class="n">rvm</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">binscripts</span><span class="o">/</span><span class="n">rvm</span><span class="o">-</span><span class="n">installer</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.bash_profile</span></code></pre></div>
+
+<ol>
+  <li>Reload bash_profile</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="o">~</span><span class="sr">/.bash_profile</span></code></pre></div>
+
+<ol>
+  <li>Install ruby 1.9.3</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="n">openssl</span>
+<span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="nb">readline</span>
+<span class="n">rvm</span> <span class="n">install</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="vg">$rvm_path</span><span class="o">/</span><span class="n">usr</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="nb">readline</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="vg">$rvm_path</span><span class="o">/</span><span class="n">usr</span></code></pre></div>
+
+<ol>
+  <li>Make 1.9.3 the default interpreter</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rvm</span> <span class="o">--</span><span class="n">default</span> <span class="n">use</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span></code></pre></div>
+
+<ol>
+  <li>Install rails</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ri</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">rdoc</span>
+<span class="no">OR</span>
+<span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="o">-</span><span class="n">v</span> <span class="mi">3</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">16</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ri</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">rdoc</span></code></pre></div>
+
+<ol>
+  <li>Install passenger</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="n">passenger</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ri</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">rdoc</span></code></pre></div>
+
+<ol>
+  <li>Install Apache2 module</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">passenger</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">apache2</span><span class="o">-</span><span class="n">module</span></code></pre></div>
+
+<p>Press Enter and passenger-install will notify about the missing dependencies, Install them, and run the command again ie</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">passenger</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">apache2</span><span class="o">-</span><span class="n">module</span></code></pre></div>
+
+<pre><code>Passenger will ask to paste some code in cofig file paste the output specified in apache config file ie:
+</code></pre>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">vi</span> <span class="sr">/etc/</span><span class="n">apache2</span><span class="o">/</span><span class="n">apache2</span><span class="o">.</span><span class="n">conf</span></code></pre></div>
+
+<ol>
+  <li>Other Packages: (Mail Servers, Image Magick and Search Engine) and some other dependencies</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">imagemagick</span> <span class="n">sphinxsearch</span>  <span class="n">libmagickwand</span><span class="o">-</span><span class="n">dev</span> <span class="n">libmagick9</span><span class="o">-</span><span class="n">dev</span> <span class="n">postfix</span> <span class="n">bsd</span><span class="o">-</span><span class="n">mailx</span> <span class="n">libxslt</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">dev</span></code></pre></div>
+
+<p><strong>If you use postfix, then you fix it quickly by disabling tls by setting “smtpd_use_tls=no” in /etc/postfix/main.cf , else it will be keep throwing errors when rails will try to send email. Once settings has been changed, then just start the postfix ie:</strong></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="sr">/etc/ini</span><span class="n">t</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">postfix</span> <span class="n">start</span></code></pre></div>
+
+<ol>
+  <li>Enable Rewrite module(if needed)</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">a2enmod</span> <span class="n">rewrite</span></code></pre></div>
+
+<ol>
+  <li>Restart Apache</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="sr">/etc/ini</span><span class="n">t</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">apache2</span> <span class="n">restart</span></code></pre></div>
+
+<ol>
+  <li>Config file: (You will need to for other changes later on.)</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">vi</span> <span class="sr">/etc/</span><span class="n">apache2</span><span class="o">/</span><span class="n">apache2</span><span class="o">.</span><span class="n">conf</span></code></pre></div>
+
+<p>** Typical Apache settings example for your apache config file.**</p>
+
+<ol>
+  <li>If you don’t have domain name yet then you can run your application on IP only.</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NameVirtualHost</span> <span class="ss">my_server_ip</span><span class="p">:</span><span class="mi">80</span>
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">my_server_ip</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">my_awesome_rails_project</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></div>
+
+<ol>
+  <li>You have a domain ie example.com and want to run application on that. Here is apache config code for that.</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NameVirtualHost</span> <span class="ss">my_server_ip</span><span class="p">:</span><span class="mi">80</span>
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">production</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></div>
+
+<ol>
+  <li>Redirect www requests to non – www, here is the code for that. Reverse of this ie redirect non www requests to www can be possible by making small modifications :)</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NameVirtualHost</span> <span class="ss">my_server_ip</span><span class="p">:</span><span class="mi">80</span>
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="no">RewriteEngine</span> <span class="no">On</span>
+<span class="no">Redirect</span> <span class="n">permanent</span> <span class="o">/</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span></code></pre></div>
+
+<ol>
+  <li>Wants to setup staging server? Here is the code for that running in different environment</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">staging</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="no">RackEnv</span> <span class="n">staging</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">staging</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+  <span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span>
+<span class="sr">Add expiry headers for all the assets.</span>
+
+<span class="sr">sudo a2enmod expires</span>
+<span class="sr"># make sure you restart the apache after adding anything in config file.</span>
+<span class="sr">sudo service apache2 restart</span>
+
+
+<span class="sr">&lt;VirtualHost *:80&gt;</span>
+<span class="sr">ExpiresActive On</span>
+<span class="sr">ExpiresByType image/</span><span class="n">gif</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">jpg</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">png</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">icon</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">icon</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">ico</span> <span class="s2">&quot;access plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">application</span><span class="o">/</span><span class="n">javascript</span> <span class="s2">&quot;now plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">javascript</span> <span class="s2">&quot;now plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">text</span><span class="o">/</span><span class="n">javascript</span> <span class="s2">&quot;now plus 1 months&quot;</span>
+<span class="no">ExpiresByType</span> <span class="n">text</span><span class="o">/</span><span class="n">css</span> <span class="s2">&quot;now plus 1 months&quot;</span>
+<span class="no">ExpiresDefault</span> <span class="s2">&quot;access plus 1 days&quot;</span>
+<span class="no">ServerName</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">production</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></div>
+
+<p>Will make a post soon for deploying your application with capistrano.</p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=Complete guide to setup a rails server&url=http://codebeerstartups.com/2012/10/complete-guide-to-setup-a-rails-server/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/10/complete-guide-to-setup-a-rails-server/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

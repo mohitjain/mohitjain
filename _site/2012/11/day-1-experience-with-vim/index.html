@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Day 1 experience with Vim. :)</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/11/day-1-experience-with-vim/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">Day 1 experience with Vim. :)</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				general
+          	
+				vim
+          	
+        </h2>
+        <h1><a href="/2012/11/day-1-experience-with-vim/">Day 1 experience with Vim. :)</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-11-04">November 4, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					general
+          		
+					vim
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">Day 1 experience with Vim. :)</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-11-04">November 4, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p>I was free this morning and while checking out few things on Quora, again I got an article where people are debating about Textmate, Vim, Emacs etc. And that what pushed me to learn or try out VIM. I know some basic stuff about Vi or Vim as you need to know while doing things on server.  Anyways I downloaded macvim and checkout few tutorials etc and this is what I learned in couple of hours ie basic movements and editing. So if you are in those unlucky souls who always wants to vim but never try it. Just go for it. Just for fun try out these commands and lets what you feel about it.</p>
+
+<h2 id="vim-commands">Vim Commands</h2>
+
+<pre><code>h -&gt; Left
+j -&gt; Down
+k -&gt; Up
+l -&gt; Right (Note -&gt; Tutorials says don’t use arrow keys)
+
+$ -&gt; Go to End of the line
+(Zero) 0 -&gt; Go to starting of the line
+
+G -&gt; end of the file
+gg -&gt; beginning of the file
+</code></pre>
+
+<table>
+  <tbody>
+    <tr>
+      <td>——-***</td>
+      <td>\***</td>
+      <td>** add number in front to jump example 4w or 4f/ etc ***</td>
+      <td>\***</td>
+      <td>** ———</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code>w -&gt; Jumps to beginning of next word.. Treats special characters as a different word
+W -. Jumps to beginning of next word. Skips special characters.
+
+e -&gt; Jumps to end of the word. Treats special characters as a different word
+E -&gt;Jumps to end of next word. Skips special characters.
+
+b -&gt; Move back. Treats special characters as different word
+B -&gt; Move Back, Skips special characters
+
+f ( a character) -&gt; Jumps to the character matching in the same line.
+F( a character) -&gt; Moves backwards
+; -&gt; repeats the last f ( character) -&gt; works for both f ( ) and F ( )
+
+t ( a character) -&gt; Same a f ( a characters) but takes to one previous character i.e. until as in ruby :)
+T ( a character) -&gt; Moves back wards -&gt; works same as t ( )
+; works too in this case
+
+Control f -&gt; Next page
+Control b -&gt; Previous page
+
+Control d -&gt; Half page down
+Control u -&gt; half page up
+
+H -&gt; Head of the current page
+M -&gt; Middle of the current page
+L -&gt; Last of the current page
+
+u -&gt; undo
+
+23 G -&gt; will take you to the line number 23
+*-&gt; Hit * and then start pressing n -&gt; It will start search the current word in forward on which you are in the file
+*-&gt; Hit * and then start pressing N -&gt; It will start search the current word in backword on which you are in the file
+g*
+g#
+/typeYourSeach -&gt; Forward searching of specific
+?typeYourSearch -&gt; Backword search of something specific
+
+dd -&gt; delete the current line (remove enter of that line)
+D -&gt; Delete the current line
+x -&gt; delete the current character
+X -&gt; delete the previous character
+dw -&gt; delete the word
+d$ -&gt; remove from current location to end of the line
+% -&gt; Next matching bracket
+=G -&gt; Code Indentation
+
+**Basic Editing:**
+i -&gt; Insert Mode:
+a -&gt; Append at the current location
+o -&gt; Insert a new line and start editing
+I -&gt; Insert form beginning of the line
+A -&gt; Append after the line.
+O -&gt; Insert a line above and start editing
+c -&gt;delete and change something
+C -&gt; delete and change entire line
+r -&gt; replace current charter
+R -&gt; start replacing anything u want to..
+cw -&gt; editing the current work and start typing new things…
+or c2w -&gt; editing two words
+. -&gt; repeat the last action
+
+**Yanking: (Copying)**
+yy / Y — copy the whole line
+yw -&gt; yank the word
+p -&gt; paste the yank
+P -&gt; paste above
+J -&gt; join the next line in the same
+**Visual Mode**
+v -&gt; visual mode -&gt; select character by character using hl
+V -&gt; Visual Model -&gt; select by line using j or k
+
+**Block Highlighting**
+control v -&gt; select a block
+gv -&gt; previous selected block
+</code></pre>
+
+<p> </p>
+
+<p>This is what I learned in 2 hours. Tried these commands and its fun. ;) I loved it. Going for some plugins etc to checkout more stuff. I will say just open your terminal and say vimtutor and invest some time to see what exactly it is.My experience with VIM was awesome :) So I will make one more post soon once I checkout the plugins part –&gt; VIM for Rails :) Once I learn it :)</p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=Day 1 experience with Vim. :)&url=http://codebeerstartups.com/2012/11/day-1-experience-with-vim/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/11/day-1-experience-with-vim/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

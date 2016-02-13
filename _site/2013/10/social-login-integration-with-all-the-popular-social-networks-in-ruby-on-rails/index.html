@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Social Login integration with all the popular social networks in ruby on rails</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2013/10/social-login-integration-with-all-the-popular-social-networks-in-ruby-on-rails/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">Social Login integration with all the popular social networks in ruby on rails</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				devise
+          	
+				linkedin
+          	
+				facebook
+          	
+				google
+          	
+				github
+          	
+				twitter
+          	
+        </h2>
+        <h1><a href="/2013/10/social-login-integration-with-all-the-popular-social-networks-in-ruby-on-rails/">Social Login integration with all the popular social networks in ruby on rails</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2013-10-26">October 26, 2013</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					devise
+          		
+					linkedin
+          		
+					facebook
+          		
+					google
+          		
+					github
+          		
+					twitter
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">Social Login integration with all the popular social networks in ruby on rails</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2013-10-26">October 26, 2013</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p>I have seen lot of people writting pretty messy code to integrate social logins in rails or get confused to integrate multiple social logins in rails. In order to help them I have written a small application having integrations with Twitter + Facebook + Linkedin + Google + Github.</p>
+
+<p>Here is the <a href="http://social-login-in-rails.herokuapp.com/">demo</a> and here is the <a href="https://github.com/mohitjain/social-login-in-rails">source code</a></p>
+
+<p>I am using devise in this application. Few things to note in this:</p>
+
+<ol>
+  <li>There are two models in this application a user model and an authorizations model and a user has_many authorizations.</li>
+  <li>User can link to multiple social account from edit profile</li>
+  <li>Once social accounts are linked, user can login from any connected social network.</li>
+  <li>If user tries to create an account with a different social network while in loggedout state. System maps it to the same account if that email address exists in the database else it will create a new account.</li>
+  <li>Twitter don’t provide email address of the user, nothing I can do about it.</li>
+  <li>There are lot of other commented out gems in the Gemfile. Those are the gems that I use a lot in my various projects. I will strongly suggest you to checkout those gems.</li>
+</ol>
+
+<!--more-->
+
+<h2 id="how-to-replace-and-find-keys-to-make-this-application-work">How to replace and find keys to make this application work..</h2>
+
+<p>In the config directory there is a file ie social_keys.yml. You need to specify all the social keys there. Make sure have restarted the application after making any change in that file.</p>
+
+<p>Here are the urls from where you can create an app and get the keys</p>
+
+<h2 id="facebook">Facebook:</h2>
+
+<p>URL: <a href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
+
+<p>Settings:</p>
+
+<p><img src="/wp-content/images/facebook.png" alt="Facebook Settings" /></p>
+
+<h2 id="twitter">Twitter:</h2>
+<p>URL: <a href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></p>
+
+<p>Settings: Enter call back url as : http://127.0.0.1:3000/twitter under settings tab once you create an application</p>
+
+<h2 id="google">Google:</h2>
+<p>URL: <a href="https://code.google.com/apis/console/b/0/?pli=1">https://code.google.com/apis/console/b/0/?pli=1</a></p>
+
+<p>Settings: Go to API Access and enter redirect url as http://localhost:3000/users/auth/google_oauth2/callback</p>
+
+<h2 id="github">Github:</h2>
+<p>URL: <a href="https://github.com/settings/applications/new">https://github.com/settings/applications/new</a></p>
+
+<p>Settings:Application callback url should be http://localhost:3000/users/auth/github</p>
+
+<h2 id="linkedin">Linkedin:</h2>
+<p>url: <a href="https://www.linkedin.com/secure/developer">https://www.linkedin.com/secure/developer</a></p>
+
+<p>No settings required by default.</p>
+
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=Social Login integration with all the popular social networks in ruby on rails&url=http://codebeerstartups.com/2013/10/social-login-integration-with-all-the-popular-social-networks-in-ruby-on-rails/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2013/10/social-login-integration-with-all-the-popular-social-networks-in-ruby-on-rails/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>6. How to use templates in backbone js &#8211; Learning Backbone js</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  featured  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">6. How to use templates in backbone js &#8211; Learning Backbone js</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile  featured ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover  featured ">
+    <div class="background" style="background-image:url('/media/backbone.jpg');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				backbone.js
+          	
+				optimization
+          	
+        </h2>
+        <h1><a href="/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js/">6. How to use templates in backbone js &#8211; Learning Backbone js</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-20">December 20, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post  featured ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					backbone.js
+          		
+					optimization
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">6. How to use templates in backbone js &#8211; Learning Backbone js</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-20">December 20, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <blockquote>
+  <p>This entry is part 6 of 14 in the series for <a href="/2012/12/a-complete-guide-for-learning-backbone-js/">A Complete Guide for Learning Backbone Js</a></p>
+</blockquote>
+
+<ul>
+  <li><a href="/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment">Introduction and Installation</a></li>
+  <li><a href="/2012/12/2-representing-your-data-in-javascript-learning-backbone-js">Representing your data in javascript</a></li>
+  <li><a href="/2012/12/3-defining-models-in-backbone-js-learning-backbone-js">Defining Models in backbone js</a></li>
+  <li><a href="/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js">Adding Validations in models backbone js </a></li>
+  <li><a href="/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js">Explaining views in backbone js</a></li>
+  <li><a href="/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js">How to use templates in backbone js </a></li>
+  <li><a href="/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js">How to improve templates in backbone js</a></li>
+  <li><a href="/2012/12/8-collections-in-backbone-js-learning-backbone-js">Collections in backbone js</a></li>
+  <li><a href="/2012/12/9-collection-views-in-backbone-js-learning-backbone-js">Collection views in backbone js </a></li>
+  <li><a href="/2012/12/template-helpers-in-backbone-js-learning-backbonejs">Template helpers in backbone js</a></li>
+  <li><a href="/2012/12/11-namespacing-in-backbone-js-learning-backbonejs">How to use namespace in backbone js </a></li>
+  <li><a href="/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js">How to handle dom events in backbone js and define your custom events</a> (<a href="http://listen-dom-events-backbone.herokuapp.com">Live Demo</a>)</li>
+  <li><a href="/2013/01/routers-in-backbone-js-learning-backbone-js">Routing in backbone js</a></li>
+</ul>
+
+<hr />
+
+<h2 id="agenda">Agenda</h2>
+
+<p>In the previous lessons we learnt how to define views and display data, but problem was complex views. In this lesson we will learn how to use templates in backbone js.</p>
+
+<h2 id="what-we-have-till-now">What we have till now</h2>
+
+<p>So from previous lesson we have this PersonView:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Guest User&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;worker&#39;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+   <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+   <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+   <span class="p">},</span>
+
+   <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;) - &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;occupation&#39;</span><span class="p">)</span> <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// calls from console</span>
+
+<span class="c1">// var person = new Person;</span>
+<span class="c1">// var personView = new PersonView({ model: person });</span>
+<span class="c1">//$(document.body).html(personView.el);  // this is not ideal but good enough for demo.</span></code></pre></div>
+
+<h2 id="what-was-the-problem">What was the problem</h2>
+
+<p>The problem is this code is:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;) - &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;occupation&#39;</span><span class="p">)</span> <span class="p">);</span></code></pre></div>
+
+<p>This will go more complex if we have images or some complex views etc.</p>
+
+<h2 id="using-a-template">Using a template</h2>
+
+<p>Lets use a template and we pass data to that template and in return that template returns back the full html view. Take a look on this code and lets discuss it line by line.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Guest Worker&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;worker&#39;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+	<span class="nx">my_template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;&lt;%= name %&gt;&lt;/strong&gt; (&lt;%= age %&gt;) - &lt;%= occupation %&gt;&quot;</span><span class="p">),</span>
+
+	<span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">my_template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// calls from console</span>
+
+<span class="c1">// var person = new Person;</span>
+<span class="c1">// var personView = new PersonView({ model: person });</span>
+<span class="c1">//$(document.body).html(personView.el);  // this is not ideal but good enough for demo.</span></code></pre></div>
+
+<!--more-->
+
+<p>So we introduced a new line ie:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">my_template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;&lt;%= name %&gt;&lt;/strong&gt; (&lt;%= age %&gt;) - &lt;%= occupation %&gt;&quot;</span><span class="p">),</span></code></pre></div>
+
+<p>Backbone js has feature that you can define template using underscore js that we included in lesson 1 and it will compile the template and then when ever you pass the data, it will return the html view as per the code. So in the above line we defined a template using</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;&lt;%= name %&gt;&lt;/strong&gt; (&lt;%= age %&gt;) - &lt;%= occupation %&gt;&quot;</span><span class="p">)</span></code></pre></div>
+
+<p>and we assigned it to</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">my_template</span> <span class="o">=</span> <span class="p">.......</span></code></pre></div>
+
+<p>Now backbone js will compile it and define a function behind the scenes. Next modification that we did was:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">my_template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+<span class="c1">// it was</span>
+<span class="c1">//this.$el.html( this.model.get(&#39;name&#39;) + &#39; (&#39; + this.model.get(&#39;age&#39;) + &#39;) - &#39; + this.model.get(&#39;occupation&#39;) );</span></code></pre></div>
+
+<p>We called the template and we need to pass the data to that template. We will have access to the model object as we will call:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// calls from console</span>
+<span class="c1">// var person = new Person;</span>
+<span class="c1">// var personView = new PersonView({ model: person });</span></code></pre></div>
+
+<p>So personView has access to the model and previously we have seen that toJSON() method just pass the object parameters. Cool. Now lets see the code again and discuss the full flow:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Guest Worker&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;worker&#39;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+	<span class="nx">my_template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="s2">&quot;&lt;strong&gt;&lt;%= name %&gt;&lt;/strong&gt; (&lt;%= age %&gt;) - &lt;%= occupation %&gt;&quot;</span><span class="p">),</span>
+
+	<span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">my_template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+	<span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<h2 id="fire-up-the-console-and-fire-these-commands">Fire up the console and fire these commands</h2>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">;</span>  <span class="c1">// a person object created...</span>
+<span class="kd">var</span> <span class="nx">personView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PersonView</span><span class="p">({</span> <span class="nx">model</span><span class="o">:</span> <span class="nx">person</span> <span class="p">});</span>
+<span class="nx">personView</span><span class="p">.</span><span class="nx">el</span>   <span class="c1">// ----&gt;; You can call this method and it will display the view..</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">personView</span><span class="p">.</span><span class="nx">el</span><span class="p">);</span>  <span class="c1">//  ---&gt;; This will add output to the dom. This is not ideal but good enough for demo.</span></code></pre></div>
+
+<h2 id="whats-going-on">Whats going on?</h2>
+
+<ul>
+  <li>A personView object is created.</li>
+  <li>Model person has been passed to that personView object.</li>
+  <li>So personView has access to person object.</li>
+  <li>personView constructor will call render method.</li>
+  <li>render method will call template via my_template and pass data to my_template</li>
+  <li>my_template will accepts the parameters and assign proper values and return back to render.</li>
+</ul>
+
+<p>Cool :)</p>
+
+<h2 id="output-on-chrome-console">Output on Chrome Console</h2>
+
+<p>Now Lets see what chrome developer tools say:</p>
+
+<p><img src="/wp-content/uploads/2012/12/defining-templates-in-backbone-js.png?fit=693,520" alt="defining templates in backbone js" /></p>
+
+<p>The templates we will be defining is known as inline templates. We can improve this code too. Lets see that in the next lesson.</p>
+
+<hr />
+
+<h2 id="source-code">Source code</h2>
+
+<p>If you are facing any issues. Checkout the source code files at <a href="https://github.com/mohitjain/learning_basics_backbone" title="Source Code for the post">github</a>. I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.</p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=6. How to use templates in backbone js &#8211; Learning Backbone js&url=http://codebeerstartups.com/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

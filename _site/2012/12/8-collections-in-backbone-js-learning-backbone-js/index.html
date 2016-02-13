@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>8. Collections in backbone js &#8211; Learning Backbone js</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/12/8-collections-in-backbone-js-learning-backbone-js/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  featured  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">8. Collections in backbone js &#8211; Learning Backbone js</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile  featured ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover  featured ">
+    <div class="background" style="background-image:url('/media/backbone.jpg');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				backbone.js
+          	
+        </h2>
+        <h1><a href="/2012/12/8-collections-in-backbone-js-learning-backbone-js/">8. Collections in backbone js &#8211; Learning Backbone js</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-21">December 21, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post  featured ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					backbone.js
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">8. Collections in backbone js &#8211; Learning Backbone js</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-21">December 21, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <blockquote>
+  <p>This entry is part 8 of 14 in the series for <a href="/2012/12/a-complete-guide-for-learning-backbone-js/">A Complete Guide for Learning Backbone Js</a></p>
+</blockquote>
+
+<ul>
+  <li><a href="/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment">Introduction and Installation</a></li>
+  <li><a href="/2012/12/2-representing-your-data-in-javascript-learning-backbone-js">Representing your data in javascript</a></li>
+  <li><a href="/2012/12/3-defining-models-in-backbone-js-learning-backbone-js">Defining Models in backbone js</a></li>
+  <li><a href="/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js">Adding Validations in models backbone js </a></li>
+  <li><a href="/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js">Explaining views in backbone js</a></li>
+  <li><a href="/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js">How to use templates in backbone js </a></li>
+  <li><a href="/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js">How to improve templates in backbone js</a></li>
+  <li><a href="/2012/12/8-collections-in-backbone-js-learning-backbone-js">Collections in backbone js</a></li>
+  <li><a href="/2012/12/9-collection-views-in-backbone-js-learning-backbone-js">Collection views in backbone js </a></li>
+  <li><a href="/2012/12/template-helpers-in-backbone-js-learning-backbonejs">Template helpers in backbone js</a></li>
+  <li><a href="/2012/12/11-namespacing-in-backbone-js-learning-backbonejs">How to use namespace in backbone js </a></li>
+  <li><a href="/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js">How to handle dom events in backbone js and define your custom events</a> (<a href="http://listen-dom-events-backbone.herokuapp.com">Live Demo</a>)</li>
+  <li><a href="/2013/01/routers-in-backbone-js-learning-backbone-js">Routing in backbone js</a></li>
+</ul>
+
+<hr />
+
+<h2 id="agenda">Agenda</h2>
+
+<p>So from previous lessons we know how to create a Person model, We know how to create PersonView and we how to define inline and external templates. In this lesson we will learn collections in backbone js and in lesson we will learn how define views for collections in backbone js.</p>
+
+<h2 id="what-we-have-till-now">What we have till now</h2>
+
+<p>So here is the code that we have from previous lesson.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Guest User&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;worker&#39;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+	<span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#personTemplate&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+
+	<span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// calls from console</span>
+
+<span class="c1">// var person = new Person;  // a person object created...</span>
+<span class="c1">// var personView = new PersonView({ model: person });</span>
+<span class="c1">// personView.el   // ----&gt;; You can call this method and it will display the view..</span>
+<span class="c1">//$(document.body).html(personView.el);  //  ---&gt;; This will add output to the dom. This is not ideal but good enough for demo.</span></code></pre></div>
+
+<h2 id="defining-a-collection">Defining a collection</h2>
+
+<p>Now from above code if we want to create a new person and add that model in view that it will become messy and it will go so much messy if we have to define some 10 people records. Thanks to backbone that we have collections in backbone js. So here is how we define collections in backbone js.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// A List of People</span>
+<span class="kd">var</span> <span class="nx">PeopleCollection</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">model</span><span class="o">:</span> <span class="nx">Person</span>
+<span class="p">});</span></code></pre></div>
+
+<h2 id="setting-up-the-defaults">Setting up the defaults</h2>
+
+<p>So we tell collection that what kind of objects we are dealing with by specifying model attribute. In this case we have PeopleCollection so we have Person defined there. So lets see how to can use it. So we have:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Person Model</span>
+<span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Guest User&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;worker&#39;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// A List of People</span>
+<span class="kd">var</span> <span class="nx">PeopleCollection</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">model</span><span class="o">:</span> <span class="nx">Person</span>
+<span class="p">});</span>
+
+<span class="c1">// The View for a Person</span>
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+	<span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#personTemplate&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+
+	<span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+	<span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+
+<h2 id="fire-up-the-console-and-fire-these-commands">Fire up the console and fire these commands</h2>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">;</span>
+ <span class="kd">var</span> <span class="nx">personView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PersonView</span><span class="p">({</span> <span class="nx">model</span><span class="o">:</span> <span class="nx">person</span> <span class="p">});</span>
+ <span class="kd">var</span> <span class="nx">peopleCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PeopleCollection</span><span class="p">();</span>
+ <span class="nx">peopleCollection</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+ <span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Mohit Jain&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">occupation</span><span class="o">:</span> <span class="s2">&quot;Software Developer&quot;</span><span class="p">});</span>
+ <span class="kd">var</span> <span class="nx">personView2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PersonView</span><span class="p">({</span> <span class="nx">model</span><span class="o">:</span> <span class="nx">person2</span> <span class="p">});</span>
+ <span class="nx">peopleCollection</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">person2</span><span class="p">);</span>
+ <span class="nx">peopleCollection</span>
+ <span class="nx">peopleCollection</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">();</span> <span class="c1">// --&gt; returns a list of data attributes</span></code></pre></div>
+
+<h2 id="output-on-chrome-console">Output on Chrome Console</h2>
+
+<p>Lets see what we have on console.</p>
+
+<p><img src="/wp-content/uploads/2012/12/Screen-Shot-2012-12-21-at-1.11.41-AM.png?fit=690,614" alt="Collections in backbone js" /></p>
+
+<!--more-->
+
+<h2 id="another-way-of-adding-data-in-collection">Another way of adding data in collection</h2>
+
+<p>Another way to adding data in collections is:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Person Model</span>
+<span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Guest User&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;worker&#39;</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// A List of People</span>
+<span class="kd">var</span> <span class="nx">PeopleCollection</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">model</span><span class="o">:</span> <span class="nx">Person</span>
+<span class="p">});</span>
+
+<span class="c1">// The View for a Person</span>
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+
+	<span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#personTemplate&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+
+	<span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+	<span class="p">},</span>
+
+	<span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">peopleCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PeopleCollection</span><span class="p">([</span>
+	<span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Mohit Jain&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">26</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Taroon Tyagi&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;web designer&#39;</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Rahul Narang&#39;</span><span class="p">,</span>
+		<span class="nx">age</span><span class="o">:</span> <span class="mi">26</span><span class="p">,</span>
+		<span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;Java Developer&#39;</span>
+	<span class="p">}</span>
+<span class="p">]);</span></code></pre></div>
+
+<p>So you can loop over it. Do so many things as collections has so much data stored in it with respect to model objects. It may seem like we can store in the form of array but collections have their collections view and that make them pretty powerful. Lets talk about collection views in next lesson and that will help you to understand the importance of collections.</p>
+
+<hr />
+
+<h2 id="source-code">Source code</h2>
+
+<p>If you are facing any issues. Checkout the source code files at <a href="https://github.com/mohitjain/learning_basics_backbone" title="Source Code for the post">github</a>. I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.</p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=8. Collections in backbone js &#8211; Learning Backbone js&url=http://codebeerstartups.com/2012/12/8-collections-in-backbone-js-learning-backbone-js/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/12/8-collections-in-backbone-js-learning-backbone-js/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

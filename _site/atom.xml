@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Codebeerstartups</title>
+        <description>Every Dog has one Blog</description>
+        <link>http://codebeerstartups.com/</link>
+        <atom:link href="http://codebeerstartups.com/feed.xml" rel="self" type="application/rss+xml" />
+        <pubDate>Sun, 14 Feb 2016 04:03:08 +0530</pubDate>
+        <lastBuildDate>Sun, 14 Feb 2016 04:03:08 +0530</lastBuildDate>
+        <generator>Jekyll v2.5.3</generator>
+        
+            <item>
+                <title>Lazy Loading of Images in Rails</title>
+                <description>&lt;p&gt;Recently I joined a company thats &lt;a href=&quot;http://www.thrillophilia.com/&quot;&gt;Thrillophilia&lt;/a&gt; a tours and activities company in India, and where I need to solve a problem of lazy loading of images, cause the site is image heavy. I came across lot of lazy loading javascript plugins, but finally came to know about &lt;a href=&quot;https://github.com/callmecavs/layzr.js&quot;&gt;Layzr plugin&lt;/a&gt; simple, lightweight and works like charm.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;But the problem is the usage. So what we use in rails is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;%= image_tag &quot;my_image.jpg&quot; %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which generates a code like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;img src=&quot;my_image.jpg&quot;/&amp;gt;      
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now layzr javascript plugin is expecting something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;img data-normal=&quot;my_image.jpg&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and later on it converted into&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;img scr=&quot;my_image.jpg&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So what I want is a default image which will be loaded when page load happens and while scrolling default image should be replaced by real image. So I can do it something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;%= image_tag &quot;default_image.jpg&quot;, &quot;data-normal&quot; =&amp;gt; &quot;my_real_image.jpg&quot; %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or while using paperclip as a gem makes it like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;%= image_tag &quot;default_image.jpg&quot;, &quot;data-normal&quot; =&amp;gt; image.photo.url(:medium) %&amp;gt;      
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above code is ugly. I don’t want to screw up my whole image_tag, so wrote a simple ruby gem to write a clean code, which takes a default image from configuration files and do the magic behind the screen. ie:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;%= image_tag &quot;my_real_image.jpg&quot;, lazy: true %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This gets converted into:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;img src=&quot;default_image.jpg&quot; data-normal=&quot;my_image.jpg&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;how-to-use-it&quot;&gt;How to use it:&lt;/h2&gt;
+
+&lt;p&gt;All you need to do is:&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1&quot;&gt;Step 1:&lt;/h3&gt;
+
+&lt;p&gt;Add it in your gemfile&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem &#39;layzr-rails&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;step-2&quot;&gt;Step 2:&lt;/h3&gt;
+
+&lt;p&gt;Create a configuration file and put it in your initializers config/initializers/layzr.rb&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Layzr::Rails.configure do |config|
+  config.placeholder = &quot;/assets/some-default-image.png&quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;step-3&quot;&gt;Step 3:&lt;/h3&gt;
+
+&lt;p&gt;Download layzr.js and include in application js and place this code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(document).ready(function() {
+   const instance = Layzr()
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;step-4&quot;&gt;Step 4:&lt;/h3&gt;
+
+&lt;p&gt;Images you want to make lazy load:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;%= image_tag &quot;kittenz.png&quot;, alt: &quot;OMG a cat!&quot;, lazy: true %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;thats-all-&quot;&gt;Thats all :)&lt;/h3&gt;
+
+&lt;p&gt;thats makes my code clean and efficient. You can use see the source code &lt;a href=&quot;https://github.com/mohitjain/layzr-rails&quot;&gt;here&lt;/a&gt; having guidelines how to use it and some more options from the gem.&lt;/p&gt;
+
+</description>
+                <pubDate>Sun, 14 Feb 2016 00:00:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2016/02/lazy-loading-of-images-in-rails/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2016/02/lazy-loading-of-images-in-rails/</guid>
+                
+                
+                    <category>image</category>
+                
+                    <category>optimizations,</category>
+                
+                    <category>lazy-loading</category>
+                
+            </item>
+        
+            <item>
+                <title>Scaling Ruby on Rails by Caching your database queries</title>
+                <description>&lt;p&gt;Its pretty good to use active-record in ruby on rails, relationships, find_by methods, where queries everything makes your
+life much more simpler as a developer but sooner or later your application becomes slow. At that time you need to work on optimizations.
+There are lot of work around for optimizations and one of them in caching the queries. The company I work for is StudyPad and we have a product
+ie &lt;a href=&quot;http://splashmath.com/?utm_campaign=codebeerstartups&quot;&gt;splashmath&lt;/a&gt; and that has over 9 millions users using it across multiple platforms. The amount of traffic that
+we get is pretty huge and caching one of the thing that helped us to solve out scaling problems. Here is quick idea to cache your queries in memcache.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;basic-requirements&quot;&gt;Basic requirements&lt;/h2&gt;
+
+&lt;p&gt;There are few requirements for this. First is the &lt;a href=&quot;https://github.com/mperham/dalli&quot;&gt;dalli&lt;/a&gt; gem and memcache installed on your machine.&lt;/p&gt;
+
+&lt;h2 id=&quot;basic-structure&quot;&gt;Basic structure&lt;/h2&gt;
+
+&lt;p&gt;We have lot of static/seed data which change very less and the queries on those things are pretty high. So first thing to handle that static data.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Grade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;has_many&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Skills&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:grade&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So in order to get skills for a grade, its pretty simple&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now for that matter every time we are fetching skills for a grade its gonna hit the database and get the results. So its
+time to get this query and its results cached.&lt;/p&gt;
+
+&lt;p&gt;Assuming you have configured dalli gem easily and you have memcached up and running. Here is a simple method to cache the results&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cached_skills&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;expires_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So instead of fetching skills like&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;we are gonna get it like&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cached_skills&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;So whats its gonna do. Its gonna fetch the results first time from the database and store it in cache.
+Next time its gonna return the results from the cache. Note few things here.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Understand the pattern of the key. [self.class.name, id, :skills] is your key here.&lt;/li&gt;
+  &lt;li&gt;Cache will expire in 240.hours. You can customize it as per your needs.
+Better keep a constant for this somewhere in your application.&lt;/li&gt;
+  &lt;li&gt;In cached_skills methods we are keep records not the active-record relations that why we have to convert
+into array by using to_a else active-record-relation will be cached and database query will be executed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;expiring-the-cache&quot;&gt;Expiring the cache.&lt;/h2&gt;
+
+&lt;p&gt;We are caching the query results but we are not expiring the results. What if some skill has changed. Grade object is
+not getting any notification for that, so cache is stale, we need to expire it. So we can write a after_commit hook for
+skill to expire its grade object’s cache&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# in skill model&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;after_commit&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:flush_cache&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;flush_cache&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grade_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is enough to make sure you cache is never stale. There is another way to handle the expiring cache. Lets see that.&lt;/p&gt;
+
+&lt;h2 id=&quot;another-way&quot;&gt;Another way&lt;/h2&gt;
+
+&lt;p&gt;We redefine the models like this&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Grade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;has_many&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Skills&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:grade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;touch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note we have added touch: true in skills, and now we redefine our cached_skills method again:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cached_skills&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;expires_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now just caching this we don’t need to expire the cache manually, when ever skills get updated it will touch its parent
+object object grade, that will update its updated_at value and that specific cache will be never used, as key attribute updated_at has been changed.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem-with-second-approach&quot;&gt;The problem with second approach&lt;/h2&gt;
+
+&lt;p&gt;But there is a problem. Assume you have 10 different has_many relationships for grade and you are caching it all, now everytime a
+skill has be changed all the other cache keys for grade relationships will be useless too. For example: Grade has_many topics&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Grade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;has_many&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Skill&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:grade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;touch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Topic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:grade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;touch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# In Grade model&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cached_skills&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;expires_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;skills&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cached_topics&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:topics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;expires_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;topics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now in this case changing any skill will make topics cache useless, but that’s not the case when you are trying to expire it manually.
+So both approach has pros and cons, first will ask you write more code and second expire cache more frequently. You have to make that choice as per your needs.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-else&quot;&gt;What else?&lt;/h2&gt;
+
+&lt;p&gt;Using the same base principle you can cache lot of queries like&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cached_find_by_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Skill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cached_grade&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This approach helped us to reduce the load on RDS and make things pretty fast. I hope this will help you too.
+Let me know you feedback or some tips that made you system more faster&lt;/p&gt;
+
+</description>
+                <pubDate>Sun, 23 Nov 2014 00:32:46 +0530</pubDate>
+                <link>http://codebeerstartups.com/2014/11/scaling-ruby-on-rails-by-caching-your-database-queries/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2014/11/scaling-ruby-on-rails-by-caching-your-database-queries/</guid>
+                
+                
+                    <category>ruby-on-rails,</category>
+                
+                    <category>caching,</category>
+                
+                    <category>scaling-rails</category>
+                
+            </item>
+        
+            <item>
+                <title>Spliting Seed files into multiple file in Ruby on Rails</title>
+                <description>&lt;p&gt;Last month I joined a new job after a break of almost 4 months. You can checkout the &lt;a href=&quot;http://www.splashmath.com?utm_source=codebeerstartups&quot;&gt;product&lt;/a&gt; and there we had a small problem that our seed file was growing very fast. So we did a small thing to maintain our seed file. Here is a small tip if you are having a massive seed file and its pretty easy to implement.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;We can store all our seeds inside the folder db/seeds and inside the db/seeds.rb we write the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;db&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;seeds&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.rb&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;load&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seed&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can sort the files alphabetically before loading them.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-if-seed-file-ordering-is-important&quot;&gt;What if seed file ordering is important?&lt;/h2&gt;
+
+&lt;p&gt;In that case we can use the trick migrations are using. Timestamp in front of file names to make sure there ordering is same. So instead of using timestamp you can add a serial number in front of file name like 01_grades.rb, 02_topics.rb, 03_skills.rb.&lt;/p&gt;
+
+&lt;p&gt;I hope this will help someone in case you are facing same issues.&lt;/p&gt;
+</description>
+                <pubDate>Sat, 18 Jan 2014 23:55:53 +0530</pubDate>
+                <link>http://codebeerstartups.com/2014/01/spliting-seed-file-into-multiple-files-in-ruby-on-rails/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2014/01/spliting-seed-file-into-multiple-files-in-ruby-on-rails/</guid>
+                
+                
+                    <category>ruby-on-rails</category>
+                
+            </item>
+        
+            <item>
+                <title>Irreversible Migrations in Ruby on Rails </title>
+                <description>&lt;p&gt;In Rails 2 in migrations there were only 2 methods: up and down. They are called on running migrations up and down respectively with rake tasks rake db:migrate and rake db:rollback.&lt;/p&gt;
+
+&lt;p&gt;Rails 3 produced us great method change which allowed us to write there code which creates a table and drops the table automatically on rolling migration back. But unfortunately there was a problem - you didn’t have opportunity to say “don’t run this peace of code on down but run this only on up”. So the solution was just to use old syntax. Since Rails 4 has released there is a feature to fix this situation.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;in-rails-2&quot;&gt;In Rails 2&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:boolean&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;down&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;remove_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;in-rails-3&quot;&gt;In Rails 3&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:boolean&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;in-rails-4&quot;&gt;In Rails 4&lt;/h2&gt;
+
+&lt;p&gt;Rails 4 provides us one more useful way to write what we need in one place:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:boolean&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;reversible&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;direction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;up&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Checkout the official &lt;a href=&quot;http://api.rubyonrails.org/classes/ActiveRecord/Migration.html#method-i-reversible&quot;&gt;documentation&lt;/a&gt;&lt;/p&gt;
+</description>
+                <pubDate>Sun, 08 Dec 2013 23:55:53 +0530</pubDate>
+                <link>http://codebeerstartups.com/2012/10/rails-irreversible-migrations/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2012/10/rails-irreversible-migrations/</guid>
+                
+                
+                    <category>migrations</category>
+                
+                    <category>ruby-on-rails</category>
+                
+            </item>
+        
+            <item>
+                <title>Social Login integration with all the popular social networks in ruby on rails</title>
+                <description>&lt;p&gt;I have seen lot of people writting pretty messy code to integrate social logins in rails or get confused to integrate multiple social logins in rails. In order to help them I have written a small application having integrations with Twitter + Facebook + Linkedin + Google + Github.&lt;/p&gt;
+
+&lt;p&gt;Here is the &lt;a href=&quot;http://social-login-in-rails.herokuapp.com/&quot;&gt;demo&lt;/a&gt; and here is the &lt;a href=&quot;https://github.com/mohitjain/social-login-in-rails&quot;&gt;source code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I am using devise in this application. Few things to note in this:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;There are two models in this application a user model and an authorizations model and a user has_many authorizations.&lt;/li&gt;
+  &lt;li&gt;User can link to multiple social account from edit profile&lt;/li&gt;
+  &lt;li&gt;Once social accounts are linked, user can login from any connected social network.&lt;/li&gt;
+  &lt;li&gt;If user tries to create an account with a different social network while in loggedout state. System maps it to the same account if that email address exists in the database else it will create a new account.&lt;/li&gt;
+  &lt;li&gt;Twitter don’t provide email address of the user, nothing I can do about it.&lt;/li&gt;
+  &lt;li&gt;There are lot of other commented out gems in the Gemfile. Those are the gems that I use a lot in my various projects. I will strongly suggest you to checkout those gems.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;how-to-replace-and-find-keys-to-make-this-application-work&quot;&gt;How to replace and find keys to make this application work..&lt;/h2&gt;
+
+&lt;p&gt;In the config directory there is a file ie social_keys.yml. You need to specify all the social keys there. Make sure have restarted the application after making any change in that file.&lt;/p&gt;
+
+&lt;p&gt;Here are the urls from where you can create an app and get the keys&lt;/p&gt;
+
+&lt;h2 id=&quot;facebook&quot;&gt;Facebook:&lt;/h2&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;https://developers.facebook.com/apps&quot;&gt;https://developers.facebook.com/apps&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Settings:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/wp-content/images/facebook.png&quot; alt=&quot;Facebook Settings&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;twitter&quot;&gt;Twitter:&lt;/h2&gt;
+&lt;p&gt;URL: &lt;a href=&quot;https://dev.twitter.com/apps&quot;&gt;https://dev.twitter.com/apps&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Settings: Enter call back url as : http://127.0.0.1:3000/twitter under settings tab once you create an application&lt;/p&gt;
+
+&lt;h2 id=&quot;google&quot;&gt;Google:&lt;/h2&gt;
+&lt;p&gt;URL: &lt;a href=&quot;https://code.google.com/apis/console/b/0/?pli=1&quot;&gt;https://code.google.com/apis/console/b/0/?pli=1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Settings: Go to API Access and enter redirect url as http://localhost:3000/users/auth/google_oauth2/callback&lt;/p&gt;
+
+&lt;h2 id=&quot;github&quot;&gt;Github:&lt;/h2&gt;
+&lt;p&gt;URL: &lt;a href=&quot;https://github.com/settings/applications/new&quot;&gt;https://github.com/settings/applications/new&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Settings:Application callback url should be http://localhost:3000/users/auth/github&lt;/p&gt;
+
+&lt;h2 id=&quot;linkedin&quot;&gt;Linkedin:&lt;/h2&gt;
+&lt;p&gt;url: &lt;a href=&quot;https://www.linkedin.com/secure/developer&quot;&gt;https://www.linkedin.com/secure/developer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;No settings required by default.&lt;/p&gt;
+
+</description>
+                <pubDate>Sat, 26 Oct 2013 23:38:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2013/10/social-login-integration-with-all-the-popular-social-networks-in-ruby-on-rails/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2013/10/social-login-integration-with-all-the-popular-social-networks-in-ruby-on-rails/</guid>
+                
+                
+                    <category>devise</category>
+                
+                    <category>linkedin</category>
+                
+                    <category>facebook</category>
+                
+                    <category>google</category>
+                
+                    <category>github</category>
+                
+                    <category>twitter</category>
+                
+            </item>
+        
+            <item>
+                <title>Parallel gem installing using Bundler</title>
+                <description>&lt;p&gt;&lt;img src=&quot;/wp-content/images/bundler.png&quot; alt=&quot;My bundler is running&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;No more waiting time. Bundler supports faster gem install as it &lt;a href=&quot;https://github.com/bundler/bundler/pull/2481&quot;&gt;adds support for parallel installation&lt;/a&gt;. You can pass in –jobs=SIZE (or -jSIZE) as a parameter to bundle install&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;how-can-i-use-this-now&quot;&gt;How can I use this now?&lt;/h2&gt;
+
+&lt;p&gt;Simple! Just install a prerelease version of Bundler, and you should be good to go:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bundler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So now the problem that bundler is taking too much time is long gone. Happy coding :)&lt;/p&gt;
+</description>
+                <pubDate>Mon, 02 Sep 2013 04:09:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2013/09/parallel-gem-installing-using-bundler/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2013/09/parallel-gem-installing-using-bundler/</guid>
+                
+                
+                    <category>ruby-on-rails</category>
+                
+                    <category>bundler</category>
+                
+            </item>
+        
+            <item>
+                <title>Use belongs_to with presence validator</title>
+                <description>&lt;p&gt;Assume we have two models: User and Image. User has one image and image belongs to user. The code below:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;has_one&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:image&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we want to add validation for image to check if user is there or not.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;validates&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:presence&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So by adding just one line whenever you are trying to save image object, it will fire a query with respect to the user_id to check weather that user exists or not. In case user doesn’t exits “image.save” with return an error.&lt;/p&gt;
+
+&lt;p&gt;Happy Hacking :)&lt;/p&gt;
+</description>
+                <pubDate>Sat, 13 Jul 2013 22:35:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2013/07/use-belongs-to-with-presence-validator/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2013/07/use-belongs-to-with-presence-validator/</guid>
+                
+                
+                    <category>validations,</category>
+                
+                    <category>associations</category>
+                
+            </item>
+        
+            <item>
+                <title>Better way to parse user info from omniauth hash</title>
+                <description>&lt;p&gt;Lets assume we have to parse this hash. There can be case we are not getting the keys as a response. So this post is about handling those cases.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:provider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;facebook&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:uid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;1234567&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jbloggs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;joe@bloggs.com&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Joe Bloggs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Joe&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:last_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Bloggs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://graph.facebook.com/1234567/picture?type=square&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:Facebook&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://www.facebook.com/jbloggs&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Palo Alto, California&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:verified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:credentials&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;ABCDEF...&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# OAuth 2.0 access_token, which you may wish to store&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:expires_at&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1321747205&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# when the access token expires (it always will)&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:expires&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# this will always be true&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;general-scenario&quot;&gt;General Scenario&lt;/h2&gt;
+
+&lt;p&gt;So in the best case scenario we will be having all the keys. So the code like this will work.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;user_email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;user_nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:nickname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;user_location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;exceptional-scenario&quot;&gt;Exceptional Scenario&lt;/h2&gt;
+
+&lt;p&gt;Now think about this case when we don’t have location key in the response. So we got an hash like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;ss&quot;&gt;:provider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;facebook&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	  &lt;span class=&quot;ss&quot;&gt;:uid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;1234567&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	  &lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jbloggs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;joe@bloggs.com&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Joe Bloggs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Joe&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:last_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Bloggs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://graph.facebook.com/1234567/picture?type=square&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:Facebook&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://www.facebook.com/jbloggs&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:verified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+	  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+	  &lt;span class=&quot;ss&quot;&gt;:credentials&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;ABCDEF...&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# OAuth 2.0 access_token, which you may wish to store&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:expires_at&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1321747205&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# when the access token expires (it always will)&lt;/span&gt;
+	    &lt;span class=&quot;ss&quot;&gt;:expires&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# this will always be true&lt;/span&gt;
+	  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Now in this case&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;user_email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# will work&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;user_nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:nickname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# will work&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;user_location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# will return nil here...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As we all know there is no surety of the hash from the provider so we cant trust it and this ‘nil’ value can later on create issues as we start using it assuming everything is coming perfectly fine from provider.&lt;/p&gt;
+
+&lt;p&gt;So if you want to generate an error in this case when key is not found a simple way can be using statement modifiers ie&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ArgumentError&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; example.rb:23:in `&amp;lt;main&amp;gt;&amp;#39;: ArgumentError (ArgumentError)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;but there is a better way ie &lt;strong&gt; using ‘fetch’ &lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;# =&amp;gt;  example.rb:23:in `fetch&amp;#39;: key not found: :location (KeyError) from example.rb:23:in `&amp;lt;main&amp;gt;&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are not sure even for info part (which actually you can’t be) then you can chain ie like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;use-case-1---providing-a-default-value&quot;&gt;Use case 1 - Providing a default value&lt;/h2&gt;
+
+&lt;p&gt;Now if you want to pass a block for a default value which will be executed if and only if that key is not valuated.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;India&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &amp;quot;India&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;use-case-2---passing-a-block&quot;&gt;Use case 2 - Passing a block&lt;/h2&gt;
+
+&lt;p&gt;Another use case of fetch is it yields the missing key which can be used as&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; is missing &amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;caution&quot;&gt;Caution&lt;/h2&gt;
+
+&lt;p&gt;Another thing to note with fetch is, there is another way to pass second parameter is method ie:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;default&lt;/span&gt;
+	&lt;span class=&quot;s2&quot;&gt;&amp;quot;This is my default value&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;But the problem with second one is default method. This method will be computed everytime wheather your key exists or not, which can be a problem in case you are doing some heavy computation. Using block will execute if and only if key doesn’t exists.&lt;/p&gt;
+
+&lt;h2 id=&quot;fetch-also-works-on-arrays&quot;&gt;Fetch also works on arrays&lt;/h2&gt;
+
+&lt;p&gt;Another thing to note down is fetch also works on array as it works on hash&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; nil&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; example.rb:39:in `fetch&amp;#39;: index 10 outside of array bounds: -4...4 (IndexError) from example.rb:39:in `&amp;lt;main&amp;gt;&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Thats all :)&lt;/p&gt;
+
+</description>
+                <pubDate>Wed, 10 Jul 2013 04:06:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2013/07/better-way-to-parse-user-info-from-omniauth-hash/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2013/07/better-way-to-parse-user-info-from-omniauth-hash/</guid>
+                
+                
+                    <category>omniauth</category>
+                
+                    <category>facebook</category>
+                
+                    <category>ruby</category>
+                
+                    <category>ruby-on-rails</category>
+                
+            </item>
+        
+            <item>
+                <title>WARNING: Nokogiri was built against LibXML version 2.9.0, but has dynamically loaded 2.7.8</title>
+                <description>&lt;p&gt;Have you ever seen this message while the Rails was loading up?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;WARNING: Nokogiri was built against LibXML version x.x.x, but has dynamically loaded y.y.y&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This will help you:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pristine&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nokogiri&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+                <pubDate>Wed, 10 Jul 2013 03:45:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2013/07/warning-nokogiri-was-built-against-libxml-version-2-9-0-but-has-dynamically-loaded-2-7-8/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2013/07/warning-nokogiri-was-built-against-libxml-version-2-9-0-but-has-dynamically-loaded-2-7-8/</guid>
+                
+                
+                    <category>nokogiri</category>
+                
+                    <category>ruby-on-rails</category>
+                
+            </item>
+        
+            <item>
+                <title>Long integer literals in ruby</title>
+                <description>&lt;p&gt;I am here to share a small tip that I just come to know about ruby. A simple question. How many zeros are there integer written below?&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;mi&quot;&gt;100000000000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Difficult to count right? In normal day to day practice we generally use comma to separate the digits, for example in US standard we use comma every 3 digits. So number written above can be re-written as:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now same thing can be done with long integers in ruby using an underscore, something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;mi&quot;&gt;100_000_000_000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;which is actually same as writing 100000000000, but using underscore makes things more easy to read;)&lt;/p&gt;
+
+&lt;p&gt;I hope you will find this technique somewhere useful ;)&lt;/p&gt;
+
+</description>
+                <pubDate>Sun, 30 Jun 2013 00:49:00 +0530</pubDate>
+                <link>http://codebeerstartups.com/2013/06/long-integer-literals-in-ruby/</link>
+                <guid isPermaLink="true">http://codebeerstartups.com/2013/06/long-integer-literals-in-ruby/</guid>
+                
+                
+                    <category>ruby</category>
+                
+                    <category>tips-and-tricks</category>
+                
+            </item>
+        
+    </channel>
+</rss>

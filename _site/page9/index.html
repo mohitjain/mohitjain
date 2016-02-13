@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page9/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/converting-ruby-time-function-into-a-database-friendly-format-to-compare-time/">Converting Ruby time function into a database friendly format to compare time.</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-26">January 26, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Use to_s(:db) to convert Ruby time function into a database friendly format to compare time.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="ss">:db</span><span class="p">)</span></code></pre></div>
+
+<p>However, be careful if you have a timezone specified in Rails because the time will be stored in UTC in the database. You’ll need to specify that to do proper comparisons.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">utc</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="ss">:db</span><span class="p">)</span></code></pre></div>
+
+<p>You can also use NOW() function in MySQL instead of generating the current time in Ruby.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					performance 
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/chrome-extension-for-rails-development/">Chrome extension for Rails development</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-26">January 26, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>I was browsing the web and came to know about a Chrome extension for Rails development<a href="https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg">RailsPanel</a> which display some of good logging information in a good manner.</p>
+
+<p><strong>Setup guidelines:</strong></p>
+
+<ul>
+  <li>Install the chrome extension <a href="https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg">RailsPanel</a></li>
+  <li>Install the gem which pass the meta tags</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+ <span class="n">gem</span><span class="s1">&#39;meta_request&#39;</span><span class="p">,</span><span class="s1">&#39;0.2.1&#39;</span>
+<span class="k">end</span></code></pre></div>
+
+<p><strong>Sample</strong>
+<img src="/wp-content/uploads/2013/01/railspanel.png?fit=1236,778" alt="Rails Panel Chrome Extension for Rails logging" /></p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/better-rails-error-page-customization/">Better Rails error page customization, display more information</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-26">January 26, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Rails error page customization is much easier using <a href="https://github.com/charliesome/better_errors">Better Errors</a> gem which replaces the standard Rails error page with a much better and more useful error page. Pretty nice gem.</p>
+
+<p>All you need is add a single gem in your gemfile.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s2">&quot;better_errors&quot;</span></code></pre></div>
+
+<p>Run bundler and restart your server.</p>
+
+<p><strong>Sample:</strong></p>
+
+<p><img src="/wp-content/uploads/2013/01/Screen-Shot-2013-01-26-at-2.22.25-AM.png?fit=1264,681" alt="Sample error page" /></p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2013/01/launching-a-new-product-emaillist-io-a-group-emailing-service/">Launching a new product EmailList.io &#8211; a group emailing service</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-25">January 25, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>You try to send a mass email? And maybe a few minutes later you realize you forgot someone. Then what? Send him again?</p>
+
+<p>We are tying to fix this problem with the new product ie <a href="http://emaillist.io/?utm_source=codebeerstartups&amp;utm_medium=blogpost&amp;utm_campaign=codebeerstartups">EmailList.io</a>, learnings from our previous product ie textadda.com. For FREE, you create an email address, such as myfriends@emailist.io, and then add up to 25 people to the recipient list. Now anytime you or any of the group’s members email myfriends@emailist.io, the email goes to everyone.</p>
+
+<p>Remember only people in the group can send an email to that address. So what are you waiting for. Signup and create a list and start sending emails ;)</p>
+
+<p>So just signup and do let us know your feedback ;)<a href="http://emaillist.io/?utm_source=codebeerstartups&amp;utm_medium=blogpost&amp;utm_campaign=codebeerstartups">http://emaillist.io/</a></p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					quick-solution 
+					
+					server 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/how-to-use-screen-in-ubuntu/">How to use screen in ubuntu</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-19">January 19, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Screen is a terminal multiplexer, which allows a user to access multiple separate terminal sessions inside a single terminal window or remote terminal session. Sometimes you need to run a rake task or something else which keep on producing logs and you want to keep it running even you close your terminal. To obtain this, create a .screenrc file in your home directory and paste the following code:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">hardstatus</span> <span class="n">on</span>
+<span class="n">hardstatus</span> <span class="n">alwayslastline</span>
+<span class="n">hardstatus</span> <span class="n">string</span> <span class="s2">&quot;%w%=%m/%d %c&quot;</span></code></pre></div>
+
+<p>Save the file and now you can type screen to start a new screen. Press enter or space as guided and do whatever you want to. For example lets run a rake task on production server and let it run even if close our ssh terminal.</p>
+
+<p>So go to your project directory and run RAILS_ENV=production rake my_awesome_rake_task. So now its running (assuming its a long task) You want to logout from the server and let this rake task running. So lets do it from scratch. Here are all the steps.</p>
+
+<ul>
+  <li>ssh user@server_ip</li>
+  <li>Create .screenrc file and paste the content as specified.</li>
+  <li>Now type screen to start a new screen. Hit space or enter key as guided</li>
+  <li>Now navigate to project directory and run RAILS_ENV=production rake my_awesome_rake_task and let it run there.</li>
+  <li>Now to detach the screen and come back to original terminal without closing the rake task. Press Contol a and then press control d</li>
+  <li>You will come back to the same orginal termainal and that rake task will keep on running in a screen</li>
+  <li>Now if you want to see the same rake task again type screen -r .This will resume the same previous screen</li>
+  <li>Once that rake task to done to kill the screen type exit</li>
+  <li>If you want to start a new screen type screen again and it will create a new screen</li>
+  <li>Ctrl-a Shift-A will help to rename a screen (the screen on which you are)</li>
+</ul>
+
+<p>Thats all basic how to use screen in ubuntu. You can find a lot of things about screen in ubuntu from your best friend Google
+In my few projects our screen is running for past 1.2 years :-), so its safe and smooth to run screens.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page10" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/page8" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

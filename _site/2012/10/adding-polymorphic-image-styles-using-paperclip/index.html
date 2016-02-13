@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Adding polymorphic image styles using paperclip</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/10/adding-polymorphic-image-styles-using-paperclip/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">Adding polymorphic image styles using paperclip</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				optimization
+          	
+				tips-and-tricks
+          	
+        </h2>
+        <h1><a href="/2012/10/adding-polymorphic-image-styles-using-paperclip/">Adding polymorphic image styles using paperclip</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-10-24">October 24, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					optimization
+          		
+					tips-and-tricks
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">Adding polymorphic image styles using paperclip</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-10-24">October 24, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p>Paperclip is one my favourite gem which makes life so easy to upload and process images. Within an application we generally have lot of model having images like Product has many images, User has many images. Now think about a situation where thumb style for product has size 300&gt; and User model need a size for thumb is 200&gt;. Here is a quick tip if you want to style the images based upon the model.</p>
+
+<h2 id="before">Before</h2>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+   <span class="n">belongs_to</span> <span class="ss">:imageable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+   <span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="ss">:styles</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">&quot;300&gt;&quot;</span><span class="p">,</span> <span class="ss">:thumb</span> <span class="o">=&gt;</span> <span class="s2">&quot;200&gt;&quot;</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Now we need to modify this model to support polymorphic and styles based upon the model. Here is the new code.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:imageable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+  <span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="ss">styles</span><span class="p">:</span> <span class="nb">lambda</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">attachment</span><span class="o">|</span> <span class="p">{</span>
+      <span class="ss">thumb</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">attachment</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">imageable_type</span><span class="o">.</span><span class="n">eql?</span><span class="p">(</span><span class="s2">&quot;Product&quot;</span><span class="p">)?</span> <span class="o">[</span><span class="s2">&quot;300&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;jpg&#39;</span><span class="o">]</span> <span class="p">:</span>  <span class="o">[</span><span class="s2">&quot;200&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;jpg&#39;</span><span class="o">]</span>
+      <span class="p">),</span>
+      <span class="ss">medium</span><span class="p">:</span> <span class="p">(</span>
+       <span class="o">[</span><span class="s2">&quot;500&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;jpg&#39;</span><span class="o">]</span>
+      <span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="k">end</span></code></pre></div>
+
+<p>So this piece of small code will resize you images based upon the model it belongs to. If that image belongs to product then “thumb” will be resize in the format of 300&gt;, else it will be 200. Medium style will be always 500&gt; i.e. independent of model it belongs to. Pretty nice and simple.</p>
+
+<p>Now from previous learning of image optimization i.e. <a href="http://www.codebeerstartups.com/how-to-add-cache-control-expires-headers-to-images-content-served-by-s3/">How to add cache-control, expires headers to images (Content) served by S3</a> and <a href="http://www.codebeerstartups.com/save-image-as-progressive-image-using-paperclip-and-imagemagick/">Save image as progressive image using paperclip and imageMagick</a>, here is the final piece of code.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="n">belongs_to</span> <span class="ss">:imageable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="ss">styles</span><span class="p">:</span> <span class="nb">lambda</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">attachment</span><span class="o">|</span> <span class="p">{</span>
+      <span class="ss">thumb</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">attachment</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">imageable_type</span><span class="o">.</span><span class="n">eql?</span><span class="p">(</span><span class="s2">&quot;Product&quot;</span><span class="p">)?</span> <span class="o">[</span><span class="s2">&quot;300&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;jpg&#39;</span><span class="o">]</span> <span class="p">:</span>  <span class="o">[</span><span class="s2">&quot;200&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;jpg&#39;</span><span class="o">]</span>
+      <span class="p">),</span>
+      <span class="ss">medium</span><span class="p">:</span> <span class="p">(</span>
+       <span class="o">[</span><span class="s2">&quot;500&gt;&quot;</span><span class="p">,</span> <span class="s1">&#39;jpg&#39;</span><span class="o">]</span>
+      <span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="ss">:convert_options</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">&quot;-quality 80 -interlace Plane&quot;</span><span class="p">,</span>
+    <span class="ss">:thumb</span> <span class="o">=&gt;</span> <span class="s2">&quot;-quality 80 -interlace Plane&quot;</span>
+  <span class="p">},</span>
+  <span class="ss">:s3_headers</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s1">&#39;Cache-Control&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;max-age=315576000&#39;</span><span class="p">,</span> <span class="s1">&#39;Expires&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="o">.</span><span class="n">years</span><span class="o">.</span><span class="n">from_now</span><span class="o">.</span><span class="n">httpdate</span> <span class="p">}</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="no">PAPERCLIP_STORAGE_OPTIONS</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=Adding polymorphic image styles using paperclip&url=http://codebeerstartups.com/2012/10/adding-polymorphic-image-styles-using-paperclip/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/10/adding-polymorphic-image-styles-using-paperclip/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

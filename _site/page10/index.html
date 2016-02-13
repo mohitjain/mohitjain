@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page10/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about.html">About</a></li>
+        
+            
+        
+            <li><a href="/contact.html">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					performance 
+					
+					quick-solution 
+					
+					server 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/use-cookie-free-domains-for-components-in-ruby-on-rails-application/">Use cookie-free domains for components in ruby on rails application.</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-18">January 18, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Use cookie-free domains for components in ruby on rails application is important to speed up your website.
+If you deliver assets (image, stylesheet and javascript) from the same domain, the server will pass cookies for each asset request, which is not necessary and waste your bandwidth and according to one of the Yahoo’s best practices use cookie-free domains for components for speeding up your web site.</p>
+
+<p>We can do the same thing in ruby on rails by defining a different domain for application and assets, that make your assets load faster.</p>
+
+<p>Create a subdomain for your application and use that subdomain to deliver assets for the application. So once subdomain created and propagated paste this in your production.rb</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">action_controller</span><span class="o">.</span><span class="n">asset_host</span> <span class="o">=</span><span class="s2">&quot;http://assets.myawesomedomain.com&quot;</span></code></pre></div>
+
+<p>Then create an asset host like this</p>
+
+<p><strong>Gor Nginx:</strong></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">assets</span><span class="o">.</span><span class="n">myawesomedomain</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+    <span class="n">root</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">production</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<p><strong>For Apache</strong></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">ServerName</span> <span class="n">assets</span><span class="o">.</span><span class="n">myawesomedomain</span><span class="o">.</span><span class="n">com</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">production</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span></code></pre></div>
+
+<p>Now just restart your server and agin deploy your application. You will see all the assets are loaded from assets.myawesomedomain.com without cookies. Check <a href="http://gtmetrix.com/">GTMetrics</a> ratings for more optimisations.</p>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2013/01/how-to-fetch-and-parse-emails-in-ruby-on-rails/">How to fetch and parse emails in ruby on rails</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-18">January 18, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Last weekend I was working on an mini hackathon and launched a group emailing service. <a href="http://emaillist.io/?utm_source=codebeerstartups&amp;utm_medium=blogpost&amp;utm_campaign=codebeerstartups">EmailList.io</a>. The task was to setup an email server, how to fetch and parse emails in ruby on rails forward it to respective group members. Last part was pretty simple. In this post I am just talking about “How to fetch and parse emails in ruby on rails.”</p>
+
+<p>To fetch email using POP/IMAP you check out a gem ie <a href="https://github.com/titanous/mailman">mailman</a>.
+Here is the sample code for the same:</p>
+
+<ol>
+  <li>Install the gem</li>
+  <li>Create a script file in scripts folder ie mailman_server and just paste the code below,
+which itself is pretty clear. Check inline comments.</li>
+</ol>
+
+
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2013/01/custom-redirect-after-login-fail-in-devise/">Custom redirect after login fail in devise</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-16">January 16, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Last weekend had a small hackathon in our office and we build a <a href="http://emaillist.io?utm_source=codebeerstartups&amp;utm_medium=blogpost&amp;utm_campaign=codebeerstartups" title="Group Emailing service">simple group emailing service</a> and in that project we need to make some overrides in devise and one of them was custom redirect in case login fails.</p>
+
+<p>By default when the login fails it redirects to “users/sign_in”. Here is how you can over ride this.</p>
+
+<ol>
+  <li>Create a custom_failure.rb in your lib directory, with:</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">CustomFailure</span> <span class="o">&lt;</span> <span class="no">Devise</span><span class="o">::</span><span class="no">FailureApp</span>
+  <span class="k">def</span> <span class="nf">redirect_url</span>
+    <span class="n">your_path</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">respond</span>
+    <span class="k">if</span> <span class="n">http_auth?</span>
+      <span class="n">http_auth</span>
+    <span class="k">else</span>
+      <span class="n">redirect</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<ol>
+  <li>In you Devise initializer, include:</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">warden</span> <span class="k">do</span> <span class="o">|</span><span class="n">manager</span><span class="o">|</span>
+  <span class="n">manager</span><span class="o">.</span><span class="n">failure_app</span> <span class="o">=</span> <span class="no">CustomFailure</span>
+<span class="k">end</span></code></pre></div>
+
+<ol>
+  <li>Make sure Rails is loadin your lib files, in your application.rb :</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="o">.</span><span class="n">autoload_paths</span>  <span class="o">=</span> <span class="sx">%W(</span><span class="si">#{</span><span class="n">config</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="sx">/lib)</span></code></pre></div>
+
+<ol>
+  <li>Don’t forget to restart your server.</li>
+</ol>
+
+<p>Thats a way to handle custom redirect after login fail in devise. Please feel free to embarrass me with your improvements in the comments.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/not-able-to-call-group-model-methods-in-delayed-job-perform-method/">Not able to call group model methods in delayed job perform method</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-15">January 15, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>I was working on my project and got a very strange error. I was not able to call any group model methods in delayed job perform method. Checking out wiki of delayed job I got this:</p>
+
+<p><em>There’s a strange edge-case with Ruby/Rails where Struct::Group already exists, so calling Group.anything from within a class that inherits from Struct will have strange results. You can workaround this issue by prefixing calls to Group with two colons. For example, ::Group.find or ::Group.other_methods_defined_in_model would work as expected</em></p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2013/01/adding-validations-in-your-ajax-based-controllers-ajaxify-your-site/">Adding validations in your ajax based controllers &#8211; Ajaxify your site &#8211; Part 2</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2013-01-15">January 15, 2013</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Few weeks back I wrote a small blog on how to add ajax in you forms to ajaxify your site. If you haven’t checked out that post I will recommend you to check that one <a href="http://www.codebeerstartups.com/2012/12/ajaxify-your-site-with-remote-true/">here</a> and check the demo of the application here.</p>
+
+<p>So here is the quick modifications to achieve the basic goal of adding validations. All we need to check is whether product has been saved or not and we can check that just by checking errors count in the product object ie</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@product</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">count</span></code></pre></div>
+
+<p>If this counter is zero that means the product has been saved else its not saved. Pretty simple trick ;) So here is the new create.js.erb</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new_product&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new_product_link&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#products&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;%= @product)%&gt;&#39;</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.new_product&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new_product_link&#39;</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span></code></pre></div>
+
+<p>All we are checking is if errors count is same then then add new product as row else remove the previous and render the form again and that form will show errors ;)
+In the same way we can add validations for update.js.erb</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new_product_link&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.edit_product&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new_product_link&#39;</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span></code></pre></div>
+
+<p>Note: Remember one thing to handle js code in a proper way as there are certain cases when two forms will be displayed. For example: Click on new product link and now try to edit a product. I hope you can easily handle that case just by adding one or two lines od Jquery code. If you facing any issues then do let me know. You can find complete source code <a href="https://github.com/mohitjain/ajaxified_scaffold" title="Source code for Ajaxified Scaffold">here</a> and also see a demo <a href="http://ajaxified-scaffold.herokuapp.com/">here</a>.</p>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page11" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/page9" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about.html">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact.html">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>
