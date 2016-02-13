@@ -9,6 +9,9 @@ logourl: 					""
 fa-logo: 					"fa-bookmark-o"
 paginate: 					5
 
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Author Settings
 author_name: 				"Mohit Jain"
