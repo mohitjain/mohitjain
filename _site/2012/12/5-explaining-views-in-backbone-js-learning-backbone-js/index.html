@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>5. Explaining views in backbone js &#8211; Learning Backbone Js</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  featured  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">5. Explaining views in backbone js &#8211; Learning Backbone Js</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile  featured ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover  featured ">
+    <div class="background" style="background-image:url('/media/backbone.jpg');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				Backbone.js
+          	
+        </h2>
+        <h1><a href="/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js/">5. Explaining views in backbone js &#8211; Learning Backbone Js</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-17">December 17, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post  featured ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					Backbone.js
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">5. Explaining views in backbone js &#8211; Learning Backbone Js</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-17">December 17, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <blockquote>
+  <p>This entry is part 5 of 14 in the series for <a href="/2012/12/a-complete-guide-for-learning-backbone-js/">A Complete Guide for Learning Backbone Js</a></p>
+</blockquote>
+
+<ul>
+  <li><a href="/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment">Introduction and Installation</a></li>
+  <li><a href="/2012/12/2-representing-your-data-in-javascript-learning-backbone-js">Representing your data in javascript</a></li>
+  <li><a href="/2012/12/3-defining-models-in-backbone-js-learning-backbone-js">Defining Models in backbone js</a></li>
+  <li><a href="/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js">Adding Validations in models backbone js </a></li>
+  <li><a href="/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js">Explaining views in backbone js</a></li>
+  <li><a href="/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js">How to use templates in backbone js </a></li>
+  <li><a href="/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js">How to improve templates in backbone js</a></li>
+  <li><a href="/2012/12/8-collections-in-backbone-js-learning-backbone-js">Collections in backbone js</a></li>
+  <li><a href="/2012/12/9-collection-views-in-backbone-js-learning-backbone-js">Collection views in backbone js </a></li>
+  <li><a href="/2012/12/template-helpers-in-backbone-js-learning-backbonejs">Template helpers in backbone js</a></li>
+  <li><a href="/2012/12/11-namespacing-in-backbone-js-learning-backbonejs">How to use namespace in backbone js </a></li>
+  <li><a href="/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js">How to handle dom events in backbone js and define your custom events</a> (<a href="http://listen-dom-events-backbone.herokuapp.com">Live Demo</a>)</li>
+  <li><a href="/2013/01/routers-in-backbone-js-learning-backbone-js">Routing in backbone js</a></li>
+</ul>
+
+<hr />
+
+<h2 id="agenda">Agenda</h2>
+
+<p>In previous lessons we saw how to define models and add validations. In this lesson we will be checking out views in backbone js. Views are basically how you display your data.</p>
+
+<h2 id="what-we-have-till-now">What we have till now</h2>
+
+<p>In order to make things simpler lets remove validations and functions from model. So we have this.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="na">defaults</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">name</span><span class="p">:</span> <span class="s1">'Guest User'</span><span class="p">,</span>
+		<span class="na">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+		<span class="na">occupation</span><span class="p">:</span> <span class="s1">'worker'</span>
+	<span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>So now we want to add a view for a person. For simplicity lets take about list items. So every person will be displayed in a <code class="highlighter-rouge">li</code> tag. In order to define that view lets create a person view ie:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="na">tagName</span><span class="p">:</span> <span class="s1">'li'</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2 id="fire-up-the-console-and-fire-these-commands">Fire up the console and fire these commands</h2>
+
+<p>By default tagName is <code class="highlighter-rouge">div</code>. Here we specified it to use <code class="highlighter-rouge">li</code>. So if we see this output:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">personView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PersonView</span><span class="p">();</span>
+<span class="nx">personView</span><span class="p">.</span><span class="nx">el</span> <span class="c1">//will tell you the view for the object. Right now its a blank "li" tag.</span>
+<span class="nx">personView</span><span class="p">.</span><span class="nx">$el</span> <span class="c1">// is jquery tied up view for this object.</span></code></pre></figure>
+
+<h2 id="output-on-chrome-console">Output on Chrome Console</h2>
+
+<p>Lets head back to chrome developer tools and see what we have in this object.</p>
+
+<p><img src="/wp-content/uploads/2012/12/Screen-Shot-2012-12-16-at-8.53.11-PM.png?fit=283,227" alt="Define a basic view" /></p>
+
+<h2 id="adding-html-elements-like-class-id">Adding html elements like class, id</h2>
+
+<p>You can also add other things like css class name, element id etc using some other attributes like</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="na">tagName</span><span class="p">:</span> <span class="s1">'li'</span><span class="p">,</span>
+        <span class="na">className</span><span class="p">:</span> <span class="s1">'person'</span><span class="p">,</span>
+        <span class="na">id</span><span class="p">:</span> <span class="s1">'person-id'</span> <span class="c1">// although this is not a good way but I think got the idea.</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2 id="rendering-the-view">Rendering the view</h2>
+
+<p>So backbone offers constructor for the views ie known as initialize ie it will be automatically called when you initiate a view.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">initialize</span><span class="err">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Backbone also offers a method render that will render out the output for the data of the model associated with that view. ie</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">render</span><span class="err">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="p">}</span></code></pre></figure>
+
+<!--more-->
+
+<p>So lets add all these in out class, so we have something like this:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+	<span class="na">defaults</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">name</span><span class="p">:</span> <span class="s1">'Guest User'</span><span class="p">,</span>
+		<span class="na">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+		<span class="na">occupation</span><span class="p">:</span> <span class="s1">'worker'</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">PersonView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+   <span class="na">tagName</span><span class="p">:</span> <span class="s1">'li'</span><span class="p">,</span>
+
+   <span class="na">initialize</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+   <span class="p">},</span>
+
+   <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' ('</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'age'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">') - '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'occupation'</span><span class="p">)</span> <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// calls from console</span>
+
+<span class="c1">// var person = new Person;</span>
+<span class="c1">// var personView = new PersonView({ model: person });</span></code></pre></figure>
+
+<p>So in the above code we defined certain things.</p>
+
+<ul>
+  <li>initialize function that will called on PersonView initialization.</li>
+  <li>render method that add the content in the view</li>
+  <li>initialize function is calling render method which will add content in view.</li>
+</ul>
+
+<h2 id="fire-up-the-console-and-fire-these-commands-1">Fire up the console and fire these commands</h2>
+
+<p>Lets head towards chrome console and execute these commands to see what we have.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">personView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PersonView</span><span class="p">({</span> <span class="na">model</span><span class="p">:</span> <span class="nx">person</span> <span class="p">});</span>
+<span class="nx">personView</span><span class="p">.</span><span class="nx">el</span><span class="p">;</span>
+
+<span class="c1">// lets create a new person and display that person in view..</span>
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Mohit Jain"</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="na">occupation</span><span class="p">:</span> <span class="s2">"Software Developer"</span><span class="p">})</span>
+<span class="kd">var</span> <span class="nx">personView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PersonView</span><span class="p">({</span> <span class="na">model</span><span class="p">:</span> <span class="nx">person</span> <span class="p">});</span>
+<span class="nx">personView</span><span class="p">.</span><span class="nx">el</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">personView</span><span class="p">.</span><span class="nx">el</span><span class="p">);</span>  <span class="c1">// this is not ideal but good enough for demo.</span></code></pre></figure>
+
+<h2 id="output-on-chrome-console-1">Output on Chrome Console</h2>
+
+<p>Here is what we have on console:</p>
+
+<p><img src="/wp-content/uploads/2012/12/views-in-backbone-js-console-output.png?fit=690,650" alt="views in backbone js - console output" /></p>
+
+<h2 id="problem-in-the-thought-process">Problem in the thought process.</h2>
+
+<p>I hope you got an idea. But the problem with this code is defination of render method ie:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' ('</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'age'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">') - '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'occupation'</span><span class="p">)</span> <span class="p">);</span></code></pre></figure>
+
+<p>As our views get complexed like having images and other things. This will become messy. We are lucky that backbone js has templates for that. So lets head to the new lesson templates in backbone js.</p>
+
+<hr />
+
+<h2 id="source-code">Source code</h2>
+
+<p>If you are facing any issues. Checkout the source code files at <a href="https://github.com/mohitjain/learning_basics_backbone" title="Source Code for the post">github</a>. I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.</p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=5. Explaining views in backbone js &#8211; Learning Backbone Js&url=http://codebeerstartups.com/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page21/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					Performance 
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2012/10/use-batched-finder-for-large-data-query/">Use batched finder for large data query</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-20">October 20, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>If you want to do a large data query such as finding all the 10,000,000 users to send email to them, you should use batched finder to avoid eating too much memory.</p>
+
+<p>Imagine you have a newsletter system which is very famous and has 10,000,000 users. Every Monday morning, the system will send emails to all of the users.</p>
+
+<h2 id="in-general">In General</h2>
+
+<p>You may find all the users, then send emails to them one by one</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+  <span class="no">NewsLetter</span><span class="p">.</span><span class="nf">weekly_deliver</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>It may work, but do you know there are 10,000,000 users? This code snippet will find all of the users and create a ruby object for each user row in table. The server is unhappy due to too much memory is eaten by your newsletter application.</p>
+
+<h2 id="improvement">Improvement</h2>
+
+<p>From rails 2.3, find_each and find_in_batches are available for batched finder. We can use them to improve the performance of the newsletter application.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">find_each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+  <span class="no">NewsLetter</span><span class="p">.</span><span class="nf">weekly_deliver</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Using find_each, the application only finds 1,000 users once, yield them, then handle the next 1,000 users, until the last 1,000 users. That means the application will only load 1,000 user objects into memory each time, the server is happy now.</p>
+
+<p>1,000 is the default batch size, if you think it is small/big to you, you can use the :batch_size option to change it.</p>
+
+<p>find_in_batches is similar to find_each except that it yields the array of objects.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">find_in_batches</span><span class="p">(</span><span class="ss">:batch_size</span> <span class="o">=&gt;</span> <span class="mi">5000</span><span class="p">)</span><span class="k">do</span> <span class="o">|</span><span class="n">users</span><span class="o">|</span>
+  <span class="n">users</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="no">NewsLetter</span><span class="p">.</span><span class="nf">weekly_deliver</span><span class="p">(</span><span class="n">user</span><span class="p">)}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This method is very useful for large data query, saving your memory and time.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					General 
+					
+				</h2>
+				<h1><a href="/2012/10/steve-jobs-vision-of-the-world/">Steve Jobs Vision of the World</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-20">October 20, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p><em>When you grow up you tend to get told the world is the way it is and you’re life is just to live your life inside the world. Try not to bash into the walls too much. Try to have a nice family, have fun, save a little money.
+That’s a very limited life. Life can be much broader once you discover one simple fact: Everything around you that you call life was made up by people that were no smarter than you and you can change it, you can influence it, you can build your own things that other people can use. Once you learn that, you’ll never be the same again. </em></p>
+
+<p><strong>- Steve Jobs</strong></p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					performance 
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2012/10/save-image-as-progressive-image-using-paperclip-and-imagemagick/">Save image as progressive image using paperclip and imageMagick</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-20">October 20, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>We all have upload image functionality in our web apps. But we generally people don’t optimise the images uploaded by user.</p>
+
+<p>Here are the two quick things you can do to optimise your images:</p>
+
+<ol>
+  <li>Reduce the quality of the images. You need to take the call, How much?</li>
+  <li>Save images as progressive images.</li>
+</ol>
+
+<h2 id="how-to-do-save-image-as-progressive-image-using-paperclip">How to do save image as progressive image using paperclip:</h2>
+
+<h2 id="before">Before:</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="p">{</span>
+    <span class="ss">:styles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"654x500&gt;"</span><span class="p">,</span> <span class="ss">:jpg</span><span class="p">],</span>
+      <span class="ss">:thumb</span> <span class="o">=&gt;</span><span class="p">[</span><span class="s2">"200x200#"</span><span class="p">,</span> <span class="ss">:jpg</span><span class="p">]</span>
+    <span class="p">}</span></code></pre></figure>
+
+<h2 id="after">After:</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="p">{</span>
+    <span class="ss">:styles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"654x500&gt;"</span><span class="p">,</span> <span class="ss">:jpg</span><span class="p">],</span>
+      <span class="ss">:thumb</span> <span class="o">=&gt;</span><span class="p">[</span><span class="s2">"200x200#"</span><span class="p">,</span> <span class="ss">:jpg</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="ss">:convert_options</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">"-quality 80 -interlace Plane"</span><span class="p">,</span>
+      <span class="ss">:thumb</span> <span class="o">=&gt;</span> <span class="s2">"-quality 80 -interlace Plane"</span>
+      <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<h2 id="quality-80--interlace-plane">-quality 80 -interlace Plane</h2>
+<p>is the code which do all the magic behind the screens. 80 is the factor of reducing image quality and interlace plane saves the image as progressive image :)</p>
+
+<p>Let the more suggestions come for image optimizations…!!!</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					Performance 
+					
+					Logs 
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2012/10/rotating-rails-log-files/">Rotating Rails Log Files</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-20">October 20, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<h2 id="why-rotation-of-log-files-is-important">Why Rotation of log files is important.</h2>
+
+<p>The idea behind log rotation is simple: make a back up of the current log file, continue logging into a new or cleared log file, and discard log files that are older than a certain date.
+Your web server probably already rotates its own log files. For Apache, they are probably located in/etc/httpd/logs and they are probably rotated weekly. These logs store everything Apache does. Simple webserver stats and traffic analysis tools make use of these log files to show who visits a site when and what pages are viewed.
+While it is possible to configure your Rails application to log to your Apache log files, I do not think it is a good practice. It’s much better to give each Rails application its own log file—it will be easier to find important Rails errors, it will keep your Apache logs cleaner and Rails is set up to keep its own logs by default. Fortunately, on a Linux server the built-in logrotate program will make the process super-easy. After the jump, I’ll walk you through the steps to get it set up.
+Configuring logrotatelogrotate gets its configuration information from the file /etc/logrotate.conf. If you can’t find it, you can type locate logrotate.conf from the command line to see where it lives. Open up that file in a text editor (nano /etc/logrotate.conf will work) and append the following lines at the end:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Rotate Rails application logs</span>
+
+<span class="sr">/path/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">rails</span><span class="o">/</span><span class="n">applicaton</span><span class="o">/</span><span class="n">log</span><span class="o">/*</span><span class="p">.</span><span class="nf">log</span> <span class="p">{</span>
+  <span class="n">daily</span>
+  <span class="n">missingok</span>
+  <span class="n">rotate</span> <span class="mi">7</span>
+  <span class="n">compress</span>
+  <span class="n">delaycompress</span>
+  <span class="n">notifempty</span>
+  <span class="n">copytruncate</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="heres-what-each-line-does">Here’s what each line does:</h2>
+
+<h2 id="pathtoyourrailsapplicatonloglog-">/path/to/your/rails/applicaton/log/*.log –</h2>
+<p>Use the full path to the log directory of your Rails application (symbolic links are acceptable too). “*.log” will rotate any file in the log directory with .log at the end. If you only want to rotate certain log files you can be more specific.</p>
+
+<h2 id="daily">daily</h2>
+<p>Rotates the log files every day. You could specify weekly or monthly instead.</p>
+
+<h2 id="missingok">/missingok</h2>
+<p>Don’t issue an error message if log files are missing.</p>
+
+<h2 id="rotate-7">/rotate 7</h2>
+<p>The maximum number of log files to keep. Once you have more than this number, the oldest file will be deleted. I set it to keep seven days worth but feel free to change this number.</p>
+
+<h2 id="compress">/compress</h2>
+<p>Compress old versions of log files to save space (uses gzip by default).</p>
+
+<h2 id="delaycompress">/delaycompress</h2>
+<p>Delays the compression until the next log rotation. It’s a minor point and probably not strictly necessary, but it makes sure that the log file is truly no longer active before compressing it.</p>
+
+<h2 id="notifempty">/notifempty</h2>
+<p>If the log file is empty, there’s no need to rotate it. You can remove this option if you want to rotate even blank log files; just keep in mind that you may erase a log file that has lots of information to make room for your blank log file.</p>
+
+<h2 id="copytruncate">/copytruncate</h2>
+<p>Makes a backup copy of the current log and then clears the log file for continued writing. The alternative is to use create which will perform the rotation by renaming the current file and then creating a new log file with the same name as the old file. I strongly recommend that you use copytruncate unless you know that you need create. The reason why is that Rails, FastCGI, Mongrel, etc. may still keep pointing to the old log file even though its name has changed and they may require restarting to locate the new log file. copytruncate avoids this by keeping the same file as the active file.</p>
+
+<p>If you have more than one Rails application, you can repeat this code to rotate them all one-after-another. There other options you can specify, man logrotate will show you them all. I haven’t used them but the options to mail log files on creation or deletion look interesting. It is also possible to have rotate the logs once they get to a certain size instead of at a certain time.</p>
+
+<h2 id="using-logrotate">Using logrotate</h2>
+
+<p>To use the log rotation you just configured, you have two choices.</p>
+
+<ol>
+  <li>Wait for the next day (or whatever time period you specified). If you configured it correctly, rotation should occur automatically and without further commands.</li>
+  <li>Run it immediately by typing /usr/sbin/logrotate -f /etc/logrotate.conf on the command line. (The -f is for “force it to run now.)</li>
+</ol>
+
+<p>That’s all there is to it! Now your log files won’t fill up to an unmanagable size yet you’ll still be able to go back and track any recent errors.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					ruby-on-rails 
+					
+				</h2>
+				<h1><a href="/2012/10/replace-instance-variable-with-local-variable/">Replace instance variable with local variable</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-20">October 20, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p><em>In partial view, we can use the instance variable directly, but it may be confused and make it hard to reuse anywhere, because we don’t know exactly which instance variable can be used, so use the local variable in partial with explicitly assignment. Always replace instance variable with local variable.</em></p>
+
+<p>A partial is a reusable view template, it allow you to modularise the components which make up a particular page into logical, cohesive pieces. When required data is not passed into a partial, it is often difficult to reuse or change later.
+By passing the required data in as locals you create self-documenting requirements for each view partial. It also helps to see where else it is rendered and what locals are required.</p>
+
+<h2 id="bad-smell">Bad Smell</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">show</span>
+    <span class="vi">@post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="o">&lt;</span><span class="sx">%= render :partial =</span><span class="o">&gt;</span> <span class="s2">"sidebar"</span> <span class="o">%&gt;</span></code></pre></figure>
+
+<p>In this example, the partial sidebar can use the instance variable @post, but we can’t know what’s the instance variable @post without checking the controller codes. Let’s use the local variable instead.</p>
+
+<h2 id="refactor">Refactor</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">%= render "sidebar", :locals =</span><span class="o">&gt;</span> <span class="p">{</span> <span class="ss">:post</span> <span class="o">=&gt;</span> <span class="vi">@post</span> <span class="p">}</span> <span class="o">%&gt;</span>
+<span class="n">or</span>
+<span class="o">&lt;</span><span class="sx">%= render "sidebar", :post =</span><span class="o">&gt;</span> <span class="vi">@post</span> <span class="o">%&gt;</span></code></pre></figure>
+
+<p>Now we can use the local variable post in partial, it is much simpler.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page22" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/page20" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

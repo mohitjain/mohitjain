@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page16/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					performance 
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2012/12/modules-as-application-model-in-Ruby on Rails-or-refactor-your-code/">Modules as application model in ruby on rails or refactor your code.</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-12-01">December 1, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Yesterday I was working on <a href="http://activeadmin.info/" title="Active Admin ">active_admin</a>. This is the first time I am using active admin in any of my project, I find it pretty awesome. If you never used it then <a href="http://railscasts.com/episodes/284-active-admin" title="Railcasts for Active admin">just it a try</a>. So while building dashboard for the active admin. I felt of the need to something like application_model ;) so that the place where I used modules as application model in ruby on rails
+I was implementing <a href="http://railscasts.com/episodes/223-charts" title="HighCharts Railscasts">highcharts</a> in my application and I want to calculate Daily counts in last 30 days for most of the models likes users, products etc</p>
+
+<h2 id="before">Before</h2>
+
+<p>So I need this method for lots of models.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">daily_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span>
+      <span class="n">counts</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="s1">'Date(created_at)'</span><span class="p">).</span><span class="nf">count</span>
+      <span class="p">(</span><span class="n">range</span><span class="p">.</span><span class="nf">ago</span><span class="p">.</span><span class="nf">to_date</span><span class="p">.</span><span class="nf">.</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span><span class="o">|</span><span class="n">date</span><span class="o">|</span> <span class="n">counts</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">||</span> <span class="p">}</span>
+   <span class="c1"># A method which will return an array of daily new records of users (ie signups) in last 30 days (unless specified)</span>
+ <span class="k">end</span></code></pre></figure>
+
+<p>Now Same functionality i need for product model and other models too. So instead of copy pasting this method in all the model, we can create a module and include that module in required models.</p>
+
+<h2 id="after">After</h2>
+
+<p>In lib directory, create a directory ie modules (or name it whatever you want to.)
+Now create a file ie act_as_countable.rb there and paste this code.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">ActAsCountable</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+    <span class="n">base</span><span class="p">.</span><span class="nf">extend</span><span class="p">(</span><span class="no">ClassMethods</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">ClassMethods</span>
+    <span class="c1"># define all the class methods here.</span>
+    <span class="c1"># this method returns total records array in last 30 days. Something like: [10, 40, 70, 90....]</span>
+    <span class="k">def</span> <span class="nf">total_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span>
+      <span class="n">total_records</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">counts</span> <span class="o">=</span>  <span class="nb">self</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="s1">'Date(created_at)'</span><span class="p">).</span><span class="nf">count</span>
+      <span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">.</span><span class="nf">ago</span><span class="p">.</span><span class="nf">to_date</span><span class="p">.</span><span class="nf">.</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">day</span><span class="o">|</span>
+        <span class="n">total_records</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">total_records</span><span class="p">.</span><span class="nf">sum</span>   <span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">day</span><span class="p">]</span> <span class="o">||</span> <span class="p">))</span>
+      <span class="k">end</span>
+      <span class="n">total_records</span>
+    <span class="k">end</span>
+  <span class="c1"># this method returns total daily news records array in last 30 days. Something like: [10, 2, 40, 15....]</span>
+    <span class="k">def</span> <span class="nf">daily_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span>
+      <span class="n">counts</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="s1">'Date(created_at)'</span><span class="p">).</span><span class="nf">count</span>
+      <span class="p">(</span><span class="n">range</span><span class="p">.</span><span class="nf">ago</span><span class="p">.</span><span class="nf">to_date</span><span class="p">.</span><span class="nf">.</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span><span class="o">|</span><span class="n">date</span><span class="o">|</span> <span class="n">counts</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">||</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Now In Models, where you need these methods. Just include them by:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">include</span> <span class="no">ActAsCountable</span></code></pre></figure>
+
+<p>Once includes you can call these methods as normal class methods like.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">total_records_counts_array_in_past_n_days</span>
+<span class="no">Product</span><span class="p">.</span><span class="nf">total_records_counts_array_in_past_n_days</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">daily_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="mi">15</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span>
+<span class="no">Product</span><span class="p">.</span><span class="nf">daily_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="mi">15</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span></code></pre></figure>
+
+<p>If you want to define instance methods in you module. Just define them in the same module like this.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">ActAsCountable</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+    <span class="n">base</span><span class="p">.</span><span class="nf">extend</span><span class="p">(</span><span class="no">ClassMethods</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">ClassMethods</span>
+    <span class="k">def</span> <span class="nf">total_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span>
+      <span class="n">total_records</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">counts</span> <span class="o">=</span>  <span class="nb">self</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="s1">'Date(created_at)'</span><span class="p">).</span><span class="nf">count</span>
+      <span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">.</span><span class="nf">ago</span><span class="p">.</span><span class="nf">to_date</span><span class="p">.</span><span class="nf">.</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">day</span><span class="o">|</span>
+        <span class="n">total_records</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">total_records</span><span class="p">.</span><span class="nf">sum</span>   <span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">day</span><span class="p">]</span> <span class="o">||</span> <span class="p">))</span>
+      <span class="k">end</span>
+      <span class="n">total_records</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">daily_records_counts_array_in_past_n_days</span><span class="p">(</span><span class="n">range</span> <span class="o">=</span> <span class="mi">30</span><span class="p">.</span><span class="nf">days</span><span class="p">)</span>
+      <span class="n">counts</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="s1">'Date(created_at)'</span><span class="p">).</span><span class="nf">count</span>
+      <span class="p">(</span><span class="n">range</span><span class="p">.</span><span class="nf">ago</span><span class="p">.</span><span class="nf">to_date</span><span class="p">.</span><span class="nf">.</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span><span class="o">|</span><span class="n">date</span><span class="o">|</span> <span class="n">counts</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">||</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">my_instance_method</span>
+    <span class="c1"># this is my sample blank instance method</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Note: You need to add load these modules via specifying the path in application_controller.rb. Also you need to restart your application.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="p">.</span><span class="nf">autoload_paths</span>  <span class="o">=</span> <span class="no">Dir</span><span class="p">[</span><span class="s2">"</span><span class="si">#{</span><span class="n">config</span><span class="p">.</span><span class="nf">root</span><span class="si">}</span><span class="s2">/lib/modules/**"</span><span class="p">]</span></code></pre></figure>
+
+<p>You can use module even to refactor the code. For example. Generally my user model has lot of methods related to fetch data from facebook, once user signs up. So create a module for those instance methods.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2012/12/delayed-job-web-view/">Delayed job web view</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-12-01">December 1, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>I was checking something and got a gem <a href="https://github.com/ejschmitt/delayed_job_web" title="Delayed Job Web view">Delayed Job web view</a>. Nice one and easy to integrate with live polling option. Loved it. Pretty nice to what your background job is doing in production mode.</p>
+
+<p>Here is a screenshot of the dashboard.</p>
+
+<p><img src="/wp-content/uploads/2012/12/Delayed-Job-web-view.png?fit=644,288" alt="Delayed Job web view" /></p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2012/12/ajaxify-your-site-with-remote-true/">Ajaxify your site with remote => true and respond_to block</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-12-01">December 1, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Here is a small application which is basically a scaffold but create, edit, update and destroy are done using ajax ie remote =&gt; true option in rails. <a href="http://ajaxified-scaffold.herokuapp.com/" title="Demo of the application">See Demo.</a></p>
+
+<p>So the very first thing is understand repond_to block. If you run a scaffold command and see new action code it looks like:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># GET /products/new</span>
+  <span class="c1"># GET /products/new.json</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># new.html.erb</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p><a href="http://api.rubyonrails.org/classes/ActionController/MimeResponds/ClassMethods.html#method-i-respond_to" title="Rails api doc for repond_to block">which basically means this will respond to only two kind of request one is html and second is json.</a></p>
+
+<p>Now for your your ajax request your need to tell controller to respond to js request which can be done but adding a line ie.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># GET /products/new</span>
+  <span class="c1"># GET /products/new.json</span>
+  <span class="c1"># GET /products/new.js</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># new.html.erb</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Now you have told controller to send response for js request. Create a file ie new.js.erb. This is the file where you write some js code to make the response to do the desired stuff.</p>
+
+<p>Cool. Lets start from scratch.</p>
+
+<p><strong>Step 1:</strong> Make a new application
+<strong>Step 2:</strong> Generate a scaffold
+<strong>Step 3:</strong> Start making the js requests and add some code to get desired results.</p>
+
+<p>Create an application and generate a scaffold ie:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">products</span> <span class="nb">name</span><span class="ss">:string</span> <span class="n">price</span><span class="ss">:integer</span></code></pre></figure>
+
+<p>Once You have it. Make a js requests for new link from index.html.erb ie:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">%= link_to 'New Product', new_product_path, :remote =</span><span class="o">&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="s2">"new_product_link"</span> <span class="o">%&gt;</span></code></pre></figure>
+
+<p>Now enable js requests in the controller for new action ie:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># GET /products/new</span>
+  <span class="c1"># GET /products/new.json</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># new.html.erb</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Now create a new.js.erb file in products directory and add this line of code:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'#new_product_link'</span><span class="p">).</span><span class="nx">hide</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span></code></pre></figure>
+
+<p>This will hide the new_product_link and add a new product form. Hit refresh of you index page and try to click on new product link. ;)</p>
+
+<p>Now if you try to submit the form, it will be submitted as normal form. To make it ajax. Modify the form like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">%= form_for @product, :remote =</span><span class="o">&gt;</span> <span class="kp">true</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="sx">%&gt; # adding remote=&gt;</span> <span class="kp">true</span> <span class="n">to</span> <span class="n">form</span><span class="o">.</span></code></pre></figure>
+
+<p>Now refresh and try to submit the form. Form will be submitted but request is not handled properly on controller end. Here is the same code for create action.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># POST /products</span>
+<span class="c1"># POST /products.json</span>
+<span class="k">def</span> <span class="nf">create</span>
+  <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:product</span><span class="p">])</span>
+
+  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+    <span class="k">if</span> <span class="vi">@product</span><span class="p">.</span><span class="nf">save</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="vi">@product</span><span class="p">,</span> <span class="ss">notice: </span><span class="s1">'Product was successfully created.'</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span><span class="p">,</span> <span class="ss">status: :created</span><span class="p">,</span> <span class="ss">location: </span><span class="vi">@product</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">else</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">action: </span><span class="s2">"new"</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span><span class="p">.</span><span class="nf">errors</span><span class="p">,</span> <span class="ss">status: :unprocessable_entity</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					performance 
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2012/12/a-simple-way-to-implement-soft-delete-in-rails-application/">A simple way to implement soft delete in rails application.</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-12-01">December 1, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>PS: This blog post use modules. If you are not familar with modules in rails application then I will recommend you to check <a href="http://www.codebeerstartups.com/modules-as-application-model-in-Ruby on Rails-or-refactor-your-code/" title="Modules in ruby on rails.">Modules in ruby on rails </a></p>
+
+<p>Here is a simple way to implement soft delete in rails application.
+Define two modules Achiver and a module Archivable</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Archivable</span>
+  <span class="k">def</span> <span class="nf">archive!</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">archive</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">deleted_at</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">save</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">Archiver</span>
+  <span class="k">def</span> <span class="nf">destroy</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">archive</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">deleted_at</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+    <span class="n">archive_models!</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">save</span>
+    <span class="nb">freeze</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">archive_models!</span>
+    <span class="n">archivable_models</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">model</span><span class="o">|</span>
+      <span class="n">model_name</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">name</span><span class="p">.</span><span class="nf">pluralize</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">to_s</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">model_name</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">m</span><span class="p">.</span><span class="nf">archive!</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">archivable_models</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="ss">:subclasses</span><span class="p">).</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">m</span><span class="p">.</span><span class="nf">method_defined?</span><span class="p">(</span><span class="ss">:archive!</span><span class="p">)}</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Now use these two modules in your models.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="kp">include</span> <span class="no">Archivable</span>
+  <span class="n">belongs_to</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:counter_cache</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="kp">include</span> <span class="no">Archiver</span>
+  <span class="n">has_many</span> <span class="ss">:images</span><span class="p">,</span><span class="ss">:order</span> <span class="o">=&gt;</span> <span class="s2">"created_at DESC"</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">"archive = 0"</span><span class="p">,</span> <span class="ss">:dependent</span> <span class="o">=&gt;</span> <span class="ss">:destroy</span>
+  <span class="n">attr_accessible</span> <span class="ss">:name</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This is a <strong>pretty</strong> hack-ish implementation, but it works.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					performance 
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities, 
+					
+					Validations 
+					
+				</h2>
+				<h1><a href="/2012/11/validating-email-address-by-defining-custom-validations-in-rubyon-rails/">Validating email address by defining custom validations in ruby on rails.</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-11-27">November 27, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>This post is more about how to define a custom validation in ruby on rails. I am explaining the same by adding a custom validation for email.</p>
+
+<p><strong>Before:</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">validates_format_of</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="sr">/A([^@s] )@((?:[-a-z0-9] .)[a-z]{2,})Z/i</span></code></pre></figure>
+
+<p>Result we want
+<strong>I want to write something like this:</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:email_format</span> <span class="o">=&gt;</span> <span class="kp">true</span></code></pre></figure>
+
+<p>Here is how to do something like this:</p>
+
+<p><strong>Step 1:</strong></p>
+
+<p>Create a new file ie email_format_validator.rb in lib directtory and paste following code there:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">EmailFormatValidator</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">EachValidator</span>
+  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/^([^@s] )@((?:[-a-z0-9] .)[a-z]{2,})$/i</span>
+      <span class="n">object</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="ss">:email_format</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p><strong>Step 2:</strong></p>
+
+<p>Define error message ie Paste this sample code in config/locales/en.yml</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Sample localization file for English. Add more files in this directory for other locales.</span>
+<span class="c1"># See https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale for starting points.</span>
+
+<span class="ss">en:
+  hello: </span><span class="s2">"Hello world"</span>
+  <span class="ss">activerecord:
+      errors:
+          messages:
+              email_format: </span><span class="s2">"is not properly formatted"</span></code></pre></figure>
+
+<p><strong>Step 3:</strong> Auto load validator file ie paste these two lines in application.rb under config directory.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">config</span><span class="p">.</span><span class="nf">autoload_paths</span>  <span class="o">=</span> <span class="sx">%W(</span><span class="si">#{</span><span class="n">config</span><span class="p">.</span><span class="nf">root</span><span class="si">}</span><span class="sx">/lib)</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">autoload_paths</span>  <span class="o">=</span> <span class="no">Dir</span><span class="p">[</span><span class="s2">"</span><span class="si">#{</span><span class="n">config</span><span class="p">.</span><span class="nf">root</span><span class="si">}</span><span class="s2">/lib/**/"</span><span class="p">]</span></code></pre></figure>
+
+<p>Thats it. Now restart your application. Your custom validator is defined :)</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page17" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/page15" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page18/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					General 
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+					utilities 
+					
+				</h2>
+				<h1><a href="/2012/11/rollback-all-database-changes-on-exit/">Rollback all database changes on exit</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-11-14">November 14, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Being a rails developer, Lot of time I spend on rails console. Ever thought of rollback all changes you have done on console? Yes? Here is a quick tip for you ;)</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rails</span> <span class="n">c</span> <span class="o">--</span><span class="n">sandbox</span>
+<span class="no">Loading</span> <span class="n">development</span> <span class="n">environment</span> <span class="k">in</span> <span class="n">sandbox</span><span class="o">.</span>
+<span class="no">Any</span> <span class="n">modifications</span> <span class="n">you</span> <span class="n">make</span> <span class="n">will</span> <span class="n">be</span> <span class="n">rolled</span> <span class="n">back</span> <span class="n">on</span> <span class="nb">exit</span><span class="p">.</span>
+<span class="nf">&gt;</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>You can also use -s as a flag instead of –sandbox. Awesome!</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					General 
+					
+					optimization 
+					
+					quick-solution 
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2012/11/rescue-blocks-dont-need-to-be-tied-to-a-begin/">Rescue blocks don&#8217;t need to be tied to a &#8216;begin&#8217;</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-11-14">November 14, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Rescue blocks don’t need to be tied to a ‘begin’ in rails :) Really nice to make code more cleaner. Here is a quick example:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">my_awesome_method</span>
+  <span class="k">begin</span>
+   <span class="c1"># My awesome code...</span>
+  <span class="k">rescue</span>
+   <span class="c1"># my rescue block ...</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>can be written as:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">my_awesome_method</span>
+   <span class="c1"># My awesome code...</span>
+  <span class="k">rescue</span>
+   <span class="c1"># my rescue block ...</span>
+<span class="k">end</span></code></pre></figure>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					Git 
+					
+				</h2>
+				<h1><a href="/2012/11/git-happy-commits-using-git-hooks-post-commit/">Git Happy Commits using git/hooks/post-commit</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-11-14">November 14, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Giggle every time you make a commit. This is how sound will play after every git happy commits :)</p>
+
+<p><a href="http://www.codebeerstartups.com/wp-content/uploads/2012/11/happykids.wav" title="Sound it plays">Sound file it plays:</a></p>
+
+<p><strong>How to guide:</strong></p>
+
+<ol>
+  <li>Open you project in terminal.</li>
+  <li>“ls -a” command will tell you all the hidden directories. If you have git initialised then you will see a .git hidden directory there. If yes then proceed else first initialise git using “git init” command</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">init</span></code></pre></figure>
+
+<ol>
+  <li>Assuming you are in the directory where you have initialise git. Open “post-commit” file like</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">mate</span> <span class="p">.</span><span class="nf">git</span><span class="o">/</span><span class="n">hooks</span><span class="o">/</span><span class="n">post</span><span class="o">-</span><span class="n">commit</span></code></pre></figure>
+
+<ol>
+  <li>Type this and save the file.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">afplay</span> <span class="o">~</span><span class="sr">/.git/</span><span class="n">happykids</span><span class="p">.</span><span class="nf">wav</span> <span class="o">&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;</span></code></pre></figure>
+
+<ol>
+  <li>Go to you home directory by just typing</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cd</span></code></pre></figure>
+
+<ol>
+  <li>create a hidden directory git ie</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">mkdir</span> <span class="p">.</span><span class="nf">git</span></code></pre></figure>
+
+<ol>
+  <li>Navigate to that directory ie:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cd</span> <span class="p">.</span><span class="nf">git</span></code></pre></figure>
+
+<ol>
+  <li>Download the sound file in that directory ie:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">wget</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">collectiveidea</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="mi">4</span><span class="n">c58e4c1dabe9d50eb000087</span><span class="o">/</span><span class="n">happykids</span><span class="p">.</span><span class="nf">wav</span></code></pre></figure>
+
+<ol>
+  <li>Now go back to your project directory and make a commit..:)</li>
+</ol>
+
+<p>Source: <a href="http://collectiveidea.com/blog/archives/2010/08/03/happy-git-commits/" title="Source">http://collectiveidea.com/blog/archives/2010/08/03/happy-git-commits/</a></p>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					General 
+					
+					VIM 
+					
+				</h2>
+				<h1><a href="/2012/11/day-1-experience-with-vim/">Day 1 experience with Vim. :)</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-11-04">November 4, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>I was free this morning and while checking out few things on Quora, again I got an article where people are debating about Textmate, Vim, Emacs etc. And that what pushed me to learn or try out VIM. I know some basic stuff about Vi or Vim as you need to know while doing things on server.  Anyways I downloaded macvim and checkout few tutorials etc and this is what I learned in couple of hours ie basic movements and editing. So if you are in those unlucky souls who always wants to vim but never try it. Just go for it. Just for fun try out these commands and lets what you feel about it.</p>
+
+<h2 id="vim-commands">Vim Commands</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>h -&gt; Left
+j -&gt; Down
+k -&gt; Up
+l -&gt; Right (Note -&gt; Tutorials says don’t use arrow keys)
+
+$ -&gt; Go to End of the line
+(Zero) 0 -&gt; Go to starting of the line
+
+G -&gt; end of the file
+gg -&gt; beginning of the file
+</code></pre>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>——-***</td>
+      <td>\***</td>
+      <td>** add number in front to jump example 4w or 4f/ etc ***</td>
+      <td>\***</td>
+      <td>** ———</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>w -&gt; Jumps to beginning of next word.. Treats special characters as a different word
+W -. Jumps to beginning of next word. Skips special characters.
+
+e -&gt; Jumps to end of the word. Treats special characters as a different word
+E -&gt;Jumps to end of next word. Skips special characters.
+
+b -&gt; Move back. Treats special characters as different word
+B -&gt; Move Back, Skips special characters
+
+f ( a character) -&gt; Jumps to the character matching in the same line.
+F( a character) -&gt; Moves backwards
+; -&gt; repeats the last f ( character) -&gt; works for both f ( ) and F ( )
+
+t ( a character) -&gt; Same a f ( a characters) but takes to one previous character i.e. until as in ruby :)
+T ( a character) -&gt; Moves back wards -&gt; works same as t ( )
+; works too in this case
+
+Control f -&gt; Next page
+Control b -&gt; Previous page
+
+Control d -&gt; Half page down
+Control u -&gt; half page up
+
+H -&gt; Head of the current page
+M -&gt; Middle of the current page
+L -&gt; Last of the current page
+
+u -&gt; undo
+
+23 G -&gt; will take you to the line number 23
+*-&gt; Hit * and then start pressing n -&gt; It will start search the current word in forward on which you are in the file
+*-&gt; Hit * and then start pressing N -&gt; It will start search the current word in backword on which you are in the file
+g*
+g#
+/typeYourSeach -&gt; Forward searching of specific
+?typeYourSearch -&gt; Backword search of something specific
+
+dd -&gt; delete the current line (remove enter of that line)
+D -&gt; Delete the current line
+x -&gt; delete the current character
+X -&gt; delete the previous character
+dw -&gt; delete the word
+d$ -&gt; remove from current location to end of the line
+% -&gt; Next matching bracket
+=G -&gt; Code Indentation
+
+**Basic Editing:**
+i -&gt; Insert Mode:
+a -&gt; Append at the current location
+o -&gt; Insert a new line and start editing
+I -&gt; Insert form beginning of the line
+A -&gt; Append after the line.
+O -&gt; Insert a line above and start editing
+c -&gt;delete and change something
+C -&gt; delete and change entire line
+r -&gt; replace current charter
+R -&gt; start replacing anything u want to..
+cw -&gt; editing the current work and start typing new things…
+or c2w -&gt; editing two words
+. -&gt; repeat the last action
+
+**Yanking: (Copying)**
+yy / Y — copy the whole line
+yw -&gt; yank the word
+p -&gt; paste the yank
+P -&gt; paste above
+J -&gt; join the next line in the same
+**Visual Mode**
+v -&gt; visual mode -&gt; select character by character using hl
+V -&gt; Visual Model -&gt; select by line using j or k
+
+**Block Highlighting**
+control v -&gt; select a block
+gv -&gt; previous selected block
+</code></pre>
+</div>
+
+<p> </p>
+
+<p>This is what I learned in 2 hours. Tried these commands and its fun. ;) I loved it. Going for some plugins etc to checkout more stuff. I will say just open your terminal and say vimtutor and invest some time to see what exactly it is.My experience with VIM was awesome :) So I will make one more post soon once I checkout the plugins part –&gt; VIM for Rails :) Once I learn it :)</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					validations 
+					
+				</h2>
+				<h1><a href="/2012/11/validates_uniqueness_of-doesnt-guarantee-the-absence-of-duplicate-record-insertions/">validates_uniqueness_of doesn&#8217;t guarantee the absence of duplicate record insertions</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-11-01">November 1, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>From the title this post you may say, What the crap? validates_uniqueness_of is the inbuilt functionality of ruby on rails. But yes its true. I just came to know about this today when I saw some duplicate records in my project database.</p>
+
+<p>Here is the what official guide says:</p>
+
+<p><em>Using this validation method in conjunction with ActiveRecord::Validations#save does not guarantee the absence of duplicate record insertions, because uniqueness checks on the application level are inherently prone to race conditions. For example, suppose that two users try to post a Comment at the same time, and a Comment’s title must be unique. At the database-level, the actions performed by these users could be interleaved in the following manner:</em></p>
+
+<p><img src="/wp-content/uploads/2012/11/validates_uniqueness_of-.png?fit=554,43" alt="Concurrency and integrity with validates_presence_of" /></p>
+
+<p>This could even happen if you use transactions with the ‘serializable’ isolation level. The best way to work around this problem is to add a unique index to the database table using ActiveRecord::ConnectionAdapters::SchemaStatements#add_index. In the rare case that a race condition occurs, the database will guarantee the field’s uniqueness.</p>
+
+<p>Here is the solution always add unique index in the database. For example for your application you can do something like:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">add_index</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:unique</span> <span class="o">=&gt;</span> <span class="kp">true</span></code></pre></figure>
+
+<p>For all future migrations or model creation migrations etc. Do this</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">create_table</span> <span class="ss">:posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+    <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:unqiue</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+    <span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:description</span>
+    <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Source: <a href="http://api.rubyonrails.org/classes/ActiveRecord/Validations/ClassMethods.html#method-i-validates_uniqueness_of" title="http://api.rubyonrails.org/classes/ActiveRecord/Validations/ClassMethods.html#method-i-validates_uniqueness_of">http://api.rubyonrails.org/classes/ActiveRecord/Validations/ClassMethods.html#method-i-validates_uniqueness_of</a></p>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page19" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/page17" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

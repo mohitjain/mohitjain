@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>How to generate css sprites automatically using a gem in ruby on rails</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2013/04/how-to-generate-css-sprites-automatically-using-a-gem-in-ruby-on-rails/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">How to generate css sprites automatically using a gem in ruby on rails</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				Performance
+          	
+        </h2>
+        <h1><a href="/2013/04/how-to-generate-css-sprites-automatically-using-a-gem-in-ruby-on-rails/">How to generate css sprites automatically using a gem in ruby on rails</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2013-04-04">April 4, 2013</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					Performance
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">How to generate css sprites automatically using a gem in ruby on rails</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2013-04-04">April 4, 2013</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p>Css sprites is a pretty cool thing to implement but its tedious one as you have to compose a lot of images into one css sprite image and measure the x and y positions for each image. Besides this, it always causes conflict when more than one person change the css sprite image. So here is a trick for you. Use a gem ie <a href="https://github.com/flyerhzm/css_sprite">css_sprite</a> and it will create merge all the images and write down the respective css for you.</p>
+
+<p>Something like this:</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.twitter_icon</span><span class="o">,</span><span class="nc">.facebook_icon</span><span class="o">,</span><span class="nc">.login_button</span><span class="o">,</span><span class="nc">.logout_button</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url('/images/css_sprite.png?1270170265')</span><span class="nb">no-repeat</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.twitter_icon</span> <span class="p">{</span> <span class="nl">background-position</span><span class="p">:</span><span class="m">0</span><span class="n">px0px</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span><span class="m">14px</span><span class="p">;}</span>
+<span class="nc">.facebook_icon</span> <span class="p">{</span> <span class="nl">background-position</span><span class="p">:</span><span class="m">0px-19px</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span><span class="m">14px</span><span class="p">;}</span>
+<span class="nc">.login_button</span> <span class="p">{</span> <span class="nl">background-position</span><span class="p">:</span><span class="m">0px-38px</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">103px</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span><span class="m">36px</span><span class="p">;}</span>
+<span class="nc">.logout_button</span> <span class="p">{</span> <span class="nl">background-position</span><span class="p">:</span><span class="m">0px-79px</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="m">103px</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span><span class="m">36px</span><span class="p">;}</span></code></pre></figure>
+
+<!--more-->
+
+<p>These are css sprite best practice I follow. Now it’s time to see how to implement these in a rails application.</p>
+
+<ul>
+  <li>Install the css_sprite gem</li>
+  <li>Create css_sprite or css_sprite suffixed directory, and put any images into the css sprite directory.</li>
+  <li>You can use “rake css_sprite:start” to generate css sprite image automatically all the time, or use “rake css_sprite:build” to run the css_sprite once manually.</li>
+  <li>Then add the stylesheet “css_sprite.css” in html and use the generated css class to display image.</li>
+</ul>
+
+<p>The css_sprite gem also supports to generate sass and scss.
+And to avoid the conflict of css sprite image and css, add public/images/css_sprite.png and public/stylesheets/css_sprite.css into .gitignore file. So only images under css sprite directory are in the control of git, and everyone should build the css sprite image automatically by the rake task.
+You can fine more details <a href="http://huangzhimin.com/2010/04/03/css-sprite-best-practices-english-version/">here</a></p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=How to generate css sprites automatically using a gem in ruby on rails&url=http://codebeerstartups.com/2013/04/how-to-generate-css-sprites-automatically-using-a-gem-in-ruby-on-rails/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2013/04/how-to-generate-css-sprites-automatically-using-a-gem-in-ruby-on-rails/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

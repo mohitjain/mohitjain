@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Ajaxify your site with remote => true and respond_to block</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/12/ajaxify-your-site-with-remote-true/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">Ajaxify your site with remote => true and respond_to block</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				tips-and-tricks
+          	
+				utilities
+          	
+        </h2>
+        <h1><a href="/2012/12/ajaxify-your-site-with-remote-true/">Ajaxify your site with remote => true and respond_to block</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-01">December 1, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					tips-and-tricks
+          		
+					utilities
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">Ajaxify your site with remote => true and respond_to block</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-01">December 1, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p>Here is a small application which is basically a scaffold but create, edit, update and destroy are done using ajax ie remote =&gt; true option in rails. <a href="http://ajaxified-scaffold.herokuapp.com/" title="Demo of the application">See Demo.</a></p>
+
+<p>So the very first thing is understand repond_to block. If you run a scaffold command and see new action code it looks like:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># GET /products/new</span>
+  <span class="c1"># GET /products/new.json</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># new.html.erb</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p><a href="http://api.rubyonrails.org/classes/ActionController/MimeResponds/ClassMethods.html#method-i-respond_to" title="Rails api doc for repond_to block">which basically means this will respond to only two kind of request one is html and second is json.</a></p>
+
+<p>Now for your your ajax request your need to tell controller to respond to js request which can be done but adding a line ie.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># GET /products/new</span>
+  <span class="c1"># GET /products/new.json</span>
+  <span class="c1"># GET /products/new.js</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># new.html.erb</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Now you have told controller to send response for js request. Create a file ie new.js.erb. This is the file where you write some js code to make the response to do the desired stuff.</p>
+
+<p>Cool. Lets start from scratch.</p>
+
+<p><strong>Step 1:</strong> Make a new application
+<strong>Step 2:</strong> Generate a scaffold
+<strong>Step 3:</strong> Start making the js requests and add some code to get desired results.</p>
+
+<p>Create an application and generate a scaffold ie:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="n">products</span> <span class="nb">name</span><span class="ss">:string</span> <span class="n">price</span><span class="ss">:integer</span></code></pre></figure>
+
+<p>Once You have it. Make a js requests for new link from index.html.erb ie:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">%= link_to 'New Product', new_product_path, :remote =</span><span class="o">&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="s2">"new_product_link"</span> <span class="o">%&gt;</span></code></pre></figure>
+
+<p>Now enable js requests in the controller for new action ie:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># GET /products/new</span>
+  <span class="c1"># GET /products/new.json</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># new.html.erb</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Now create a new.js.erb file in products directory and add this line of code:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'#new_product_link'</span><span class="p">).</span><span class="nx">hide</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span></code></pre></figure>
+
+<p>This will hide the new_product_link and add a new product form. Hit refresh of you index page and try to click on new product link. ;)</p>
+
+<p>Now if you try to submit the form, it will be submitted as normal form. To make it ajax. Modify the form like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">%= form_for @product, :remote =</span><span class="o">&gt;</span> <span class="kp">true</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="sx">%&gt; # adding remote=&gt;</span> <span class="kp">true</span> <span class="n">to</span> <span class="n">form</span><span class="o">.</span></code></pre></figure>
+
+<p>Now refresh and try to submit the form. Form will be submitted but request is not handled properly on controller end. Here is the same code for create action.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># POST /products</span>
+<span class="c1"># POST /products.json</span>
+<span class="k">def</span> <span class="nf">create</span>
+  <span class="vi">@product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:product</span><span class="p">])</span>
+
+  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+    <span class="k">if</span> <span class="vi">@product</span><span class="p">.</span><span class="nf">save</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="vi">@product</span><span class="p">,</span> <span class="ss">notice: </span><span class="s1">'Product was successfully created.'</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span><span class="p">,</span> <span class="ss">status: :created</span><span class="p">,</span> <span class="ss">location: </span><span class="vi">@product</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">else</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">action: </span><span class="s2">"new"</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@product</span><span class="p">.</span><span class="nf">errors</span><span class="p">,</span> <span class="ss">status: :unprocessable_entity</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">js</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<!--more-->
+
+<p>and create.js.erb</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'#new_product'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#new_product_link'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#products'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">' @product)%&gt;'</span><span class="p">);</span></code></pre></figure>
+
+<p>Hey hey.. Before you try to submit the form. Modify your index.html.erb like this so that you can render a product row in index.html.erb.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Listing products<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Price<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+    <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tbody</span> <span class="na">id=</span><span class="s">"products"</span><span class="nt">&gt;</span>
+<span class="err">&lt;</span>% @products.each do |product| %&gt;
+<span class="err">&lt;</span>%= render "product", :product =&gt; product %&gt;
+<span class="err">&lt;</span>% end %&gt;
+<span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="err">&lt;</span>%= link_to 'New Product', new_product_path, :remote =&gt; true, :id =&gt; "new_product_link" %&gt;</code></pre></figure>
+
+<p>and a product.html.erb partial ie _product.html.erb</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr</span> <span class="na">id=</span><span class="s">"product_&lt;%= product.id %&gt;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= product.name %&gt;<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= product.price %&gt;<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= link_to 'Show', product %&gt;<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= link_to 'Edit', edit_product_path(product) %&gt;<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td&gt;</span><span class="err">&lt;</span>%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %&gt;<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span></code></pre></figure>
+
+<p>Once you make this modifications. You can see that redering a new form and create a new product is completely ajaxified. In the same way you can do for edit form and update and for destroy.</p>
+
+<p><a href="https://github.com/mohitjain/ajaxified_scaffold" title="Source code for Ajaxified Scaffold">Source code: Clone this repo to see the whole code</a></p>
+
+<p>This is how you can a lot of things to ajaxify your site with respond_to and remote =&gt; true.</p>
+
+<p><strong>Update:</strong></p>
+
+<p><a href="http://www.codebeerstartups.com/2013/01/adding-validations-in-your-ajax-based-controllers-ajaxify-your-site" title="Adding validations in your ajax based controllers – Ajaxify your site – Part 2">Do checkout how to add validations in ajax based forms</a></p>
+
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=Ajaxify your site with remote => true and respond_to block&url=http://codebeerstartups.com/2012/12/ajaxify-your-site-with-remote-true/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/12/ajaxify-your-site-with-remote-true/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Codebeerstartups</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/page19/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="profile">
+	
+	<h4>Codebeerstartups</h4>
+	<p>Every Dog has one Blog</p>
+	<hr>
+</div>
+
+<section class="posts postindex wrapper">
+
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					General 
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2012/10/snapdeal-why-you-dont-you-restrict-number-of-records-per-requests-in-api-calls-in-your-ajax-calls/">Snapdeal &#8211; Why don&#8217;t you restrict number of record per requests in API calls? Visible from ajax calls..!!!</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-28">October 28, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>I was working on my project and was testing something via firebug. At the same time I was checking something on <a href="http://www.snapdeal.com" title="SnapDeal">Snapdeal</a> and by mistake opened firebug in Snapdeal tab and just saw the url of their api in firebug :)</p>
+
+<p> </p>
+
+<p><img src="/wp-content/uploads/2012/10/snapdeal-via-firebug.png" alt="snapdeal via firebug" /></p>
+
+<p>So here is the url:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://www.snapdeal.com/json/product/get/search/64/20/40?q=Type%3ALED&amp;sort=plrty&amp;keyword=
+</code></pre>
+</div>
+
+<p><img src="/wp-content/uploads/2012/10/Screen-Shot-2012-10-28-at-6.14.51-AM.png" alt="SnapDeal Api - Response" /></p>
+
+<p><strong>and you know the best part</strong>. There is no maximum page size limit in the api, means if I just try to change the number of products in that api call it will hit the database to get that number of products.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> http://www.snapdeal.com/json/product/get/search/64/20/1000?q=Type%3ALED&amp;sort=plrty&amp;keyword=
+</code></pre>
+</div>
+
+<p>Common guys have some mercy on your database ;)</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2012/10/block-email-sending-to-certain-email-addresses-or-domain-in-Ruby on Rails/">Block email sending to certain email addresses or domain in ruby on rails?</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-27">October 27, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>If you want to block email sending to some particular user or some particular email format, then interceptor is your friend :) Just place this code in your config/initializers/email_filters.rb</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">EmailAddressFilter</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">delivering_email</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="n">message</span><span class="p">.</span><span class="nf">perform_deliveries</span> <span class="o">=</span> <span class="kp">false</span>
+
+    <span class="c1"># your checks here; return if @abc.com, etc.. is matched</span>
+    <span class="k">return</span> <span class="k">unless</span> <span class="n">message</span><span class="p">.</span><span class="nf">to</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">""</span><span class="p">).</span><span class="nf">match</span><span class="p">(</span><span class="sr">/@abc.com/</span><span class="p">).</span><span class="nf">nil?</span>
+
+    <span class="c1"># otherwise, the email should be sent</span>
+    <span class="n">message</span><span class="p">.</span><span class="nf">perform_deliveries</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">ActionMailer</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">register_interceptor</span><span class="p">(</span><span class="no">EmailAddressFilter</span><span class="p">)</span></code></pre></figure>
+
+<p>All of your emails will be blocked matching that regex :)</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					Server 
+					
+				</h2>
+				<h1><a href="/2012/10/complete-guide-to-setup-a-rails-server/">Complete guide to setup a rails server</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-26">October 26, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p><strong>This guide is written by Mohit Jain (http://codebeerstartups.com). It worked fine for me in more than 15 deployments. Use this guide at your own risk, if your server explode, it will not be my fault ;-)</strong></p>
+
+<p><em>If something went wrong, drop me message, I will try to help you :)</em></p>
+
+<h2 id="stack">Stack</h2>
+
+<ol>
+  <li>Ubuntu .</li>
+  <li>Rails 3</li>
+  <li>Mysql</li>
+  <li>Apache</li>
+  <li>Passenger</li>
+</ol>
+
+<h2 id="step-1-creating-a-deployer-account">Step 1: (Creating a deployer account)</h2>
+
+<ol>
+  <li>Ssh into the system using the root credentials</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ssh</span> <span class="n">root</span><span class="vi">@ip_address</span></code></pre></figure>
+
+<ol>
+  <li>Create new user/s and switch to that one.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Add deployer user - deployer is the username of the user you are creating. Change it as per your needs</span>
+<span class="n">adduser</span> <span class="n">deployer</span> <span class="o">--</span><span class="n">ingroup</span> <span class="n">admin</span>
+<span class="n">su</span> <span class="n">deployer</span>
+<span class="n">cd</span>
+
+
+<span class="no">OR</span>
+
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">groupadd</span> <span class="n">deployers</span>  <span class="c1">#Create new group for deployers</span>
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">visudo</span>
+<span class="c1">## Allows people in group deployers to run all commands</span>
+<span class="o">%</span><span class="n">deployers</span>  <span class="no">ALL</span><span class="o">=</span><span class="p">(</span><span class="no">ALL</span><span class="p">)</span><span class="no">ALL</span>
+<span class="c1">#Save and Exit.</span>
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">adduser</span> <span class="n">deployer</span>  <span class="c1">#Create new user</span>
+<span class="sr">/usr/s</span><span class="n">bin</span><span class="o">/</span><span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="no">G</span> <span class="n">deployers</span> <span class="n">deployer</span>  <span class="c1">#Add deployer user to deployers group</span>
+<span class="c1">#Logout and login as deployer</span></code></pre></figure>
+
+<ol>
+  <li>(Optional but preferable). Logout using logout and login as deployer i.e.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ssh</span> <span class="n">deployer</span><span class="vi">@ip_address</span></code></pre></figure>
+
+<ol>
+  <li>Generate SSH keys and public key in deployment keys on github/bitbucket</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="no">C</span> <span class="s2">"your_email_address"</span>
+<span class="n">cat</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span><span class="p">.</span><span class="nf">pub</span></code></pre></figure>
+
+<ol>
+  <li>Copy your public key to authorised key, (SO that you don’t need to enter password next time when you try to login on server from your machine. DONT do this in case you don’t want to give this current machine access of the server.):</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cat</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span><span class="p">.</span><span class="nf">pub</span> <span class="o">|</span> <span class="n">ssh</span> <span class="n">deployer</span><span class="vi">@your_ip</span> <span class="s1">'cat &gt;&gt; ~/.ssh/authorized_keys'</span></code></pre></figure>
+
+<p><strong>Step 2: (Preparing the stack)</strong></p>
+
+<ol>
+  <li>Update and Upgrade the system</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span></code></pre></figure>
+
+<ol>
+  <li>Install MySQL and libmysqlclient16-dev [dependency for mysql2 gem]</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span> <span class="n">mysql</span><span class="o">-</span><span class="n">client</span> <span class="n">libmysqlclient16</span><span class="o">-</span><span class="n">dev</span></code></pre></figure>
+
+<ol>
+  <li>Install Apache</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">apache2</span></code></pre></figure>
+
+<ol>
+  <li>Install Git, Curl and build-essential [to compile ruby]</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">libxslt1</span><span class="o">.</span><span class="mi">1</span> <span class="n">libxslt1</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span> <span class="n">ruby</span><span class="o">-</span><span class="n">full</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span> <span class="n">libmysqlclient</span><span class="o">-</span><span class="n">dev</span> <span class="n">libmysql</span><span class="o">-</span><span class="n">ruby</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libopenssl</span><span class="o">-</span><span class="n">ruby</span> <span class="n">libcurl4</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dev</span> <span class="n">imagemagick</span> <span class="n">libmagickwand</span><span class="o">-</span><span class="n">dev</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">redis</span><span class="o">-</span><span class="n">server</span> <span class="n">libffi</span><span class="o">-</span><span class="n">dev</span> <span class="n">libffi</span><span class="o">-</span><span class="n">ruby</span> <span class="n">rubygems</span> <span class="n">libsqlite3</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpq</span><span class="o">-</span><span class="n">dev</span> <span class="n">libreadline5</span> <span class="n">openjdk</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">jre</span> <span class="n">nodejs</span> <span class="n">libncurses5</span><span class="o">-</span><span class="n">dev</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">openssl</span> <span class="n">libreadline6</span> <span class="n">libreadline6</span><span class="o">-</span><span class="n">dev</span> <span class="n">curl</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span> <span class="n">zlib1g</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span> <span class="n">libssl</span><span class="o">-</span><span class="n">dev</span> <span class="n">libyaml</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">dev</span> <span class="n">autoconf</span> <span class="n">libc6</span><span class="o">-</span><span class="n">dev</span> <span class="n">automake</span> <span class="n">libtool</span> <span class="n">bison</span>  <span class="n">curl</span></code></pre></figure>
+
+<ol>
+  <li>Install RVM <em>I dont prefer that one liner for rvm ruby rails as i keep getting issue for readline etc.</em></li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bash</span> <span class="o">&lt;</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">curl</span> <span class="o">-</span><span class="n">sk</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">raw</span><span class="p">.</span><span class="nf">github</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">wayneeseguin</span><span class="o">/</span><span class="n">rvm</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">binscripts</span><span class="o">/</span><span class="n">rvm</span><span class="o">-</span><span class="n">installer</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s1">'[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function'</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.bash_profile</span></code></pre></figure>
+
+<ol>
+  <li>Reload bash_profile</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="o">~</span><span class="sr">/.bash_profile</span></code></pre></figure>
+
+<ol>
+  <li>Install ruby 1.9.3</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="n">openssl</span>
+<span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="nb">readline</span>
+<span class="n">rvm</span> <span class="n">install</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="vg">$rvm_path</span><span class="o">/</span><span class="n">usr</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="nb">readline</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="vg">$rvm_path</span><span class="o">/</span><span class="n">usr</span></code></pre></figure>
+
+<ol>
+  <li>Make 1.9.3 the default interpreter</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rvm</span> <span class="o">--</span><span class="n">default</span> <span class="n">use</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span></code></pre></figure>
+
+<ol>
+  <li>Install rails</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ri</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">rdoc</span>
+<span class="no">OR</span>
+<span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="o">-</span><span class="n">v</span> <span class="mi">3</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">16</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ri</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">rdoc</span></code></pre></figure>
+
+<ol>
+  <li>Install passenger</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="n">install</span> <span class="n">passenger</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ri</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">rdoc</span></code></pre></figure>
+
+<ol>
+  <li>Install Apache2 module</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">passenger</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">apache2</span><span class="o">-</span><span class="n">module</span></code></pre></figure>
+
+<p>Press Enter and passenger-install will notify about the missing dependencies, Install them, and run the command again ie</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">passenger</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">apache2</span><span class="o">-</span><span class="n">module</span></code></pre></figure>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Passenger will ask to paste some code in cofig file paste the output specified in apache config file ie:
+</code></pre>
+</div>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">vi</span> <span class="sr">/etc/</span><span class="n">apache2</span><span class="o">/</span><span class="n">apache2</span><span class="p">.</span><span class="nf">conf</span></code></pre></figure>
+
+<ol>
+  <li>Other Packages: (Mail Servers, Image Magick and Search Engine) and some other dependencies</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">imagemagick</span> <span class="n">sphinxsearch</span>  <span class="n">libmagickwand</span><span class="o">-</span><span class="n">dev</span> <span class="n">libmagick9</span><span class="o">-</span><span class="n">dev</span> <span class="n">postfix</span> <span class="n">bsd</span><span class="o">-</span><span class="n">mailx</span> <span class="n">libxslt</span><span class="o">-</span><span class="n">dev</span> <span class="n">libxml2</span><span class="o">-</span><span class="n">dev</span></code></pre></figure>
+
+<p><strong>If you use postfix, then you fix it quickly by disabling tls by setting “smtpd_use_tls=no” in /etc/postfix/main.cf , else it will be keep throwing errors when rails will try to send email. Once settings has been changed, then just start the postfix ie:</strong></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="sr">/etc/ini</span><span class="n">t</span><span class="p">.</span><span class="nf">d</span><span class="o">/</span><span class="n">postfix</span> <span class="n">start</span></code></pre></figure>
+
+<ol>
+  <li>Enable Rewrite module(if needed)</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">a2enmod</span> <span class="n">rewrite</span></code></pre></figure>
+
+<ol>
+  <li>Restart Apache</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="sr">/etc/ini</span><span class="n">t</span><span class="p">.</span><span class="nf">d</span><span class="o">/</span><span class="n">apache2</span> <span class="n">restart</span></code></pre></figure>
+
+<ol>
+  <li>Config file: (You will need to for other changes later on.)</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">sudo</span> <span class="n">vi</span> <span class="sr">/etc/</span><span class="n">apache2</span><span class="o">/</span><span class="n">apache2</span><span class="p">.</span><span class="nf">conf</span></code></pre></figure>
+
+<p>** Typical Apache settings example for your apache config file.**</p>
+
+<ol>
+  <li>If you don’t have domain name yet then you can run your application on IP only.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NameVirtualHost</span> <span class="n">my_server_ip</span><span class="p">:</span><span class="mi">80</span>
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">my_server_ip</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">my_awesome_rails_project</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></figure>
+
+<ol>
+  <li>You have a domain ie example.com and want to run application on that. Here is apache config code for that.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NameVirtualHost</span> <span class="n">my_server_ip</span><span class="p">:</span><span class="mi">80</span>
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">production</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></figure>
+
+<ol>
+  <li>Redirect www requests to non – www, here is the code for that. Reverse of this ie redirect non www requests to www can be possible by making small modifications :)</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NameVirtualHost</span> <span class="n">my_server_ip</span><span class="p">:</span><span class="mi">80</span>
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">RewriteEngine</span> <span class="no">On</span>
+<span class="no">Redirect</span> <span class="n">permanent</span> <span class="o">/</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">www</span><span class="p">.</span><span class="nf">example</span><span class="p">.</span><span class="nf">com</span></code></pre></figure>
+
+<ol>
+  <li>Wants to setup staging server? Here is the code for that running in different environment</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+<span class="no">ServerName</span> <span class="n">staging</span><span class="p">.</span><span class="nf">example</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">RackEnv</span> <span class="n">staging</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">staging</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+  <span class="o">&lt;</span><span class="sr">/VirtualHost&gt;
+Add expiry headers for all the assets.
+
+sudo a2enmod expires
+# make sure you restart the apache after adding anything in config file.
+sudo service apache2 restart
+
+
+&lt;VirtualHost *:80&gt;
+ExpiresActive On
+ExpiresByType image/</span><span class="n">gif</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">jpg</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">png</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">vnd</span><span class="p">.</span><span class="nf">microsoft</span><span class="p">.</span><span class="nf">icon</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">icon</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">image</span><span class="o">/</span><span class="n">ico</span> <span class="s2">"access plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">application</span><span class="o">/</span><span class="n">javascript</span> <span class="s2">"now plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">javascript</span> <span class="s2">"now plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">text</span><span class="o">/</span><span class="n">javascript</span> <span class="s2">"now plus 1 months"</span>
+<span class="no">ExpiresByType</span> <span class="n">text</span><span class="o">/</span><span class="n">css</span> <span class="s2">"now plus 1 months"</span>
+<span class="no">ExpiresDefault</span> <span class="s2">"access plus 1 days"</span>
+<span class="no">ServerName</span> <span class="n">example</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">DocumentRoot</span> <span class="sr">/home/</span><span class="n">deployer</span><span class="o">/</span><span class="n">my_rails_app</span><span class="o">/</span><span class="n">production</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></figure>
+
+<p>Will make a post soon for deploying your application with capistrano.</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					optimization 
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2012/10/adding-polymorphic-image-styles-using-paperclip/">Adding polymorphic image styles using paperclip</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-24">October 24, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Paperclip is one my favourite gem which makes life so easy to upload and process images. Within an application we generally have lot of model having images like Product has many images, User has many images. Now think about a situation where thumb style for product has size 300&gt; and User model need a size for thumb is 200&gt;. Here is a quick tip if you want to style the images based upon the model.</p>
+
+<h2 id="before">Before</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+   <span class="n">belongs_to</span> <span class="ss">:imageable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+   <span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="ss">:styles</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">"300&gt;"</span><span class="p">,</span> <span class="ss">:thumb</span> <span class="o">=&gt;</span> <span class="s2">"200&gt;"</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Now we need to modify this model to support polymorphic and styles based upon the model. Here is the new code.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">belongs_to</span> <span class="ss">:imageable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+  <span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="ss">styles: </span><span class="nb">lambda</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">attachment</span><span class="o">|</span> <span class="p">{</span>
+      <span class="ss">thumb: </span><span class="p">(</span>
+        <span class="n">attachment</span><span class="p">.</span><span class="nf">instance</span><span class="p">.</span><span class="nf">imageable_type</span><span class="p">.</span><span class="nf">eql?</span><span class="p">(</span><span class="s2">"Product"</span><span class="p">)?</span> <span class="p">[</span><span class="s2">"300&gt;"</span><span class="p">,</span> <span class="s1">'jpg'</span><span class="p">]</span> <span class="p">:</span>  <span class="p">[</span><span class="s2">"200&gt;"</span><span class="p">,</span> <span class="s1">'jpg'</span><span class="p">]</span>
+      <span class="p">),</span>
+      <span class="ss">medium: </span><span class="p">(</span>
+       <span class="p">[</span><span class="s2">"500&gt;"</span><span class="p">,</span> <span class="s1">'jpg'</span><span class="p">]</span>
+      <span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>So this piece of small code will resize you images based upon the model it belongs to. If that image belongs to product then “thumb” will be resize in the format of 300&gt;, else it will be 200. Medium style will be always 500&gt; i.e. independent of model it belongs to. Pretty nice and simple.</p>
+
+<p>Now from previous learning of image optimization i.e. <a href="http://www.codebeerstartups.com/how-to-add-cache-control-expires-headers-to-images-content-served-by-s3/">How to add cache-control, expires headers to images (Content) served by S3</a> and <a href="http://www.codebeerstartups.com/save-image-as-progressive-image-using-paperclip-and-imagemagick/">Save image as progressive image using paperclip and imageMagick</a>, here is the final piece of code.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Image</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="n">belongs_to</span> <span class="ss">:imageable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="n">has_attached_file</span> <span class="ss">:attachment</span><span class="p">,</span> <span class="ss">styles: </span><span class="nb">lambda</span> <span class="p">{</span>
+    <span class="o">|</span><span class="n">attachment</span><span class="o">|</span> <span class="p">{</span>
+      <span class="ss">thumb: </span><span class="p">(</span>
+        <span class="n">attachment</span><span class="p">.</span><span class="nf">instance</span><span class="p">.</span><span class="nf">imageable_type</span><span class="p">.</span><span class="nf">eql?</span><span class="p">(</span><span class="s2">"Product"</span><span class="p">)?</span> <span class="p">[</span><span class="s2">"300&gt;"</span><span class="p">,</span> <span class="s1">'jpg'</span><span class="p">]</span> <span class="p">:</span>  <span class="p">[</span><span class="s2">"200&gt;"</span><span class="p">,</span> <span class="s1">'jpg'</span><span class="p">]</span>
+      <span class="p">),</span>
+      <span class="ss">medium: </span><span class="p">(</span>
+       <span class="p">[</span><span class="s2">"500&gt;"</span><span class="p">,</span> <span class="s1">'jpg'</span><span class="p">]</span>
+      <span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="ss">:convert_options</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">:medium</span> <span class="o">=&gt;</span> <span class="s2">"-quality 80 -interlace Plane"</span><span class="p">,</span>
+    <span class="ss">:thumb</span> <span class="o">=&gt;</span> <span class="s2">"-quality 80 -interlace Plane"</span>
+  <span class="p">},</span>
+  <span class="ss">:s3_headers</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s1">'Cache-Control'</span> <span class="o">=&gt;</span> <span class="s1">'max-age=315576000'</span><span class="p">,</span> <span class="s1">'Expires'</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">.</span><span class="nf">years</span><span class="p">.</span><span class="nf">from_now</span><span class="p">.</span><span class="nf">httpdate</span> <span class="p">}.</span><span class="nf">merge</span><span class="p">(</span><span class="no">PAPERCLIP_STORAGE_OPTIONS</span><span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+   
+					
+				</div>
+			</header>
+		</article>
+	
+		<article class="post ">
+			<header>
+				<div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+				<h2>
+					
+					tips-and-tricks 
+					
+				</h2>
+				<h1><a href="/2012/10/accessing-view_methods-in-controller/">Accessing view methods in controller</a></h1>
+				<span>
+					Posted on <i class="fa fa-clock-o"></i><time datetime="2012-10-24">October 24, 2012</time>.
+				</span>
+				<div class="excerpt">
+					
+						<p>Lot of time we need view methods in controller for example: to show a link in flash message and we start writing html code in controller using string concatenation, and it works perfectly fine. Here is the quick tip to make that code more cleaner.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">view_context</span><span class="p">.</span><span class="nf">link_to</span><span class="p">(</span><span class="s2">"Show"</span><span class="p">,</span> <span class="vi">@product</span><span class="p">)</span></code></pre></figure>
+
+<p>Similarly you can access a lot of other methods too. Pretty nice and clean ;)</p>
+   
+					
+				</div>
+			</header>
+		</article>
+	
+
+	<div class="pagination">
+	
+		<a href="/page20" class="smallbutton lightgray left"><i class="fa fa-chevron-left"></i><span>Older Posts</span></a>
+	
+	
+		<a href="/page18" class="smallbutton lightgray right"><span>Newer Posts</span><i class="fa fa-chevron-right"></i></a>
+	
+</div>
+
+</section>
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>

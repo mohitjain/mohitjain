@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <title>Not able to start rails application as port 3000 is already in use.</title>
+      <meta name="description" content="Every Dog has one Blog" />
+
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <link rel="alternate" type="application/rss+xml" href="http://codebeerstartups.com/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="prefetch" href="http://codebeerstartups.com">
+      <link rel="canonical" href="http://codebeerstartups.com/2012/12/not-able-to-start-rails-application-as-port-3000-is-already-in-use/">
+
+      <link rel="stylesheet" href="/assets/css/init.css">
+      <link href='//fonts.googleapis.com/css?family=Domine:700|Open+Sans:400,600|Source+Code+Pro:500' rel='stylesheet' type='text/css'>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="title">
+    <a href="http://codebeerstartups.com"><i class="fa fa-bookmark-o fa-lg"></i><span>Codebeerstartups</span></a>
+</header>
+
+<nav class="wrapper  ">
+    <a href="#" onclick="return false;"><i class="fa fa-navicon fa-lg"></i></a>
+    <ul>
+        
+            <li><a href="/about/">About</a></li>
+        
+            
+        
+            <li><a href="/contact/">Contact</a></li>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+</nav>
+
+    <div class="index">
+    <div class="wrapper">
+        <h1 class="right">Not able to start rails application as port 3000 is already in use.</h1>
+        <h2 class="left">Introduction</h2>
+    </div>
+</div>
+
+<div class="profile ">
+    <img src="/assets/img/author.jpg" class="profileimage" alt="user">
+    <h4>Mohit Jain</h4>
+    <ul>
+    	
+        <li><a href="http://twitter.com/jainmohit27" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        
+        
+        <li><a href="http://facebook.com/jain.mohit27" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        
+        
+        <li><a href="http://github.com/mohitjain" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+        <li><a href="http://codebeerstartups.com/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+    </ul>
+    <p>Rails Developer</p>
+    <hr>
+</div>
+
+<div id="cover" class="cover ">
+    <div class="background" style="background-image:url('');"></div>
+    <header class="wrapper">
+        <h2>
+        	
+				Server
+          	
+				tips-and-tricks
+          	
+				utilities
+          	
+        </h2>
+        <h1><a href="/2012/12/not-able-to-start-rails-application-as-port-3000-is-already-in-use/">Not able to start rails application as port 3000 is already in use.</a></h1>
+        <span>
+            Posted by <a href="http://codebeerstartups.com" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-04">December 4, 2012</time>.
+        </span>
+    </header>
+    <i class="fa fa-chevron-down movedown"></i>
+</div>
+
+<section class="posts wrapper">
+    <article class="post ">
+
+        <header>
+            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
+            <h2>
+            	
+					Server
+          		
+					tips-and-tricks
+          		
+					utilities
+          		
+            </h2>
+            <h1 id="posttitle"><a href="#">Not able to start rails application as port 3000 is already in use.</a></h1>
+            <span>
+                Posted by <a href="" target="_blank">Mohit Jain</a>
+                on <i class="fa fa-clock-o"></i> <time datetime="2012-12-04">December 4, 2012</time>.
+            </span>
+        </header>
+
+        <section class="postbody">
+            <p>I have faced this issue so many times, may be because I accidentally closed the terminal or something else. Because of that my 3000 or some other port is blocked, and I am not able to start the application on the same port. In that case you will get an error like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">.</span><span class="nf">rvm</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p194</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">eventmachine</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">eventmachine</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">526</span><span class="ss">:in</span> <span class="sb">`start_tcp_server': no acceptor (port is in use or requires root privileges) (RuntimeError)
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/eventmachine-1.0.0/lib/eventmachine.rb:526:in `</span><span class="n">start_server</span><span class="s1">'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/thin-1.5.0/lib/thin/backends/tcp_server.rb:16:in `connect'</span>
+	<span class="n">from</span> <span class="sr">/Users/</span><span class="o">*</span><span class="n">me</span><span class="o">*</span><span class="sr">/.rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p194</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">thin</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">thin</span><span class="o">/</span><span class="n">backends</span><span class="o">/</span><span class="n">base</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">55</span><span class="ss">:in</span> <span class="sb">`block in start'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/eventmachine-1.0.0/lib/eventmachine.rb:187:in `</span><span class="n">call</span><span class="s1">'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/eventmachine-1.0.0/lib/eventmachine.rb:187:in `run_machine'</span>
+	<span class="n">from</span> <span class="sr">/Users/</span><span class="o">*</span><span class="n">me</span><span class="o">*</span><span class="sr">/.rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p194</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">eventmachine</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">eventmachine</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">187</span><span class="ss">:in</span> <span class="sb">`run'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/thin-1.5.0/lib/thin/backends/base.rb:63:in `</span><span class="n">start</span><span class="s1">'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/thin-1.5.0/lib/thin/server.rb:159:in `start'</span>
+	<span class="n">from</span> <span class="sr">/Users/</span><span class="o">*</span><span class="n">me</span><span class="o">*</span><span class="sr">/.rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p194</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">rack</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rack</span><span class="o">/</span><span class="n">handler</span><span class="o">/</span><span class="n">thin</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">13</span><span class="ss">:in</span> <span class="sb">`run'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/server.rb:265:in `</span><span class="n">start</span><span class="s1">'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.8/lib/rails/commands/server.rb:70:in `start'</span>
+	<span class="n">from</span> <span class="sr">/Users/</span><span class="o">*</span><span class="n">me</span><span class="o">*</span><span class="sr">/.rvm/</span><span class="n">gems</span><span class="o">/</span><span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">p194</span><span class="o">/</span><span class="n">gems</span><span class="o">/</span><span class="n">railties</span><span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">8</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">rails</span><span class="o">/</span><span class="n">commands</span><span class="p">.</span><span class="nf">rb</span><span class="p">:</span><span class="mi">55</span><span class="ss">:in</span> <span class="sb">`block in '
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.8/lib/rails/commands.rb:50:in `</span><span class="n">tap</span><span class="s1">'
+	from /Users/*me*/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.8/lib/rails/commands.rb:50:in `'</span>
+	<span class="n">from</span> <span class="n">script</span><span class="o">/</span><span class="n">rails</span><span class="p">:</span><span class="mi">6</span><span class="ss">:in</span> <span class="sb">`require'
+	from script/rails:6:in `</span><span class="err">'</span></code></pre></figure>
+
+<p>A solution to this problem is <strong>Restart your machine</strong>, (<em>Kidding</em>):</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">lsof</span> <span class="o">-</span><span class="n">i</span> <span class="p">:</span><span class="mi">3000</span></code></pre></figure>
+
+<p>In port 3000 is already in use, else replace 3000 with your port number like 4000 etc.
+This will result out the PID and then you can kill the process in order to make your port free :)</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">kill</span> <span class="o">-</span><span class="mi">9</span> <span class="no">PID</span></code></pre></figure>
+
+<p>Now your port is released and you can start your application on the same port.</p>
+
+        </section>
+
+        <footer>
+            <ul class="share left">
+                <li><a href="http://twitter.com/share?text=Not able to start rails application as port 3000 is already in use.&url=http://codebeerstartups.com/2012/12/not-able-to-start-rails-application-as-port-3000-is-already-in-use/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://codebeerstartups.com/2012/12/not-able-to-start-rails-application-as-port-3000-is-already-in-use/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
+            </ul>
+        </footer>
+
+        <div class="postprofile">
+            <img src="/assets/img/author.jpg" class="author" alt="user">
+            <div class="info">
+                <h4>Mohit Jain</h4>
+                <a href="http://codebeerstartups.com">http://codebeerstartups.com</a>
+                <p>Rails Developer</p>
+                <ul class="social">
+       				
+                    <li><a href="http://twitter.com/jainmohit27" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    
+					
+                    <li><a href="http://facebook.com/jain.mohit27" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    
+					
+                    <li><a href="http://github.com/mohitjain" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+                    
+					
+					
+					
+                    <li><a href="https://plus.google.com/+MohitJain27" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+					
+					
+					
+                    <li><a href="https://www.pinterest.com/mohitjain27/" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					
+					
+                    <li><a href="https://www.linkedin.com/profile/view?id=40603170" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+					
+                    <li><a href="http://codebeerstartups.com/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="comments">
+            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+
+    </article>
+
+</section>
+
+
+    <footer class="wrapper">
+    <div class="smallnav">
+    	
+        	<a href="/about/">About</a> &bull;
+        
+        	
+        
+        	<a href="/contact/">Contact</a> &bull;
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+        	
+        
+    </div>
+    <div>
+        Copyright &copy; <a href="http://codebeerstartups.com/">Codebeerstartups</a>. 2014 &bull; All rights reserved.
+        <span class="ghost">Proudly published with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</span>
+    </div>
+</footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var config = {
+        'disqus_shortname': 'codebeerstartups',
+        'google_comments': false,
+        'analytics_id': 'UA-30450850-3',
+        'analytics_domain': 'codebeerstartups.com',
+        'readingtime': true,
+        'autoload_comments': true
+      };
+    </script>
+    <script async type="text/javascript" src="/assets/js/theme.min.js"></script>
+
+  </body>
+</html>
