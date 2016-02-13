@@ -1,6 +1,4 @@
-gems:
-  - jekyll-paginate
-
+gems: [jekyll-paginate]
 # Site Settings
 title: 						"Codebeerstartups"
 email: 						"jain.mohit27@gmail.com"
@@ -62,7 +60,3 @@ jekyll-archives:
     day: '/:year/:month/:day/'
     category: 'blog/categories/:name/'
 
-gems:
-- jekyll-sitemap
-- jekyll-archives
-- jekyll-redirect-from
