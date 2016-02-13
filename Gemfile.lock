@@ -76,5 +76,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll-archives
   jekyll-compose
+  jekyll-paginate
   jekyll-redirect-from
   jekyll-sitemap
