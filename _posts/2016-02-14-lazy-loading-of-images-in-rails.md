@@ -11,13 +11,13 @@ Recently I joined a company thats [Thrillophilia](http://www.thrillophilia.com/)
 
 <!--more-->
 
-But the problem is the usage. So what we use in rails is:
+But the problem is the usage. So what we use in rails:
 
 {% highlight ruby %}
   <%= image_tag "my_image.jpg" %>
 {% endhighlight %}
 
-which generates a code like this:
+which generates a HTML code like this:
 
 {% highlight ruby %}
   <img src="my_image.jpg"/>      
@@ -29,7 +29,7 @@ Now layzr javascript plugin is expecting something like this:
   <img data-normal="my_image.jpg"/>
 {% endhighlight %}
 
-and later on it converted into
+and later on, it gets converted into using javascript:
 
 {% highlight ruby %}
   <img scr="my_image.jpg"/>
