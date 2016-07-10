@@ -8,6 +8,7 @@ url: "http://codebeerstartups.com"
 logourl: ""
 fa-logo: "fa-bookmark-o"
 paginate: 5
+future: true
 
 # Author Settings
 author_name: "Mohit Jain"
