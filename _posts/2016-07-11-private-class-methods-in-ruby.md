@@ -25,6 +25,8 @@ end
 
 {% endhighlight %}
 
+<!--more-->
+
 In the above code, poop is a public method and bark is a private method. If you are calling a public method it will be something like:
 
 {% highlight ruby %}
