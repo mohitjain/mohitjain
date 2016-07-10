@@ -7,7 +7,7 @@ categories: Image optimizations, lazy-loading
 description: How to lazy load images in ruby on rails.
 ---
 
-Recently I joined a company thats [Thrillophilia](http://www.thrillophilia.com/) a tours and activities company in India, and where I need to solve a problem of lazy loading of images, cause the site is image heavy. I came across lot of lazy loading javascript plugins, but finally came to know about [Layzr plugin](https://github.com/callmecavs/layzr.js) simple, lightweight and works like charm. 
+Recently I joined a company thats [Thrillophilia](http://www.thrillophilia.com/) a tours and activities company in India, and where I need to solve a problem of lazy loading of images, cause the site is image heavy. I came across lot of lazy loading javascript plugins, but finally came to know about [Layzr plugin](https://github.com/callmecavs/layzr.js) simple, lightweight and works like charm.
 
 <!--more-->
 
@@ -20,7 +20,7 @@ But the problem is the usage. So what we use in rails:
 which generates a HTML code like this:
 
 {% highlight ruby %}
-  <img src="my_image.jpg"/>      
+  <img src="my_image.jpg"/>
 {% endhighlight %}
 
 Now layzr javascript plugin is expecting something like this:
@@ -44,7 +44,7 @@ So what I want is a default image which will be loaded when page load happens an
 or while using paperclip as a gem makes it like:
 
 {% highlight ruby %}
-  <%= image_tag "default_image.jpg", "data-normal" => image.photo.url(:medium) %>     
+  <%= image_tag "default_image.jpg", "data-normal" => image.photo.url(:medium) %>
 {% endhighlight %}
 
 The above code is ugly. I don't want to screw up my whole image_tag, so wrote a simple ruby gem to write a clean code, which takes a default image from configuration files and do the magic behind the screen. ie:
@@ -59,7 +59,7 @@ This gets converted into:
   <img src="default_image.jpg" data-normal="my_image.jpg"/>
 {% endhighlight %}
 
-## How to use it:      
+## How to use it:
 
 All you need to do is:
 
