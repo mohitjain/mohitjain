@@ -4,13 +4,10 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2013/01/how-to-fetch-and-parse-emails-in-ruby-on-rails/
-
-
-
 categories: quick-solution tips-and-tricks
 ---
 
-Last weekend I was working on an mini hackathon and launched a group emailing service. [EmailList.io][1]. The task was to setup an email server, how to fetch and parse emails in ruby on rails forward it to respective group members. Last part was pretty simple. In this post I am just talking about “How to fetch and parse emails in ruby on rails.”
+Last weekend I was working on a mini hackathon and launched a group emailing service. [EmailList.io][1]. The task was to setup an email server, how to fetch and parse emails in ruby on rails forward it to respective group members. Last part was pretty simple. In this post, I am just talking about “How to fetch and parse emails in ruby on rails.”
 
  [1]: http://emaillist.io/?utm_source=codebeerstartups&utm_medium=blogpost&utm_campaign=codebeerstartups
 
@@ -56,7 +53,7 @@ end
 
 {% endhighlight %}
 
-So far its pretty easy, but the question is how to parse the email body as html, text and parse attachments. Now take a look on this. Pretty simple.
+So far it's pretty easy, but the question is how to parse the email body as HTML, text and parse attachments. Now take a look on this. Pretty simple.
 
 ## Get attachments, HTML and Text Body
 
@@ -83,8 +80,8 @@ else
 end
 
 {% endhighlight %}
-Once you have parsed all the attributes from the email ie to, from, email attachments now you can easily pass it to delayed job or something like creating a ticket or what ever you want to do as per you needs ;)
+Once you have parsed all the attributes from the email ie to, from, email attachments now you can easily pass it to delayed job or something like creating a ticket or whatever you want to do as per you needs ;)
 
-If you are facing any issues. Checkout the source code files at [github][3]. Still if you have any doubts contact me or you can comment on the blog post itself.
+If you are facing any issues. Check out the source code files at [github][3]. Still, if you have any doubts contact me or you can comment on the blog post itself.
 
   [3]: https://github.com/mohitjain/mailman_example_code

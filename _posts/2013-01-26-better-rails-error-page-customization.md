@@ -4,9 +4,6 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2013/01/better-rails-error-page-customization/
-
-
-
 categories: quick-solution tips-and-tricks utilities
 ---
 
@@ -14,7 +11,7 @@ Rails error page customization is much easier using [Better Errors][1] gem which
 
  [1]: https://github.com/charliesome/better_errors
 
-All you need is add a single gem in your gemfile.
+All you need is add a single gem in your gem file.
 {% highlight ruby %}
 gem "better_errors"
 {% endhighlight %}

@@ -6,13 +6,14 @@ keywords: assets_sync, Amazon s3, Icons, background images, performance, loading
 categories: preformance,  heroku
 ---
 
-Loading icons from heroku file system or linode or any other hosting will slow down the website. So here are two methods by which you can fix this issue.
+
+Loading icons from Heroku file system or Linode or any other hosting will slow down the website. So here are two methods by which you can fix this issue.
 
 
 ##Solution 1:
 
 
-Move all the background images into image_tag. My designer friend explained me sometimes its not possible to do that. So here is the second solution.
+Move all the background images into image_tag. My designer friend explained me sometimes it's not possible to do that. So here is the second solution.
 
 <!--more-->
 
@@ -50,7 +51,7 @@ config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.co
 
 {% endhighlight %}
 
-All the assets in style sheet will come from amazon.
+All the assets in style sheet will come from Amazon S3.
 
 
 ##How to test solution 2 on local machine:
@@ -66,7 +67,7 @@ config.action_controller.asset_host = "http://localhost:3000"
 {% endhighlight %}
 
 2. Make all the changes as specified in step 3 on solution 2 above.
-3. Restart the server and load your page having background images.. You will see things like:
+3. Restart the server and load your page having background images. You will see things like:
 
 {% highlight html %}
 
@@ -117,4 +118,4 @@ Previously it was
 
 {% endhighlight %}
 
-I hope this makes some sense. For reference how to upload assets on amazon please check [How to Deploy Assets on Amazon S3 and Why Deploying Assets to Amazon S3 Is Important](http://www.codebeerstartups.com/2012/10/how-to-deploy-assets-on-amazon-s3-and-why-deploying-assets-to-amazon-s3-is-important/):
+I hope this makes some sense. For reference how to upload assets on Amazon S3 please check [How to Deploy Assets on Amazon S3 and Why Deploying Assets to Amazon S3 Is Important](http://www.codebeerstartups.com/2012/10/how-to-deploy-assets-on-amazon-s3-and-why-deploying-assets-to-amazon-s3-is-important/):

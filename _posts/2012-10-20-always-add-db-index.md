@@ -8,7 +8,7 @@ keywords: performance, mysql, index,  optimizations, query optimizations
 categories: Performance ruby-on-rails
 ---
 
-Always add db index for foreign key, columns that need to be sorted, lookup fields and columns that are used in a GROUP BY.This can improve the performance for sql query. If you’re not sure which column need to index
+Always add DB index for foreign key, columns that need to be sorted, lookup fields and columns that are used in a GROUP BY. This can improve the performance of SQL query.
 
 ##Bad Smell
 
@@ -28,7 +28,7 @@ class CreateComments < ActiveRecord::Migration
 end
 {% endhighlight %}
 
-By default, rails does not add indexes automatically for foreign key, you should add indexes by yourself.
+By default, Rails does not add indexes automatically for foreign key, you should add indexes by yourself.
 
 ##Refactor
 
@@ -52,5 +52,3 @@ end
 {% endhighlight %}
 
 This is a basic practice, follow it.
-
-I recommend to use , which provide rake tasks to find missing indexes.

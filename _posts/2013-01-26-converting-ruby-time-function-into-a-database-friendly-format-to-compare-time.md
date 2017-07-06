@@ -4,11 +4,10 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink:  /2013/01/converting-ruby-time-function-into-a-database-friendly-format-to-compare-time/
-
 categories: optimization  tips-and-tricks utilities
 ---
 
-Use to_s(:db) to convert Ruby time function into a database friendly format to compare time.
+Use to_s(:db) to convert Ruby time function into a database-friendly format to compare time.
 
 {% highlight ruby %}
     Time.now.to_s(:db)

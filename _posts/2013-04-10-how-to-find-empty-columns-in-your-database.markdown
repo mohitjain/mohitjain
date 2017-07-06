@@ -7,7 +7,7 @@ date: 2013-04-10 00:14
 categories: mysql database
 ---
 
-I need a script to find out empty columns in my application which has pretty massive database. Here is that small ruby script which helped to get list of all the columns in the respective table which are null.
+I need a script to find out empty columns in my application which has a pretty massive database. Here is that small ruby script which helped to get a list of all the columns in the respective table which are null.
 
 Here is a small snippet for the same.
 

@@ -4,9 +4,6 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink:  /2012/11/validating-email-address-by-defining-custom-validations-in-rubyon-rails/
-
-
-
 categories: optimization performance quick-solution tips-and-tricks utilities, Validations
 ---
 
@@ -26,7 +23,7 @@ Here is how to do something like this:
 
 **Step 1:**
 
-Create a new file ie email\_format\_validator.rb in lib directtory and paste following code there:
+Create a new file, i.e., email\_format\_validator.rb in the lib directory and paste following code there:
 
 {% highlight ruby %}
 
@@ -41,7 +38,7 @@ end
 {% endhighlight %}
 **Step 2:**
 
-Define error message ie Paste this sample code in config/locales/en.yml
+Define error message, i.e., Paste this sample code in config/locales/en.yml
 
 {% highlight ruby %}
 
@@ -49,13 +46,13 @@ Define error message ie Paste this sample code in config/locales/en.yml
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale for starting points.
 
 en:
-  hello: "Hello world"
+  hello: "Hello world."
   activerecord:
       errors:
           messages:
-              email_format: "is not properly formatted"
+              email_format: "is not properly formatted."
 {% endhighlight %}
-**Step 3:** Auto load validator file ie paste these two lines in application.rb under config directory.
+**Step 3:** Auto load validator file, i.e., pastes these two lines in application.rb under config directory.
 
 {% highlight ruby %}
 config.autoload_paths  = %W(#{config.root}/lib)

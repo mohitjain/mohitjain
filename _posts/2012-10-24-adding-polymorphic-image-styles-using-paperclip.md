@@ -6,8 +6,7 @@ comments: true
 permalink: /2012/10/adding-polymorphic-image-styles-using-paperclip/
 categories: optimization tips-and-tricks
 ---
-
-Paperclip is one my favourite gem which makes life so easy to upload and process images. Within an application we generally have lot of model having images like Product has many images, User has many images. Now think about a situation where thumb style for product has size 300> and User model need a size for thumb is 200>. Here is a quick tip if you want to style the images based upon the model.
+Paperclip is one my favorite gem which makes life so easy to upload and process images. Within an application we have a lot of model having images like Product has many pictures, User has many pictures. Now think about a situation where thumb style for the product has size 300> and User model need a size for the thumb is 200>. Here is a quick tip if you want to style the images based on the model.
 
 ##Before
 
@@ -18,7 +17,7 @@ class Image < ActiveRecord::Base
 end
 {% endhighlight %}
 
-Now we need to modify this model to support polymorphic and styles based upon the model. Here is the new code.
+Now we need to modify this model to support polymorphic and styles based on the model. Here is the new code.
 
 {% highlight ruby %}
 class Image < ActiveRecord::Base
@@ -37,7 +36,7 @@ end
 {% endhighlight %}
 So this piece of small code will resize you images based upon the model it belongs to. If that image belongs to product then “thumb” will be resize in the format of 300>, else it will be 200. Medium style will be always 500> i.e. independent of model it belongs to. Pretty nice and simple.
 
-Now from previous learning of image optimization i.e. [How to add cache-control, expires headers to images (Content) served by S3][1] and [Save image as progressive image using paperclip and imageMagick][2], here is the final piece of code.
+Now from previous learning of image optimization i.e. [How to add cache-control, expires headers to images (Content) served by S3][1] and [Save image as the progressive image using paperclip and imageMagick][2], here is the final piece of code.
 
 
  [1]: http://www.codebeerstartups.com/how-to-add-cache-control-expires-headers-to-images-content-served-by-s3/

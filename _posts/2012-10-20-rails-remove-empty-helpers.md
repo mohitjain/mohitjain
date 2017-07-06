@@ -2,22 +2,18 @@
 title: Rails Remove empty helpers
 layout: post
 comments: true
-
-
-
 permalink: /2012/10/rails-remove-empty-helpers/
 description: Quick way to remove all empty helpers in ruby on rails.
 keywords:  optimizations, cleanup
 categories: optimization ruby-on-rails
 ---
-
 If you use rails generator to create scaffolds or controllers, it will also create some helpers, most of the helpers are useless, just remove them.
 
-Rails provides very useful generators to create scaffolds, models, controllers and views, when generating the scaffolds or controllers, it also creates some helpers, some of helpers may use, but I bet most of helpers in your project are empty.
+Rails provide handy generators to create scaffolds, models, controllers, and views when generating the scaffolds or controllers, it also creates some helpers, some of the helpers may use, but I bet most of the helpers in your project are empty.
 
-Helpers are good places to add helper method for view pages, but if you don’t need them, why you push these empty helpers to repository. Although your helpers are empty, rails still takes time to load them, Test::Unit or RSpec still load them to run tests.
+Helpers are right places to add the helper method for view pages, but if you don’t need them, why you push these empty helpers to the repository. Although your helpers are empty, rails still take time to load them, Test::Unit or RSpec still load them to run tests.
 
-So I recommend you to remove all the empty helpers from your project, the following is a script to detect empty helpers, remove them and corresponding unit tests or rspecs.
+So I recommend you to remove all the empty helpers from your project, the following is a script to detect empty helpers, remove them and corresponding unit tests or Rspecs.
 
 {% highlight ruby %}
 Dir.glob("app/helpers/**/*.rb").each do |file|

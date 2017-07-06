@@ -73,5 +73,4 @@ end
 
 {% endhighlight %}
 
-This makes your code more dry and more clean. And adding more states makes it more easy to modify.
-
+This makes your code drier and cleaner. And adding more states makes it easier to modify.

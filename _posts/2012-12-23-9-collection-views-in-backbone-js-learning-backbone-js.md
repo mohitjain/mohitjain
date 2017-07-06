@@ -8,7 +8,6 @@ banner_image: "/media/backbone.jpg"
 featured: true
 ---
 
-
 > This entry is part 9 of 14 in the series for [A Complete Guide for Learning Backbone Js](/2012/12/a-complete-guide-for-learning-backbone-js/)
 
 * [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)
@@ -30,57 +29,57 @@ featured: true
 
 ## Agenda
 
-In the previous lesson we learned how to use collection in backbone js. Now in this topic we will learn how to generate collection views in backbone js. Lets start coding..
+In the previous lesson, we learned how to use the collection in Backbone js. Now in this topic, we will learn how to generate collection views in Backbone js. Let's start coding.
 
 ## What we have till now
 
-So from previous lesson we have:
+So from the previous lesson we have:
 {% highlight javascript %}
 
 // Person Model
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 
 // The View for a Person
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template( $('#personTemplate').html()),
+    template: _.template( $('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 var peopleCollection = new PeopleCollection([
-	{
-		name: 'Mohit Jain',
-		age: 26
-	},
-	{
-		name: 'Taroon Tyagi',
-		age: 25,
-		occupation: 'web designer'
-	},
-	{
-		name: 'Rahul Narang',
-		age: 26,
-		occupation: 'Java Developer'
-	}
+    {
+        name: 'Mohit Jain',
+        age: 26
+    },
+    {
+        name: 'Taroon Tyagi',
+        age: 25,
+        occupation: 'web designer'
+    },
+    {
+        name: 'Rahul Narang',
+        age: 26,
+        occupation: 'Java Developer'
+    }
 ]);
 
 {% endhighlight %}
@@ -99,7 +98,7 @@ So we have person model, person view, but the problem is we dont have collection
 
 // View for all people
 var PeopleView = Backbone.View.extend({
-	tagName: 'ul'
+    tagName: 'ul'
 });
 
 {% endhighlight %}
@@ -121,80 +120,80 @@ So lets just define our render method and implement all of the above functionali
 
 // View for all people
 var PeopleView = Backbone.View.extend({
-	tagName: 'ul',
+    tagName: 'ul',
 
-	render: function(){
-	// must do certain things as specified above.
-	//Loop over all the person objects
-	//Should call render for the person objects
-	//Should display a collection as HTML
-	}
+    render: function(){
+    // must do certain things as specified above.
+    //Loop over all the person objects
+    //Should call render for the person objects
+    //Should display a collection as HTML
+    }
 });
 
 {% endhighlight %}
 
-Lets create a new object ie peopleView and see few things on chrome developer tools console. I have added initialize function in CollectionView and here is the code for main.js
+Let's create a new object i.e., peopleView and see few things on Chrome developer tools console. I have added initialize function in CollectionView and here is the code for main.js
 
 {% highlight javascript %}
 
 // Person Model
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 
 
 // View for all people
 var PeopleView = Backbone.View.extend({
-	tagName: 'ul',
+    tagName: 'ul',
 
-	initialize: function(){
-		console.log(this.collection);
-	},
+    initialize: function(){
+        console.log(this.collection);
+    },
 
-	render: function(){
+    render: function(){
 
-	}
+    }
 });
 
 // The View for a Person
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template( $('#personTemplate').html()),
+    template: _.template( $('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 var peopleCollection = new PeopleCollection([
-	{
-		name: 'Mohit Jain',
-		age: 26
-	},
-	{
-		name: 'Taroon Tyagi',
-		age: 25,
-		occupation: 'web designer'
-	},
-	{
-		name: 'Rahul Narang',
-		age: 26,
-		occupation: 'Java Developer'
-	}
+    {
+        name: 'Mohit Jain',
+        age: 26
+    },
+    {
+        name: 'Taroon Tyagi',
+        age: 25,
+        occupation: 'web designer'
+    },
+    {
+        name: 'Rahul Narang',
+        age: 26,
+        occupation: 'Java Developer'
+    }
 ]);
 
 // on console
@@ -207,31 +206,31 @@ Here is the result from console:
 ![collection views in backbone js](/wp-content/uploads/2012/12/Screen-Shot-2012-12-23-at-5.47.44-AM.png?fit=725,680)
 
 *   So what I can see is three objects in the collection view
-*   Lots of functions that can be applied on collection views.
+*   Lots of functions that can be applied to collection views.
 
-So lets move ahead and use each function and loop over the collection view. Lets for now just run a loop.
+So let's move ahead and use each function and loop over the collection view. Lets for now just run a loop.
 
 {% highlight javascript %}
 
 // loop over all the person objects in the peopleCollection
 render: function(){
-	this.collection.each(function(person){
+    this.collection.each(function(person){
             console.log(person);
-	});
+    });
 }
 
 {% endhighlight %}
 
-So first step of looping is done. Now lets move ahead of second step ie: Create a view for each person.
+So first step of looping is done. Now let's move ahead of the second step i.e., Create a view for each person.
 
 {% highlight javascript %}
 
 // loop over all the person objects in the peopleCollection
 render: function(){
-	this.collection.each(function(person){
+    this.collection.each(function(person){
             var personView = new PersonView({ model: person });
             console.log(personView.el);
-	});
+    });
 }
 
 {% endhighlight %}
@@ -243,10 +242,10 @@ So far its fine. Now just hold a sec and checkout this carefully. “this” ins
 // loop over all the person objects in the peopleCollection
 render: function(){
         console.log(this); // reference to collection object.. Pretty useful..
-	this.collection.each(function(person){
+    this.collection.each(function(person){
             var personView = new PersonView({ model: person });
 
-	});
+    });
 }
 
 //OR
@@ -254,41 +253,41 @@ render: function(){
 
 // loop over all the person objects in the peopleCollection
 render: function(){
-	this.collection.each(function(person){
+    this.collection.each(function(person){
             var personView = new PersonView({ model: person });
             console.log(this);  // referencing to global window object and its pretty useless..
-	});
+    });
 }
 
 {% endhighlight %}
 
-So in order to maintain the reference use this:(*checkout inline comments.*)
+So to maintain the reference use this:(*checkout inline comments.*)
 
 {% highlight javascript %}
 
 // loop over all the person objects in the peopleCollection
 render: function(){
-	this.collection.each(function(person){
+    this.collection.each(function(person){
             var personView = new PersonView({ model: person });
             console.log(personView.el);
-	}, this);    // at this point we are passing context.. Underscore provides this functionality..
+    }, this);    // at this point we are passing context.. Underscore provides this functionality..
 }
 
 {% endhighlight %}
 
-So now we have a reference of actual collection view inside the loop.. So now just lets complete the third task ie rendering the whole collection list.
+So now we have a reference of original collection view inside the loop. So now just lets complete the third task, i.e., rendering the whole collection list.
 
 {% highlight javascript %}
 
 var PeopleView = Backbone.View.extend({
-	tagName: 'ul',
+    tagName: 'ul',
 
-	render: function(){
-		this.collection.each(function(person){
-			var personView = new PersonView({ model: person });
-			this.$el.append(personView.el); // adding all the person objects.
-		}, this);
-	}
+    render: function(){
+        this.collection.each(function(person){
+            var personView = new PersonView({ model: person });
+            this.$el.append(personView.el); // adding all the person objects.
+        }, this);
+    }
 });
 
 
@@ -304,131 +303,131 @@ Here is console output:
 
 ![collection views in backbone js](/wp-content/uploads/2012/12/Screen-Shot-2012-12-23-at-6.08.39-AM.png?fit=678,392)
 
-**A quick tip:** Always return this from your render method in order to do chaining. For example: person.render.el instead of running two commands person.render and then person.el.
+**A quick tip:** Always return this from your render method to do chaining. For example person.render.el instead of running two commands person.render and then person.el.
 
 
-So lets use this tip finish up the lesson. So currently we have: (*checkout inline comments.*)
+So let's use this tip finish up the lesson. So currently we have: (*checkout inline comments.*)
 
 {% highlight javascript %}
 
 // Person Model
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 
 
 // View for all people
 var PeopleView = Backbone.View.extend({
-	tagName: 'ul',
+    tagName: 'ul',
 
-	render: function(){
-		this.collection.each(function(person){
-			var personView = new PersonView({ model: person });
-			this.$el.append(personView.el);
-		}, this);
-	}
+    render: function(){
+        this.collection.each(function(person){
+            var personView = new PersonView({ model: person });
+            this.$el.append(personView.el);
+        }, this);
+    }
 });
 
 // The View for a Person
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template($('#personTemplate').html()),
+    template: _.template($('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 var peopleCollection = new PeopleCollection([
-	{
-		name: 'Mohit Jain',
-		age: 26
-	},
-	{
-		name: 'Taroon Tyagi',
-		age: 25,
-		occupation: 'web designer'
-	},
-	{
-		name: 'Rahul Narang',
-		age: 26,
-		occupation: 'Java Developer'
-	}
+    {
+        name: 'Mohit Jain',
+        age: 26
+    },
+    {
+        name: 'Taroon Tyagi',
+        age: 25,
+        occupation: 'web designer'
+    },
+    {
+        name: 'Rahul Narang',
+        age: 26,
+        occupation: 'Java Developer'
+    }
 ]);
 
 {% endhighlight %}
 
-Lets do certain things: (*checkout inline comments.*)
+Let's do certain things: (*checkout inline comments.*)
 
-*   Remove initialize function from PersonView in order to use chaining and manually call render.
+*   Remove initialize function from PersonView to use chaining and manually call render.
 *   Returning this from PersonView render method
 *   Returning this from CollectionView render
-*   Adding whole list on dom for demo purpose.
+*   Adding the whole list on Dom for demo purpose.
 
 {% highlight javascript %}
 
 // Person Model
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 // View for all people
 var PeopleView = Backbone.View.extend({
-	tagName: 'ul',
-	render: function(){
-		this.collection.each(function(person){
-			var personView = new PersonView({ model: person });
-			this.$el.append(personView.render().el); // calling render method manually..
-		}, this);
-		return this; // returning this for chaining..
-	}
+    tagName: 'ul',
+    render: function(){
+        this.collection.each(function(person){
+            var personView = new PersonView({ model: person });
+            this.$el.append(personView.render().el); // calling render method manually..
+        }, this);
+        return this; // returning this for chaining..
+    }
 });
 // The View for a Person
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
-	template: _.template($('#personTemplate').html()),
+    tagName: 'li',
+    template: _.template($('#personTemplate').html()),
        //////////   initialize function is gone from there. So we need to call render method manually now..
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-		return this;  // returning this from render method..
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+        return this;  // returning this from render method..
+    }
 });
 var peopleCollection = new PeopleCollection([
-	{
-		name: 'Mohit Jain',
-		age: 26
-	},
-	{
-		name: 'Taroon Tyagi',
-		age: 25,
-		occupation: 'web designer'
-	},
-	{
-		name: 'Rahul Narang',
-		age: 26,
-		occupation: 'Java Developer'
-	}
+    {
+        name: 'Mohit Jain',
+        age: 26
+    },
+    {
+        name: 'Taroon Tyagi',
+        age: 25,
+        occupation: 'web designer'
+    },
+    {
+        name: 'Rahul Narang',
+        age: 26,
+        occupation: 'Java Developer'
+    }
 ]);
 var peopleView = new PeopleView({ collection: peopleCollection });
 $(document.body).append(peopleView.render().el);   // adding people view in DOM.. Only for demo purpose...
@@ -439,11 +438,11 @@ So lets just run this code and see what we have:
 
 ![Collection views in backbone js](/wp-content/uploads/2012/12/Screen-Shot-2012-12-23-at-6.08.39-AM.png?fit=678,392)
 
-Boom.. A complete list of person displayed on page. Pretty nice.. ;) So now if you are thing that so far so much code just to display a list. Hold on.. This is how we got the whole structure of the application. Now to add Jquery events all we need to call functions and add some new minor functions. Trust me once you start checking out jquery events. You will just fell in love with backbone.
+Boom.. A complete list of the person displayed on the page. Pretty nice. ;) So now if you are the thing that so far so much code just to see a list. Hold on. This is how we got the whole structure of the application. Now to add Jquery events all we need to call functions and add some new minor features. Trust me once you start checking out jquery events. You will just fell in love with backbone.
 
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

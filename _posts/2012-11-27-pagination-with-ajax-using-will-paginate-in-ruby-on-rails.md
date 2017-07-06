@@ -4,21 +4,17 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/11/pagination-with-ajax-using-will-paginate-in-ruby-on-rails/
-
-
-
 categories: optimization quick-solution tips-and-tricks utilities
 ---
+Just learned this trick. Super awesome. Do you want to enable ajax based pagination with will_paginate within just two mins? Yes.. He is a small tip.
 
-Just learned this trick. Super awesome. You want to enable ajax based pagination with will_paginate within just two mins? Yes.. He is small tip.
-
-I am assuming you have a index page having basic table for now. Here are steps:
+I am assuming you have an index page having a basic table for now. Here are steps:
 
 *   Make a partial for the value tbody section.
 *   Enable format.js in controller
 *   Create a file ie index.js.erb. Paste some basic code there.
 *   Paste a small code in index.html.erb
-*   And its done :)
+*   And it's done :)
 
 ## Code:
 
@@ -41,7 +37,7 @@ end
 {% highlight ruby %}
 <h1>Products</h1>
 <div id="products">
-	<%= render "products/products" %>
+    <%= render "products/products" %>
 </div>
 <script>
 $(function(){
@@ -63,7 +59,7 @@ $('.pagination a').attr('data-remote', 'true');
 <div class="listing">
       <% @products.each do |product| %>
         <div>
-	   <span> <%= product.title %> </span>
+       <span> <%= product.title %> </span>
            <span> <%= product.price %>  </span>
         </div>
      <% end %>

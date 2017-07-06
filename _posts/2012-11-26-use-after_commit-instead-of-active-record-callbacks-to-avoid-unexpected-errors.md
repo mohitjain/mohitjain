@@ -4,13 +4,9 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink:  /2012/11/use-after_commit-instead-of-active-record-callbacks-to-avoid-unexpected-errors/
-
-
-
 categories: optimization performance quick-solution Server tips-and-tricks
 ---
-
-AR callbacks after\_create/after\_update/after_destroy to generate background job etc are useful, but these callbacks are still wrapped in database transaction, and you may probably get unexpected errors on production servers.
+AR callbacks after\_create/after\_update/after_destroy to generate background job etc. are useful, but these callbacks are still wrapped in the database transaction, and you may probably get unexpected errors on production servers.
 
 ## Before
 It’s common to generate a background job to send emails like
@@ -24,14 +20,14 @@ class Comment < ActiveRecord::Base
  handle_asynchronously :async_send_notification
 end
 
-# It looks fine that comment record passed to delayed job and then delayed job will fetch this
+# It looks beautiful that comment record passed to the delayed job and then delayed job will fetch this
 #comment and then post on which this comment has been made and a notification will
 #send via email to the author of that post. Right?
 {% endhighlight %}
-You won’t see any issue in development, as local db can commit fast. But in production server, db traffic might be huge, worker probably finish faster than transaction commit. e.g
+You won’t see any issue in development, as local DB can commit fast. But in production server, db traffic might be massive, worker probably finish faster than transaction commit. e.g
 
 
-1. main process
+1. primary process
 2. worker process
 3. BEGIN
 
@@ -42,11 +38,11 @@ SELECT * FROM notifications WHERE id = 10
 COMMIT
 {% endhighlight %}
 
-In this case, the worker process query the newly-created notification before main process commits the transaction, it will raise NotFoundError, because transaction in worker process can’t read uncommitted notification from transaction in main process.
+In this case, the worker process query the newly-created notification before the main process commits the transaction, it will raise NotFoundError, because transaction in worker process can’t read free information from the transaction in the main process.
 
 ## Refactor
 
-So we should tell activerecord to generate notification worker after notification insertion transaction committed.
+So we should tell ActiveRecord to generate notification worker after notification insertion transaction committed.
 
 {% highlight ruby %}
 
@@ -74,4 +70,4 @@ COMMIT
 SELECT * FROM notifications WHERE id = 10
 {% endhighlight %}
 
-Worker process won’t receive NotFoundErrors any more. :)
+Worker process won’t receive NotFoundErrors anymore. :)

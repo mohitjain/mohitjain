@@ -28,16 +28,16 @@ featured: true
 
 # Agenda
 
-Templates make your code look more neat and clean and helps in lot of other ways.
+Templates make your code look more neat and clean and helps in a lot of other ways.
 
 # Template helpers
 
-So far we are using embeeded templates in our html file ie
+So far we are using embedded templates in our HTML file ie
 
 {% highlight javascript %}
 
 <script id="personTemplate" type="text/template">
-	<strong><%= name %></strong> (<%= age %>) - <%= occupation %>
+    <strong><%= name %></strong> (<%= age %>) - <%= occupation %>
 </script>
 
 {% endhighlight %}
@@ -50,12 +50,12 @@ template: _.template( $('#personTemplate').html()),
 
 {% endhighlight %}
 
-One good thing over here is we can define a template helpers in backbone js (as a global function) and optimise our code like this.
+One good thing over here is we can define a template helpers in backbone js (as a global function) and optimize our code like this.
 
 {% highlight javascript %}
 
 var template = function(id){
-	return _.template( $('#' + id).html() );
+    return _.template( $('#' + id).html() );
 };
 
 {% endhighlight %}
@@ -68,11 +68,11 @@ template: template('personTemplate'),
 
 {% endhighlight %}
 
-Just defining a simple function can make our life much more easier as we have to call many templates in real our applications. Thats all for this lesson. Will come back soon with a important topic ie name spacing.
+Just defining a simple function can make our life much easier as we have to call many templates in real our applications. That's all for this lesson. Will come back soon with an important topic ie namespacing.
 
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself and I will try to reply back asap.

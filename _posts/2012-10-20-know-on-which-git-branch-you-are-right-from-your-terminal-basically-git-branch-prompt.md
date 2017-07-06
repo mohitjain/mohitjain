@@ -7,8 +7,7 @@ description: display git branch in terminal prompt
 keywords: git, terminal, tips and tricks
 categories: Git tips-and-tricks
 ---
-
-If you are using Git or Gitflow probably you keep switching between various branches. If you want to see what branch you are on, right from your terminal instead to typing command i.e. git branch.
+If you are using Git or Gitflow probably, you keep switching between various branches. If you want to see what branch you are on, right from your terminal instead of to typing command i.e. git branch.
 
 ##Run these commands:
 {% highlight ruby %}

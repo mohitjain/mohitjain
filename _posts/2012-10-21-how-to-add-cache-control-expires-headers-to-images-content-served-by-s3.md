@@ -2,20 +2,16 @@
 title: How to add cache-control, expires headers to images (Content) served by S3
 layout: post
 comments: true
-
-
-
 permalink:  /2012/10/how-to-add-cache-control-expires-headers-to-images-content-served-by-s3/
 description: How to add cache-control, expires headers to images (Content) served by S3
 keywords: amazon s3, paperclip, caching, expiry-headers, images
 categories: optimization performance ruby-on-rails
 ---
-
-Few days back I made a blog post [Save image as progressive image using paperclip and imageMagick][1]. Here is an another improvement in that list.
+A few days back I made a blog post [Save image as a progressive image using paperclip and imageMagick][1]. Here is an another improvement in that list.
 
  [1]: http://www.codebeerstartups.com/save-image-as-progressive-image-using-paperclip-and-imagemagick/
 
-Adding cache control and expiry headers. Caching images improves the user experience and reduces S3 costs. It improves the user’s experience because web pages load quicker as images are already cached and it reduces S3 costs since you have fewer transfers.
+Adding cache control and expiry headers. Caching images improves the user experience and reduces S3 costs. It improves the user’s experience as web pages load quicker, images are already cached and it reduces S3 costs since you have fewer transfers.
 
 From the previous blog post:
 

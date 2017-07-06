@@ -29,27 +29,27 @@ featured: true
 
 ## Agenda
 
-In the previous lesson we created a Person Class. So if we want to define the same class in backbone js. and thats what we will be learning in this lesson. “Defining models in backbone js”. Its pretty straight forward. Remove the previous code from `main.js` and add this code. Take a look on this.
+In the previous lesson, we created a Person Class. So if we want to define the same class in backbone js. And that's what we will be learning in this lesson. “Defining models in Backbone js.” It's pretty straight forward. Remove the previous code from `main.js` and add this code. Take a look on this.
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'Worker'
-	},
-	work: function(){
-		return this.get('name')  +  'is working.';
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'Worker'
+    },
+    work: function(){
+        return this.get('name')  +  'is working.';
+    }
 });
 
 {% endhighlight %}
 
-In the above code we are defining the class and setting some default values like for name, age and occupation.
+In the above code, we are defining the class and set some default values like for name, age, and occupation.
 
 ## Fire up the console and fire these commands
-Now if checkout chrome we can see lot of cool awesome things. Type these commands one by one.
+Now if checkout chrome we can see a lot of cool awesome things. Type these commands one by one.
 
 {% highlight javascript %}
 
@@ -58,8 +58,8 @@ var person = new Person;  // creating a new object
 person  // printing that object. -> Notice output of this.
 
 // 1. We have access to attributes,
-// 2. We have access to functins,
-// 3. We have access to changed object, which helps us to check if object has been changed or not.
+// 2. We have access to functions,
+// 3. We have access to changed object, which helps us to check if the object has been changed or not.
 // 4. If something has been changed then backbone will announce that thing and
 // 5. we can hook into that to update DOM or do other cool things.
 
@@ -68,7 +68,7 @@ person  // printing that object. -> Notice output of this.
 
 ## Getters
 
-We can all the previous things like to get name, age or occupation. In backbone js, we do that by using get method
+We can get all the previous things like to get the name, age or occupation. In backbone js, we do that by using get method
 
 
 {% highlight javascript %}
@@ -90,7 +90,7 @@ person.age  // THATS invalid..
 
 ## Setters
 
-And now you can even update name, or age etc.
+And now you can even update name, or age, etc.
 
 {% highlight javascript %}
 
@@ -109,7 +109,7 @@ person.set({name:"Taroon Tyagi", age: 26, occupation: "Graphics Designer"})
 
 ## Set values while initiating object
 
-Another thing can be you can set values while initiating ie:
+Another thing can be you can set values while launching, i.e.,
 
 {% highlight javascript %}
 
@@ -117,24 +117,24 @@ var person = new Person({name:"Taroon Tyagi", age: 26, occupation: "Graphics Des
 
 {% endhighlight %}
 
-## One last point - Json output
+## One last point - JSON output
 
 {% highlight javascript %}
 
-person.toJSON(); // this will return all the attributes of that object. It will not return a Json be returns what we need :)
+person.toJSON(); // this will return all the attributes of that object. It will not return a Json be returned what we need :)
 
 {% endhighlight %}
 
 ## Output on Chrome Console
 
-Lets take a look how things look like on chrome console.
+Let's take a look how things look like on chrome console.
 
 ![Defining models in in backbone js](/wp-content/uploads/2012/12/Defining-models-in-in-backbone-js.png)
 
-Thats how you define models in backbone js. In the next post lets add some validations in the model. For example. Age can’t be zero or negative. or name can’t be blank etc etc.
+That's how you define models in Backbone js. In the next post, let's add some validations in the model. For example. Age can’t be zero or negative. Or name can’t be blank etc.
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

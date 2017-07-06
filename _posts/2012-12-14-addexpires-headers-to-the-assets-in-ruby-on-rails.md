@@ -4,11 +4,10 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/12/addexpires-headers-to-the-assets-in-Ruby on Rails/
-
 categories: optimization performance quick-solution Server tips-and-tricks
 ---
 
-There are many ways to add expires headers to assets in  specified [here][1], and [here][2].
+There are many ways to add expires headers to assets in specified [here][1], and [here][2].
 
  [1]: http://www.codebeerstartups.com/how-to-set-an-expires-header-in-apache/
  [2]: http://www.codebeerstartups.com/how-to-add-cache-control-expires-headers-to-images-content-served-by-s3/

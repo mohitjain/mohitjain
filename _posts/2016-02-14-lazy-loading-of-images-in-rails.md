@@ -7,7 +7,7 @@ categories: Image optimizations, lazy-loading
 description: How to lazy load images in ruby on rails.
 ---
 
-Recently I joined a company thats [Thrillophilia](http://www.thrillophilia.com/) a tours and activities company in India, and where I need to solve a problem of lazy loading of images, cause the site is image heavy. I came across lot of lazy loading javascript plugins, but finally came to know about [Layzr plugin](https://github.com/callmecavs/layzr.js) simple, lightweight and works like charm.
+Recently I joined a company that [Thrillophilia](http://www.thrillophilia.com/) a tours and activities company in India, and where I need to solve a problem of lazy loading of images, cause the site is image heavy. I came across a lot of lazy loading javascript plugins, but finally came to know about [Layzr plugin](https://github.com/callmecavs/layzr.js) simple, lightweight and works like charm.
 
 <!--more-->
 
@@ -17,7 +17,7 @@ But the problem is the usage. So what we use in rails:
   <%= image_tag "my_image.jpg" %>
 {% endhighlight %}
 
-which generates a HTML code like this:
+which generates an HTML code like this:
 
 {% highlight ruby %}
   <img src="my_image.jpg"/>
@@ -35,13 +35,13 @@ and later on, it gets converted into using javascript:
   <img scr="my_image.jpg"/>
 {% endhighlight %}
 
-So what I want is a default image which will be loaded when page load happens and while scrolling default image should be replaced by real image. So I can do it something like:
+So what I want is a default image which will be loaded when page load happens and while scrolling default image should be replaced by a real image. So I can do it something like:
 
 {% highlight ruby %}
   <%= image_tag "default_image.jpg", "data-normal" => "my_real_image.jpg" %>
 {% endhighlight %}
 
-or while using paperclip as a gem makes it like:
+or while using the paperclip as a gem makes it like:
 
 {% highlight ruby %}
   <%= image_tag "default_image.jpg", "data-normal" => image.photo.url(:medium) %>
@@ -65,7 +65,7 @@ All you need to do is:
 
 ### Step 1:
 
-Add it in your gemfile
+Add it in your Gemfile
 
 {% highlight ruby %}
   gem 'layzr-rails'
@@ -99,10 +99,6 @@ Images you want to make lazy load:
   <%= image_tag "kittenz.png", alt: "OMG a cat!", lazy: true %>
 {% endhighlight %}
 
-### Thats all :)
+### That's all :)
 
-thats makes my code clean and efficient. You can use see the source code [here](https://github.com/mohitjain/layzr-rails) having guidelines how to use it and some more options from the gem.
-
-
-
-
+that makes my code clean and efficient. You can use see the source code [here](https://github.com/mohitjain/layzr-rails) having guidelines how to use it and some more options from the gem.

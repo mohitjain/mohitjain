@@ -4,15 +4,12 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2013/01/quick-way-to-setup-memcached-in-Ruby on Rails-application/
-
-
-
 categories: optimization performance quick-solution Server tips-and-tricks
 ---
 
-MemCached is a high-performance, distributed memory object caching system, generic in nature, but originally intended for use in speeding up dynamic web applications by alleviating database load.
+Memcached is a high-performance, distributed memory object caching system, generic in nature, but originally intended for use in speeding up dynamic web applications by alleviating database load.
 
-Setting up memcached in ruby on rails application is pretty easy using [dalli][1] gem. Once you install the gem. Configure few settings ie.
+Setting up Memcached in ruby on rails application is pretty easy using [dalli][1] gem. Once you install the gem. Configure few settings ie.
 
  [1]: https://github.com/mperham/dalli
 
@@ -35,7 +32,7 @@ config.cache_store = :dalli_store
 
 {% endhighlight %}
 
-##Installing memcached
+##Installing Memcached
 
 {% highlight ruby %}
 
@@ -52,7 +49,7 @@ vi /etc/memcached.conf
 
 {% endhighlight %}
 
-### To Check version of memcached installed:
+### To Check version of Memcached installed:
 
 {% highlight ruby %}
 
@@ -60,7 +57,7 @@ memcached -h | head -l
 
 {% endhighlight %}
 
-### Starting and stoping memchached
+### Starting and stopping Memcached
 
 #### In MacOSX:
 
@@ -74,4 +71,4 @@ memcached -h | head -l
 sudo /etc/init.d/memcached restart
 {% endhighlight %}
 
-You can optionally install the ‘kgio’ gem to give Dalli a 20-30% performance boost. Now all the action caching and page caching will be memcached ;)
+You can optionally install the ‘kgio’ gem to give Dalli a 20-30% performance boost. Now all the action caching and page caching will be Memcached ;)

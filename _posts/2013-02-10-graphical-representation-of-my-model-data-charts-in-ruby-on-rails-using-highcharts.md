@@ -3,16 +3,14 @@ title: Graphical Representation of my model data ie charts in ruby on rails usin
 author: Mohit Jain
 layout: post
 comments: true
-
-
-
 permalink: /2013/02/graphical-representation-of-my-model-data-charts-in-ruby-on-rails-using-highcharts/
 categories: General ruby-on-rails
 ---
 
-We all need to see whats going on with my website. Is it running smooth, Whats the status of the users signup etc.
 
-Take a look on these two graphs ([Live demo][1]).
+We all need to see what's going on with my website. Is it running smooth, Whats the status of the user's signup etc.
+
+Take a look at these two graphs ([Live demo][1]).
 
  [1]: http://highchartsgraphs.herokuapp.com/ "Highcharts in ruby on rails"
 
@@ -20,25 +18,25 @@ Take a look on these two graphs ([Live demo][1]).
 
 ![Total Records Growth](/wp-content/uploads/2013/02/Total-Growth.png?fit=750,274)
 
-2. Graphs for total daily records (users signed up that day, activities done that day) in the range of last 30 days.
+2. Graphs for total daily records (users signed up that day, activities did that day) in the range of last 30 days.
 
 ![Total Daily Based](/wp-content/uploads/2013/02/Total-Daily-Based.png?fit=750,274)
 
 
-So for building these graphs, which are pretty useful, there are just few steps
+So for building these graphs, which are pretty useful, there are just a few steps
 
 * Include Jquery [Highcharts Libray.][6]
 * Include rails module in your lib file.
 * Include module in specific models for which you need to show graphs.
 * Paste some js code and you are done.
 
- [6]: http://www.highcharts.com/ "Highcharts librayr"
+ [6]: http://www.highcharts.com/ "Highcharts library"
 
 <!--more-->
 
 ## Step 1
 
-Include jquery library and exporting.js and highcharts.js files which you can easily find [here][7]
+Include Jquery library and exporting.js and highcharts.js files which you can easily find [here][7]
 
  [7]: http://www.highcharts.com/download "Download Highcharts"
 
@@ -106,73 +104,73 @@ So now all we need is the view file and here is the code for the same:
 {% highlight javascript %}
 
 $(function () {
-	var chart;
-	$(document).ready(function() {
-		chart = new Highcharts.Chart({
-			chart: {
-				renderTo: 'daily_growth'
-			},
-			title: {
-				text: 'Incremental Growth Charts - Gifts'
-			},
-			xAxis: {
-				type: 'datetime'
-			},
-			yAxis: {
-				title: {
-					text: 'Counts'
-				}
-			},
-			tooltip: {
-				formatter: function() {
-					return ''
-					Highcharts.dateFormat('%e. %b', this.x)  ' -> '  this.y;
-				}
-			},
-			plotOptions: {
-				spline: {
-					lineWidth: 4,
-					states: {
-						hover: {
-							lineWidth: 5
-						}
-					},
-					marker: {
-						enabled: false,
-						states: {
-							hover: {
-								enabled: true,
-								symbol: 'circle',
-								radius: 5,
-								lineWidth: 1
-							}
-						}
-					}
-				}
-			},
-			series: [
-			{
-				name: 'Total Signups Today',
-				pointInterval: ,
-				pointStart: ,
-				data:
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'daily_growth'
+            },
+            title: {
+                text: 'Incremental Growth Charts - Gifts'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Counts'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''
+                    Highcharts.dateFormat('%e. %b', this.x)  ' -> '  this.y;
+                }
+            },
+            plotOptions: {
+                spline: {
+                    lineWidth: 4,
+                    states: {
+                        hover: {
+                            lineWidth: 5
+                        }
+                    },
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                symbol: 'circle',
+                                radius: 5,
+                                lineWidth: 1
+                            }
+                        }
+                    }
+                }
+            },
+            series: [
+            {
+                name: 'Total Signups Today',
+                pointInterval: ,
+                pointStart: ,
+                data:
 
-			}, {
-				name: 'Total Activities Tday',
-				pointInterval: ,
-				pointStart: ,
-				data:
-			}
+            }, {
+                name: 'Total Activities Tday',
+                pointInterval: ,
+                pointStart: ,
+                data:
+            }
 
-			]
-			,
-			navigation: {
-				menuItemStyle: {
-					fontSize: '10px'
-				}
-			}
-		});
-	});
+            ]
+            ,
+            navigation: {
+                menuItemStyle: {
+                    fontSize: '10px'
+                }
+            }
+        });
+    });
 
 });
 
@@ -186,72 +184,72 @@ $(function () {
 {% highlight javascript %}
 
 $(function () {
-	var chart;
-	$(document).ready(function() {
-		chart = new Highcharts.Chart({
-			chart: {
-				renderTo: 'growth_rate'
-			},
-			title: {
-				text: 'Growth Charts - Users and User Activities'
-			},
-			xAxis: {
-				type: 'datetime'
-			},
-			yAxis: {
-				title: {
-					text: 'Counts'
-				}
-			},
-			tooltip: {
-				formatter: function() {
-					return ''
-					Highcharts.dateFormat('%e. %b', this.x)  ' -> '  this.y;
-				}
-			},
-			plotOptions: {
-				spline: {
-					lineWidth: 4,
-					states: {
-						hover: {
-							lineWidth: 5
-						}
-					},
-					marker: {
-						enabled: false,
-						states: {
-							hover: {
-								enabled: true,
-								symbol: 'circle',
-								radius: 5,
-								lineWidth: 1
-							}
-						}
-					}
-				}
-			},
-			series: [
-			{
-				name: 'Total Signups Today',
-				pointInterval: ,
-				pointStart: ,
-				data:
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'growth_rate'
+            },
+            title: {
+                text: 'Growth Charts - Users and User Activities'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Counts'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''
+                    Highcharts.dateFormat('%e. %b', this.x)  ' -> '  this.y;
+                }
+            },
+            plotOptions: {
+                spline: {
+                    lineWidth: 4,
+                    states: {
+                        hover: {
+                            lineWidth: 5
+                        }
+                    },
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                symbol: 'circle',
+                                radius: 5,
+                                lineWidth: 1
+                            }
+                        }
+                    }
+                }
+            },
+            series: [
+            {
+                name: 'Total Signups Today',
+                pointInterval: ,
+                pointStart: ,
+                data:
 
-			}, {
-				name: 'Total Activities Tday',
-				pointInterval: ,
-				pointStart: ,
-				data:
-			}
-			]
-			,
-			navigation: {
-				menuItemStyle: {
-					fontSize: '10px'
-				}
-			}
-		});
-	});
+            }, {
+                name: 'Total Activities Tday',
+                pointInterval: ,
+                pointStart: ,
+                data:
+            }
+            ]
+            ,
+            navigation: {
+                menuItemStyle: {
+                    fontSize: '10px'
+                }
+            }
+        });
+    });
 
 });
 
@@ -259,7 +257,7 @@ $(function () {
 
 
 
-One more last thing. If you want to see stat counters on graph itself ie:
+One more last thing. If you want to see stat counters on the graph itself ie:
 
 Change the plot options in javascript code to this:
 ![Graphs for admin panel](/wp-content/uploads/2013/02/chart.png?fit=800,274)
@@ -267,12 +265,12 @@ Change the plot options in javascript code to this:
 {% highlight javascript %}
 
 plotOptions: {
-	line: {
-		dataLabels: {
-			enabled: true
-		},
-		enableMouseTracking: false
-	}
+    line: {
+        dataLabels: {
+            enabled: true
+        },
+        enableMouseTracking: false
+    }
 },
 
 {% endhighlight %}

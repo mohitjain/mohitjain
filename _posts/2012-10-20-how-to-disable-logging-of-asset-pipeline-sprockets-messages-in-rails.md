@@ -3,9 +3,6 @@ title: How to disable logging of asset pipeline (sprockets) messages in Rails.
 author: Mohit Jain
 layout: post
 comments: true
-
-
-
 permalink: /2012/10/how-to-disable-logging-of-asset-pipeline-sprockets-messages-in-rails/
 description: How to disable logging of asset pipeline (sprockets) messages in Rails.
 keywords: logging,  sprockets

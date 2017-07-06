@@ -29,33 +29,33 @@ featured: true
 
 ## Agenda
 
-So from previous lessons we know how to create a Person model, We know how to create PersonView and we how to define inline and external templates. In this lesson we will learn collections in backbone js and in lesson we will learn how define views for collections in backbone js.
+So from previous lessons, we know how to create a Person model, We are aware how to create PersonView and us how to define inline and external templates. In this lesson, we will learn collections in backbone js and in the lesson we will learn how to define views for collections in backbone js.
 
 ## What we have till now
 
-So here is the code that we have from previous lesson.
+So here is the code that we have from the previous lesson.
 
 {% highlight javascript %}
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template( $('#personTemplate').html()),
+    template: _.template( $('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 // calls from console
@@ -68,49 +68,49 @@ var PersonView = Backbone.View.extend({
 
 ## Defining a collection
 
-Now from above code if we want to create a new person and add that model in view that it will become messy and it will go so much messy if we have to define some 10 people records. Thanks to backbone that we have collections in backbone js. So here is how we define collections in backbone js.
+Now from above code if we want to create a new person and add that model in view that it will become messy and it will go so much messy if we have to define some ten people records. Thanks to the backbone that we have collections in backbone js. So here is how we define collections in backbone js.
 
 {% highlight javascript %}
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 
 {% endhighlight %}
 
 ## Setting up the defaults
 
-So we tell collection that what kind of objects we are dealing with by specifying model attribute. In this case we have PeopleCollection so we have Person defined there. So lets see how to can use it. So we have:
+So we tell collection that what kind of objects we are dealing with by specifying the model attribute. In this case, we have PeopleCollection, so we have Person defined there. So let's see how to can use it. So we have:
 
 {% highlight javascript %}
 
 // Person Model
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 
 // The View for a Person
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template( $('#personTemplate').html()),
+    template: _.template( $('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 {% endhighlight %}
@@ -141,64 +141,64 @@ Lets see what we have on console.
 <!--more-->
 
 
-## Another way of adding data in collection
+## Another way of adding data to collection
 
-Another way to adding data in collections is:
+Another way to adding data to collections is:
 
 {% highlight javascript %}
 
 // Person Model
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 
 // A List of People
 var PeopleCollection = Backbone.Collection.extend({
-	model: Person
+    model: Person
 });
 
 // The View for a Person
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template( $('#personTemplate').html()),
+    template: _.template( $('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 var peopleCollection = new PeopleCollection([
-	{
-		name: 'Mohit Jain',
-		age: 26
-	},
-	{
-		name: 'Taroon Tyagi',
-		age: 25,
-		occupation: 'web designer'
-	},
-	{
-		name: 'Rahul Narang',
-		age: 26,
-		occupation: 'Java Developer'
-	}
+    {
+        name: 'Mohit Jain',
+        age: 26
+    },
+    {
+        name: 'Taroon Tyagi',
+        age: 25,
+        occupation: 'web designer'
+    },
+    {
+        name: 'Rahul Narang',
+        age: 26,
+        occupation: 'Java Developer'
+    }
 ]);
 {% endhighlight %}
 
 
-So you can loop over it. Do so many things as collections has so much data stored in it with respect to model objects. It may seem like we can store in the form of array but collections have their collections view and that make them pretty powerful. Lets talk about collection views in next lesson and that will help you to understand the importance of collections.
+So you can loop over it. Do so many things as collections have so much data stored in it on model objects. It may seem like we can store in the form of the array but collections have their collections view, and that makes them pretty powerful. Let's talk about collection views in next lesson, and that will help you to understand the importance of collections.
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

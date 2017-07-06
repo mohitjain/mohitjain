@@ -7,7 +7,7 @@ categories: Private Class Methds, Ruby
 description: How to define private class methods in ruby
 ---
 
-A quick tip to how to difine a class method as private method, I have seen lot of people doing it wrong way. Lets take a quick look on how to define a private instance method in ruby
+A quick tip to how to define a class method as a private method, I have seen a lot of people doing it the wrong way. Let's take a quick look on how to define a private instance method in Ruby
 
 {% highlight ruby %}
 
@@ -47,9 +47,9 @@ But calling a private method will give you an error.
 
 {% endhighlight %}
 
-Now define private class method is not as it is for instance method. They don't exists as normally as instance methods are there but still they exists.
+Now define private class method is not as it is for instance method. They don't exist as normally as instance methods are there but still, they exist.
 
-if you want to define a class method private, lets try it the way instance method works,
+if you want to define a class method private, let's try it the way instance method works,
 
 
 {% highlight ruby %}
@@ -68,7 +68,7 @@ end
 
 {% endhighlight %}
 
- Oops, private class method has been called :(. This is because the way ruby define the class methods, self is actually Dog and the private method scope was never considered, when ruby was defining this method as class method. Here are couple of ways you can define a class method as private.
+ Oops, a private class method has been called :(. This is because the way Ruby defines the class methods, the self is actually Dog and the private method scope was never considered when Ruby was defining this method as a class method. Here are a couple of ways you can define a class method as private.
 
 ## 1. private_class_method
 

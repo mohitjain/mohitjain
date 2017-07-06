@@ -2,20 +2,17 @@
 title: Use say and say_with_time in migrations to make a useful migration log
 layout: post
 comments: true
-
 permalink: /2012/10/use-say-and-say_with_time-in-migrations-to-make-a-useful-migration-log/
 description: How to output migrations logs to understand the migration stuff
-keywords: migrations ,  logs
-
-
+keywords: migrations, logs
 categories: tips-and-tricks
 ---
 
-Use say\_with\_time and say in migrations will produce a more readable output in migrations. And if use correctly it could be a helpful friend when something goes wrong because normally it is stored in the deploy log
+Use say_with_time and say in migrations will produce a more readable output in migrations. And if use correctly it could be a helpful friend when something goes wrong because usually it is stored in the deploy log
 
-Is a good practice to use say\_with\_time and say in migrations. When doing multiple things in a migration it is more explanatory than just show the name of the file.
+Is a good practice to use say_with_time and say in migrations. When doing multiple things in a migration, it is more explanatory than just show the name of the file.
 
-For example, imagine you have a migration that just update column information for all users.
+For example, imagine you have a migration that just updates column information for all users.
 
 
 ##Example

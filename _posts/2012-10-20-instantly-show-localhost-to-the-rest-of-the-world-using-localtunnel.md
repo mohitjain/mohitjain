@@ -9,7 +9,7 @@ keywords:  localhost, localmachine as server
 categories: quick-solution tips-and-tricks
 ---
 
-Sometimes you really want to show your local running code to outside world, your friends or colleague. Here is one quick solution.
+Sometimes you want to show your local running code to outside world, your friends or colleague. Here is one quick solution.
 
 ##STEP 1:
  Install localtunnel using RubyGems.

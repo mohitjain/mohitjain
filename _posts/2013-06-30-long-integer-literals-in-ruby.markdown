@@ -6,7 +6,7 @@ date: 2013-06-30 00:49
 categories: ruby tips-and-tricks
 ---
 
-I am here to share a small tip that I just come to know about ruby. A simple question. How many zeros are there integer written below?
+I am here to share a small tip that I just come to know about Ruby. A simple question. How many zeros are there integer written below?
 
 {% highlight ruby %}
 
@@ -14,7 +14,7 @@ I am here to share a small tip that I just come to know about ruby. A simple que
 
 {% endhighlight %}
 
-Difficult to count right? In normal day to day practice we generally use comma to separate the digits, for example in US standard we use comma every 3 digits. So number written above can be re-written as:
+Difficult to count right? In normal day to day practice, we generally use a comma to separate the digits, for example in US standard we use a comma every 3 digits. So number written above can be re-written as:
 
 {% highlight ruby %}
 
@@ -22,7 +22,7 @@ Difficult to count right? In normal day to day practice we generally use comma t
 
 {% endhighlight %}
 
-Now same thing can be done with long integers in ruby using an underscore, something like this:
+Now the same thing can be done with long integers in Ruby using an underscore, something like this:
 
 {% highlight ruby %}
 
@@ -30,13 +30,6 @@ Now same thing can be done with long integers in ruby using an underscore, somet
 
 {% endhighlight %}
 
-which is actually same as writing 100000000000, but using underscore makes things more easy to read;)
+which is actually same as writing 100000000000, but using underscore makes things easier to read;)
 
 I hope you will find this technique somewhere useful ;)
-
-
-
-
-
-
-

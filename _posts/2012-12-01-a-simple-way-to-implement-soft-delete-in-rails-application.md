@@ -4,18 +4,15 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/12/a-simple-way-to-implement-soft-delete-in-rails-application/
-
-
-
 categories: optimization performance quick-solution tips-and-tricks utilities
 ---
 
-PS: This blog post use modules. If you are not familar with modules in rails application then I will recommend you to check [Modules in ruby on rails ][1]
+PS: This blog post use modules. If you are not familiar with modules in Rails application, then I will recommend you to check [Modules in Ruby on Rails ][1]
 
  [1]: http://www.codebeerstartups.com/modules-as-application-model-in-Ruby on Rails-or-refactor-your-code/ "Modules in ruby on rails."
 
-Here is a simple way to implement soft delete in rails application.
-Define two modules Achiver and a module Archivable
+Here is a simple way to implement soft-delete in rails application.
+Define two modules Achiever and a module Archivable
 
 {% highlight ruby %}
 
@@ -67,4 +64,4 @@ end
 
 {% endhighlight %}
 
-This is a **pretty** hack-ish implementation, but it works.
+This is a **pretty** hackish implementation, but it works.

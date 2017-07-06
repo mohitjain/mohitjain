@@ -7,7 +7,7 @@ keywords: email testing, heroku, fake smtp, fake emails
 categories: testing development ruby-on-rails
 ---
 
-Looking for a solution for email testing on heroku. [Mailtrap](http://mailtrap.io/) is a solution released by [railsware](http://railsware.com/). Here is how you can use it.
+Looking for a solution for email testing on Heroku. [Mailtrap](http://mailtrap.io/) is a solution released by [railsware](http://railsware.com/). Here is how you can use it.
 
 ##Installation
 
@@ -28,7 +28,7 @@ heroku config -s | grep MAILTRAP
 
 {% endhighlight %}
 
-Paste these lines of code in you environment file.
+Paste these lines of code in your environment file.
 
 {% highlight ruby %}
 
@@ -46,9 +46,4 @@ end
 {% endhighlight %}
 Now you are all set. Go ahead and start testing your emails without actually sending them to your real customers ;)
 
-Note: I am using [mailcatcher](http://www.codebeerstartups.com/2013/01/how-to-test-emails-in-development-mode-in-Ruby on Rails/) to test emails on development machine. You must give it a try
-
-
-
-
-
+Note: I am using [mailcatcher](http://www.codebeerstartups.com/2013/01/how-to-test-emails-in-development-mode-in-Ruby on Rails/) to test emails on the development machine. You must give it a try

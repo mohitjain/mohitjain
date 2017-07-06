@@ -6,7 +6,7 @@ comments: true
 categories: optimization quick-solution tips-and-tricks
 ---
 
-Most of the people don’t use RI or RDoc from the gems they install in my machine, but every gem you install comes with RI and RDoc by default and we all forget to set –no-ri –no-rdoc while installation. To avoid this for ever just add these two lines to your \`~/.gemrc\` or \`/etc/gemrc\`:
+Most of the people don’t use RI or RDoc from the gems they install on my machine, but every gem you install comes with RI and RDoc by default, and we all forget to set –no-ri –no-rdoc while installation. To avoid this for ever just add these two lines to your \`~/.gemrc\` or \`/etc/gemrc\`:
 
 {% highlight ruby %}
 install: --no-rdoc --no-ri

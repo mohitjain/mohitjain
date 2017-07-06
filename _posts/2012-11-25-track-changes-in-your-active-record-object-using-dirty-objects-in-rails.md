@@ -4,13 +4,9 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink:  /2012/11/track-changes-in-your-active-record-object-using-dirty-objects-in-rails/
-
-
-
 categories: optimization performance quick-solution tips-and-tricks
 ---
-
-If you want to track whether your active record objects have been modified or not. It becomes a lot easier with the dirty object functionality. Its pretty simple and clean.
+If you want to track whether your active record objects have been modified or not. It becomes a lot easier with the dirty object functionality. It's pretty straightforward and clean.
 
 {% highlight ruby %}
 

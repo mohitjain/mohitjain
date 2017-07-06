@@ -28,34 +28,34 @@ featured: true
 
 ## Agenda
 
-So in the previous lesson we learnt how to create templates. It good but it can be improved further using external templates. So in the lesson we will learn how to improve templates in backbone js.
+So in the previous lesson, we learned how to create templates. It good but it can be improved further using external templates. So in the lesson, we will learn how to develop templates in backbone js.
 
 ## What we have till now
 
-From previous episode we have this PersonView class
+From the previous episode, we have this PersonView class
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest Worker',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest Worker',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+    my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.my_template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.my_template(this.model.toJSON()));
+    }
 });
 
 // calls from console
@@ -67,39 +67,39 @@ var PersonView = Backbone.View.extend({
 
 {% endhighlight %}
 
-So now we will take the template html code out into a external file and then call it here in out template. So lets use index.html file and define a template there. So just paste this code in your `index.html` file
+So now we will take the template HTML code out into an external file and then call it here in out template. So let's use index.html file and define a template there. So just paste this code in your `index.html` file
 
 {% highlight javascript %}
 
 <script id="personTemplate" type="text/template">
-	<strong><%= name %></strong> (<%= age %>) - <%= occupation %>
+    <strong><%= name %></strong> (<%= age %>) - <%= occupation %>
 </script>
 
 {% endhighlight %}
 
-We have defined this script as `text/template` so that browser don’t execute this as normal javascript code. So once we have defined the template we can call this external template in our PersonView file using jquery. Here is the new `PersonView` Class.
+We have defined this script as `text/template` so that browser doesn't execute this as standard javascript code. So once we have set the template, we can call this external template in our PersonView file using jquery. Here is the new `PersonView` Class.
 
 {% highlight javascript %}
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: _.template( $('#personTemplate').html()),
+    template: _.template( $('#personTemplate').html()),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+    }
 });
 
 // calls from console
@@ -119,13 +119,13 @@ Pretty nice right. Now lets what we have on chrome developer tools.
 
 ![Defining external templates in backbone js](/wp-content/uploads/2012/12/defining-templates-in-backbone-js.png)
 
-Similarly what we had in previous lesson. Nice and cool. So this makes our life much more easier to define the templates in an external file and then just call it when we need it. And we can structure out html code of the template pretty easily.
+Similarly what we had in the previous lesson. Beautiful and cool. So this makes our life much easier to define the templates in an external file and then just call it when we need it. And we can structure out HTML code of the template pretty easily.
 
 
-Thats all for this lesson. Now thing about one object. How about displaying multiple objects. `ul` and `li` tags. Good thing is backbone js has collection view for that. Lets see that in next lesson.
+That's all for this lesson. Now thing about one object. How about displaying multiple objects. `ul` and `li` tags. The good thing is backbone js has collection view for that. Let's see that in next lesson.
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

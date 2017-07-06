@@ -9,7 +9,7 @@ categories: redirection, heroku
 
 ##Solution 1: Apache config file:
 
-One solution is apache config file like I have explained [here](http://www.codebeerstartups.com/2012/10/complete-guide-to-setup-a-rails-server/).
+One solution is Apache config file like I have explained [here](http://www.codebeerstartups.com/2012/10/complete-guide-to-setup-a-rails-server/).
 
 {% highlight ruby %}
 
@@ -63,15 +63,15 @@ config.middleware.use "CanonicalRedirect"
 
 ##Solution 3: A Better Way: Use Rails3 Routing
 
-Rails 3.0 offers a lot of cool new improvements to routing. I will recommend to read this [rails guides article](http://guides.rubyonrails.org/routing.html)
+Rails 3.0 offers a lot of cool new improvements to routing. I will recommend reading this [rails guides article](http://guides.rubyonrails.org/routing.html)
 
 {% highlight ruby %}
 
 Foo::Application.routes.draw do
   constraints(:host => /example.com/) do
-	  root :to => redirect("http://www.example.com")
-	  match '/*path', :to => redirect {|params| "http://www.example.com/#{params[:path]}"}
-	end
+      root :to => redirect("http://www.example.com")
+      match '/*path', :to => redirect {|params| "http://www.example.com/#{params[:path]}"}
+    end
 end
 
 {% endhighlight %}

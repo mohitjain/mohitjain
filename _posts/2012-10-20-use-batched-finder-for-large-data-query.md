@@ -3,16 +3,12 @@ title: Use batched finder for large data query
 author: Mohit Jain
 layout: post
 comments: true
-
-
-
 permalink: /2012/10/use-batched-finder-for-large-data-query/
 description: How to fetch large number of records in ruby on rails.
 keywords: batched finder, queries, optimizations, performance, ruby on rails
 categories: Performance ruby-on-rails
 ---
-
-If you want to do a large data query such as finding all the 10,000,000 users to send email to them, you should use batched finder to avoid eating too much memory.
+If you want to do a large data query such as finding all the 10,000,000 users to send an email to them, you should use batched finder to avoid overeating memory.
 
 Imagine you have a newsletter system which is very famous and has 10,000,000 users. Every Monday morning, the system will send emails to all of the users.
 
@@ -25,7 +21,7 @@ User.all.each do |user|
   NewsLetter.weekly_deliver(user)
 end
 {% endhighlight %}
-It may work, but do you know there are 10,000,000 users? This code snippet will find all of the users and create a ruby object for each user row in table. The server is unhappy due to too much memory is eaten by your newsletter application.
+It may work, but do you know there are 10,000,000 users? This code snippet will find all of the users and create a ruby object for each user row in the table. The server is unhappy due to too much memory is eaten by your newsletter application.
 
 ##Improvement
 
@@ -36,7 +32,7 @@ User.find_each do |user|
   NewsLetter.weekly_deliver(user)
 end
 {% endhighlight %}
-Using find_each, the application only finds 1,000 users once, yield them, then handle the next 1,000 users, until the last 1,000 users. That means the application will only load 1,000 user objects into memory each time, the server is happy now.
+Using find_each, the application only finds 1,000 users once, yield them, then handle the next 1,000 users, until the last 1,000 users. That means the application will only load 1,000 user objects into memory each time; the server is happy now.
 
 1,000 is the default batch size, if you think it is small/big to you, you can use the :batch_size option to change it.
 

@@ -4,14 +4,13 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/10/complete-guide-to-setup-a-rails-server/
-
 summary: extra_long
-
 categories: Server
 ---
 
 
-**This guide is written by Mohit Jain (http://codebeerstartups.com). It worked fine for me in more than 15 deployments. Use this guide at your own risk, if your server explode, it will not be my fault ;-)**
+
+**It worked fine for me in more than 15 deployments. Use this guide at your own risk, if your server explodes, it will not be my fault ;-)**
 
 *If something went wrong, drop me message, I will try to help you :)*
 
@@ -57,13 +56,13 @@ OR
 ssh deployer@ip_address
 {% endhighlight %}
 
-4.  Generate SSH keys and public key in deployment keys on github/bitbucket
+4.  Generate SSH keys and public key in deployment keys on Github/Bitbucket
 
 {% highlight ruby %}
 ssh-keygen -t rsa -C "your_email_address"
 cat ~/.ssh/id_rsa.pub
 {% endhighlight %}
-5.  Copy your public key to authorised key, (SO that you don’t need to enter password next time when you try to login on server from your machine. DONT do this in case you don’t want to give this current machine access of the server.):
+5.  Copy your public key to authorized key, (SO that you don’t need to enter password next time when you try to log in on the server from your machine. DONT do this in case you don’t want to give this current machine access of the server.):
 
 {% highlight ruby %}
 cat ~/.ssh/id_rsa.pub | ssh deployer@your_ip 'cat >> ~/.ssh/authorized_keys'
@@ -139,7 +138,7 @@ Press Enter and passenger-install will notify about the missing dependencies, In
 {% highlight ruby %}
 passenger-install-apache2-module
 {% endhighlight %}
-    Passenger will ask to paste some code in cofig file paste the output specified in apache config file ie:
+    The passenger will ask to paste some code in config file paste the output specified in apache config file, i.e
 
 {% highlight ruby %}
 sudo vi /etc/apache2/apache2.conf
@@ -149,7 +148,7 @@ sudo vi /etc/apache2/apache2.conf
 {% highlight ruby %}
 sudo apt-get install imagemagick sphinxsearch  libmagickwand-dev libmagick9-dev postfix bsd-mailx libxslt-dev libxml2-dev
 {% endhighlight %}
- **If you use postfix, then you fix it quickly by disabling tls by setting “smtpd\_use\_tls=no” in /etc/postfix/main.cf , else it will be keep throwing errors when rails will try to send email. Once settings has been changed, then just start the postfix ie:**
+ **If you use postfix, then you fix it quickly by disabling tls by setting “smtpd\_use\_tls=no” in /etc/postfix/main.cf , else it will keep throwing errors when Rails will try to send an email. Once settings have been changed, then just start the postfix i.e.,**
 
 
 {% highlight ruby %}
@@ -171,7 +170,7 @@ sudo vi /etc/apache2/apache2.conf
 {% endhighlight %}
 ** Typical Apache settings example for your apache config file.**
 
-21. If you don’t have domain name yet then you can run your application on IP only.
+21. If you don’t have a domain name yet, then you can run your application on IP only.
 
 {% highlight ruby %}
 
@@ -238,4 +237,4 @@ DocumentRoot /home/deployer/my_rails_app/production/current/public
 </VirtualHost>
 {% endhighlight %}
 
-Will make a post soon for deploying your application with capistrano.
+Will make a post soon for deploying your application with Capistrano.

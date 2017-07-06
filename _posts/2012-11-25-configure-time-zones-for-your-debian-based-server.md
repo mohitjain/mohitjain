@@ -4,11 +4,9 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/11/configure-time-zones-for-your-debian-based-server/
-
 categories:  Server
 ---
-
-Rails always stores your dates in UTC in the database (unless you change a different setting). You can configure time zones for your debian based server just by running this command:
+Rails always store your dates in UTC in the database (unless you change a different setting). You can configure time zones for your Debian based server just by running this command:
 
 {% highlight ruby %}
 

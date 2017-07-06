@@ -14,6 +14,6 @@ This will help you:
 
 {% highlight ruby %}
 
-	bundle exec gem pristine nokogiri
+    bundle exec gem pristine nokogiri
 
 {% endhighlight %}

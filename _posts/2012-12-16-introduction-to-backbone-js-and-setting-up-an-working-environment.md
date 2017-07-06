@@ -26,26 +26,26 @@ categories: Backbone.js
 
 ***
 
-So this is a series of posts explaining backbone js. I am hoping for a feedback on each in order to make it better. At the end of each post you can find a link to download the source code.
+So this is a series of posts explaining backbone js. I am hoping for feedback on each to make it better. At the end of each post, you can find a link to download the source code.
 
 
 ## What is backbone js.
 
-Backbone.js is basically an uber-light framework that allows you to structure your Javascript code in a **MVC**(Model, View, Controller) fashion where…
+Backbone.js is an uber-light framework that allows you to structure your Javascript code in a **MVC**(Model, View, Controller) fashion where…
 
-*   **Model** is part of your code that retrieves and populates the data,
-*   **View** is the HTML representation of this model(views change as models change, etc)
-*    **Controller** that in this case allows you to save the state of your javascript application via a hashbang url, for example: 
+*   **Model** is part of your system that retrieves and populates the data,
+*   **View** is the HTML representation of this model(views change as models change, etc.)
+*    **Controller** that in this case allows you to save the state of your javascript application via a hashbang URL, for example: 
 
 ## Why and when we need to use it.
 
-When ever you feel you using tons of lines of javascript (or jquery) in your application for example. Do this when this happens, then make a ajax request, then show some animation, then replace the dom elements and so on. Then you keep adding more and more lines of code and it becomes a mess. I have worked on couple of project in which I have do the same thing cause those applications are so much front end dependent. Designers keep suggesting better and better designs and then we are start writing tons of jquery code without any structure. If you are doing the same then checkout backbone. It will help you for sure by giving you a structure to your javascript code.
+Whenever you feel you using tons of lines of javascript (or jquery) in your application for example. Do this when this happens, then make an ajax request, then show some animation, then replace the dom elements and so on. Then you keep adding more and more lines of code, and it becomes a mess. I have worked on a couple of projects in which I have done the same thing cause those applications are so much front end dependent. Designers keep suggesting better and better designs, and then we start writing tons of jquery code without any structure. If you are doing the same then checkout backbone. It will help you for sure by giving you a structure to your javascript code.
 
 
 
 ## What are the various dependencies that I need to use.
 
-As per the default only dependency is underscore js, which provides a lot of helper methods  and jquery. So in this I will be using underscore js and jquery and will try to cover few things related to  coffee script etc. I wil be using chrome browser and use chrome console to try out various things.
+As per the default, the only dependency is underscore js, which provides a lot of helper methods and jquery. So in this, I will be using underscore js and jquery and will try to cover few things related to the coffee script, etc. I will be using Chrome browser and use Chrome console to try out various things.
 
 ## Installation:
 
@@ -61,9 +61,9 @@ So to setup a working environment, You need three js files
 
 ## Loading Backbone js
 
-So once downlaoded I will create a js folder for all the js and index.html file which loads all the libraries.
+So once downloaded I will create a js folder for all the js and index.html file which loads all the libraries.
 
-{% highlight html %}
+{% highlight HTML %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,14 +81,14 @@ So once downlaoded I will create a js folder for all the js and index.html file 
 
 ## Testing in browser
 
-Now open you index.html file in chrome and open chrome developer tools and open console tab and if installation is proper then you should have access for global variable Backbone
+Now open you index.html file in chrome and open chrome developer tools and open console tab, and if installation is proper then you should have access to global variable Backbone
 
 ![Backbone Load test](/wp-content/uploads/2012/12/Screen-Shot-2012-12-16-at-5.30.02-AM.png)
 
-Thats all in the installation. Lets start the journey :)
+That's all in the installation. Let's start the journey :)
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

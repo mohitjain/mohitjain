@@ -19,7 +19,7 @@ User.first.gifts.pluck(:id)
 {% endhighlight %}
 
 ## Explanation
-‘pluck’ is on the db level. It will only query the particular field. [See this.][1]
+‘pluck’ is on the DB level. It will only query the particular field. [See this.][1]
 
  [1]: http://guides.rubyonrails.org/active_record_querying.html#pluck "pluck in ruby on rails"
 

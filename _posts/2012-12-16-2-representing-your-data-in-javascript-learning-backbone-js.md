@@ -27,11 +27,11 @@ featured: true
 ***
 
 ## Agenda
-In this topic we will not be actually discussing about backbone, We will be learning how to represent data. We are using the same application that we build in previous blog post and building on top of it. Lets create a new file ie main.js and lets include that in `index.html`.
+In this topic we will not be discussing backbone, We will be learning how to represent data. We are using the same application that we build in previous blog post and building on top of it. Let's create a new file, i.e., main.js and let's include that in `index.html`.
 
 ## Defining the object
 
-Now lets define an object Person which has some attributes like name, age or occupation. Here is the code for that.
+Now let's define an object Person which has some attributes like name, age or occupation. Here is the code for that.
 
 {% highlight javascript %}
 
@@ -42,15 +42,15 @@ var Person = function(config){
 };
 
 Person.prototype.work = function(){
-	return this.name + 'is working.';
+    return this.name + 'is working.';
 };
 
 {% endhighlight %}
-So why we are defining in this way is clear because we want to give a structure. Classes and objects are the best way to define a structure. So in the code sample above we defined a class Person and a function work. Save the file and open `index.html` file on browser. *(Make sure you have included main.js file in `index.html`)*
+So why we are defining in this way is evident because we want to give structure. Classes and objects are the best way to describe a structure. So in the code sample above, we defined a class Person and a function work. Save the file and open `index.html` file on browser. *(Make sure you have included main.js file in `index.html`)*
 
 ## Fire up the console and fire these commands
 
-So from chrome developer console you can trigger following things to see some results.
+So from Chrome developer console, you can trigger following things to see some results.
 
 {% highlight javascript %}
 
@@ -63,16 +63,16 @@ person.work();      // will return the output of the function ie work defined in
 
 {% endhighlight %}
 
-Cool. Lets take a look on the screenshot explaining things on chrome console.
+Cool. Let's take a look at the screenshot explaining things on chrome console.
 
 ## Output on Chrome Console
 
 ![Representing your data – Chrome Console Output](/wp-content/uploads/2012/12/Screen-Shot-2012-12-16-at-8.25.50-AM.png)
 
-Thats the basic way to give a better structure your code. Thats all in representing your data in javascript. Lets move forward and define first model in your backbone application.
+That's the basic way to give a better structure your code. That's all in representing your data in javascript. Let's move forward and define the first model in your backbone application.
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

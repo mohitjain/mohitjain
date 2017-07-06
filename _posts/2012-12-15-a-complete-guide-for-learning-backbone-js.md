@@ -7,7 +7,7 @@ categories: Backbone.js Validations
 banner_image: "/media/backbone.jpg"
 featured: true
 ---
-In couple of days I will start a series of various tutorials for learning backbone js. Explaining the essentials of backbone js. I have divided the whole series in some 15 posts in which I will be explaining it from very basic examples. I will be posting the code samples in the posts itself and at the last of each post you can find out the whole source code on Github.  Pretty excited to start my first series. I hope you will like it and just keep motivating me by giving me feedback to make it better for all. Wish me good luck and stay tuned. If you haven’t subscribe for the blog, I will recommend you subscribe now :)
+In a couple of days, I will start a series of various tutorials for learning backbone js. Explaining the essentials of backbone js. I have divided the whole series in some 15 posts in which I will be explaining it from very basic examples. I will be posting the code samples in the posts itself, and at the last of each post you can find out the whole source code on Github.  Pretty excited to start my first series. I hope you will like it and just keep motivating me by giving me feedback to make it better for all. Wish me good luck and stay tuned. If you haven’t subscribed to the blog, I will recommend you subscribe now :)
 
 Here is the list of the upcoming posts for learning backbone js:
 

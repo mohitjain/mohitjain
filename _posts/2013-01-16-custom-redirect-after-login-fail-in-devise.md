@@ -4,17 +4,14 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2013/01/custom-redirect-after-login-fail-in-devise/
-
-
-
 categories: quick-solution tips-and-tricks
 ---
 
-Last weekend had a small hackathon in our office and we build a [simple group emailing service][1] and in that project we need to make some overrides in devise and one of them was custom redirect in case login fails.
+Last weekend had a small hackathon in our office and we build a [simple group emailing service][1] and in that project, we need to make some overrides in devise and one of them was custom redirect in case of login fails.
 
  [1]: http://emaillist.io?utm_source=codebeerstartups&utm_medium=blogpost&utm_campaign=codebeerstartups "Group Emailing service"
 
-By default when the login fails it redirects to “users/sign_in”. Here is how you can over ride this.
+By default when the login fails it redirects to “users/sign_in”. Here is how you can override this.
 
 1. Create a custom_failure.rb in your lib directory, with:
 
@@ -50,4 +47,4 @@ config.autoload_paths  = %W(#{config.root}/lib)
 
 4. Don’t forget to restart your server.
 
-Thats a way to handle custom redirect after login fail in devise. Please feel free to embarrass me with your improvements in the comments.
+That's a way to handle custom redirect after login fails in devise. Please feel free to embarrass me with your improvements in the comments.

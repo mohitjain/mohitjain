@@ -4,13 +4,9 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink:  /2012/10/block-email-sending-to-certain-email-addresses-or-domain-in-Ruby on Rails/
-
-
-
 categories: tips-and-tricks
 ---
-
-If you want to block email sending to some particular user or some particular email format, then interceptor is your friend :) Just place this code in your config/initializers/email_filters.rb
+If you want to block email sending to some particular user or some specific email format, then interceptor is your friend :) Just place this code in your config/initializers/email_filters.rb
 
 {% highlight ruby %}
 

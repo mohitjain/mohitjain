@@ -8,7 +8,6 @@ banner_image: "/media/backbone.jpg"
 featured: true
 ---
 
-
 > This entry is part 12 of 14 in the series for [A Complete Guide for Learning Backbone Js](/2012/12/a-complete-guide-for-learning-backbone-js/)
 
 * [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)

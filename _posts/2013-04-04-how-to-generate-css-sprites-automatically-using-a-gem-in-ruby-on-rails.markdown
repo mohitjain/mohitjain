@@ -2,14 +2,10 @@
 layout: post
 title: "How to generate css sprites automatically using a gem in ruby on rails"
 date: 2013-04-04 20:48
-
-
-
 categories: Performance
 ---
 
-
-Css sprites is a pretty cool thing to implement but its tedious one as you have to compose a lot of images into one css sprite image and measure the x and y positions for each image. Besides this, it always causes conflict when more than one person change the css sprite image. So here is a trick for you. Use a gem ie [css_sprite](https://github.com/flyerhzm/css_sprite) and it will create merge all the images and write down the respective css for you.
+CSS sprites is a pretty cool thing to implement but its tedious one as you have to compose a lot of images into one CSS sprite image and measure the x and y positions for each image. Besides this, it always causes conflict when more than one person changes the CSS sprite image. So here is a trick for you. Use a gem ie [css_sprite](https://github.com/flyerhzm/css_sprite) and it will create merge all the images and write down the respective CSS for you.
 
 Something like this:
 
@@ -28,13 +24,13 @@ Something like this:
 <!--more-->
 
 
-These are css sprite best practice I follow. Now it's time to see how to implement these in a rails application.
+These are CSS sprite best practice I follow. Now it's time to see how to implement these in a Rails application.
 
 * Install the css_sprite gem
-* Create css_sprite or css_sprite suffixed directory, and put any images into the css sprite directory.
-* You can use "rake css_sprite:start" to generate css sprite image automatically all the time, or use "rake css_sprite:build" to run the css_sprite once manually.
-* Then add the stylesheet "css_sprite.css" in html and use the generated css class to display image.
+* Create css_sprite or css_sprite suffixed directory, and put any images into the CSS sprite directory.
+* You can use "rake css_sprite:start" to generate CSS sprite image automatically all the time, or use "rake css_sprite:build" to run the css_sprite once manually.
+* Then add the stylesheet "css_sprite.css" in HTML and use the generated CSS class to display image.
 
 The css_sprite gem also supports to generate sass and scss.
-And to avoid the conflict of css sprite image and css, add public/images/css_sprite.png and public/stylesheets/css_sprite.css into .gitignore file. So only images under css sprite directory are in the control of git, and everyone should build the css sprite image automatically by the rake task.
-You can fine more details [here](http://huangzhimin.com/2010/04/03/css-sprite-best-practices-english-version/)
+And to avoid the conflict of CSS sprite image and CSS, add public/images/css_sprite.png and public/stylesheets/css_sprite.css into .gitignore file. So only images under CSS sprite directory are in the control of git, and everyone should build the CSS sprite image automatically by the rake task.
+You can find more details [here](http://huangzhimin.com/2010/04/03/css-sprite-best-practices-english-version/)

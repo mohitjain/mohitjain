@@ -2,9 +2,6 @@
 title: How to change default port in rails
 layout: post
 comments: true
-
-
-
 permalink: /2012/10/how-to-change-default-port-in-rails/
 description: How to change default port in ruby on rails
 keywords: port, default port, ruby on rails

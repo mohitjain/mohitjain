@@ -5,7 +5,6 @@ description: How to optimize Active Record Queries in ruby on rails
 date: 2013-04-15 02:19
 categories: performance mysql  active-record
 ---
-
 Using the select parameter in Active Record association, you can speed up your application about 50% and more.
 
 ##Before
@@ -37,7 +36,7 @@ end
 
 {% endhighlight %}
 
-If you populate database with some 10000 records each. Results show that it will reduce time upto 50% with respect to fetching all the records.
+If you populate a database with some 10000 records each. Results show that it will reduce time up to 50% with respect to fetching all the records.
 
 ## Before refactoring:
 

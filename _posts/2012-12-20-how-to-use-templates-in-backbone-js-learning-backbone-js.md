@@ -28,20 +28,20 @@ featured: true
 
 ## Agenda
 
-In the previous lessons we learnt how to define views and display data, but problem was complex views. In this lesson we will learn how to use templates in backbone js.
+In the previous lessons we learned how to define views and display data, but problem was complex views. In this lesson, we will learn how to use templates in backbone js.
 
 ## What we have till now
 
-So from previous lesson we have this PersonView:
+So from the previous lesson, we have this PersonView:
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
@@ -73,34 +73,34 @@ this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + 
 
 {% endhighlight %}
 
-This will go more complex if we have images or some complex views etc.
+This will go more complicated if we have images or some complex views etc.
 
 ## Using a template
 
-Lets use a template and we pass data to that template and in return that template returns back the full html view. Take a look on this code and lets discuss it line by line.
+Let's use a template, and we pass data to that template, and in return, that template returns the full HTML view. Take a look at this code and let's discuss it line by line.
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest Worker',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest Worker',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+    my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.my_template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.my_template(this.model.toJSON()));
+    }
 });
 
 // calls from console
@@ -112,12 +112,12 @@ var PersonView = Backbone.View.extend({
 {% endhighlight %}
 <!--more-->
 
-So we introduced a new line ie:
+So we introduced a new line i.e.,
 
 {% highlight javascript %}
 my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 {% endhighlight %}
-Backbone js has feature that you can define template using underscore js that we included in lesson 1 and it will compile the template and then when ever you pass the data, it will return the html view as per the code. So in the above line we defined a template using
+Backbone js has a feature that you can define a template using underscore js that we included in lesson 1, and it will compile the template, and then when ever you pass the data, it will return the HTML view as per the code. So in the above line, we defined a template using
 
 {% highlight javascript %}
 _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>")
@@ -144,30 +144,30 @@ We called the template and we need to pass the data to that template. We will ha
 // var personView = new PersonView({ model: person });
 {% endhighlight %}
 
-So personView has access to the model and previously we have seen that toJSON() method just pass the object parameters. Cool. Now lets see the code again and discuss the full flow:
+So personView has access to the model, and previously we have seen that toJSON() method just pass the object parameters. Cool. Now let's see the code again and discuss the full flow:
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest Worker',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest Worker',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+    my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 
-	initialize: function(){
-		this.render();
-	},
+    initialize: function(){
+        this.render();
+    },
 
-	render: function(){
-		this.$el.html( this.my_template(this.model.toJSON()));
-	}
+    render: function(){
+        this.$el.html( this.my_template(this.model.toJSON()));
+    }
 });
 
 {% endhighlight %}
@@ -189,10 +189,10 @@ $(document.body).html(personView.el);  //  --->; This will add output to the dom
 
 *   A personView object is created.
 *   Model person has been passed to that personView object.
-*   So personView has access to person object.
+*   So personView has access to the person object.
 *   personView constructor will call render method.
 *   render method will call template via my\_template and pass data to my\_template
-*   my_template will accepts the parameters and assign proper values and return back to render.
+*   my_template will accepts the parameters and assign proper values and return to render.
 
 Cool :)
 
@@ -202,11 +202,11 @@ Now Lets see what chrome developer tools say:
 
 ![defining templates in backbone js](/wp-content/uploads/2012/12/defining-templates-in-backbone-js.png?fit=693,520)
 
-The templates we will be defining is known as inline templates. We can improve this code too. Lets see that in the next lesson.
+The templates we will be defined is known as inline templates. We can improve this code too. Let's see that in the next lesson.
 
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

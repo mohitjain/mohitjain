@@ -8,7 +8,6 @@ banner_image: "/media/backbone.jpg"
 featured: true
 ---
 
-
 > This entry is part 4 of 14 in the series for [A Complete Guide for Learning Backbone Js](/2012/12/a-complete-guide-for-learning-backbone-js/)
 
 * [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)
@@ -29,23 +28,23 @@ featured: true
 
 ## Agenda
 
-So in previous post we defined a person class with some default values in it. Now I want to add some validations like, Age can’t be negative or name can’t be blank. Lets start adding Validations in models in backbone js.
+So in previous post, we defined a person class with some default values in it. Now I want to add some validations like, Age can’t be negative, or name can’t be blank. Let's start adding Validations in models in Backbone js.
 
 
 ## What we have till now
 
-So we have a person model ie:
+So we have a person model i.e.,
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'Worker'
-	},
-	work: function(){
-		return this.get('name')  ' is working.';
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'Worker'
+    },
+    work: function(){
+        return this.get('name')  ' is working.';
+    }
 });
 
 {% endhighlight %}
@@ -57,32 +56,32 @@ Now you can validations by using validate function like this:
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'worker'
-	},
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'worker'
+    },
 
-	validate: function(attributes){
-		if ( attributes.age <  ){
-			return 'Age must be positive.';
-		}
+    validate: function(attributes){
+        if ( attributes.age <  ){
+            return 'Age must be positive.';
+        }
 
-		if ( !attributes.name ){
-			return 'Every person must have a name.';
-		}
-	},
+        if ( !attributes.name ){
+            return 'Every person must have a name.';
+        }
+    },
 
-	work: function(){
-		return this.get('name') + ' is working.';
-	}
+    work: function(){
+        return this.get('name') + ' is working.';
+    }
 });
 
 {% endhighlight %}
 
 ## Fire up the console and fire these commands
 
-Now lets head back to chrome developer tools. In the console:
+Now, lets head back to chrome developer tools. In the console:
 
 {% highlight javascript %}
 
@@ -103,7 +102,7 @@ person.get('age')// will return new value ie 18
 
 ## Displaying the error messages.
 
-To see the errors messages, you have to bind a listen event to the person. A simple way to do that is:
+To see the errors messages, you have to bind a listen to the event to the person. A simple way to do that is:
 
 {% highlight javascript %}
 
@@ -124,15 +123,15 @@ person.set("age", -1)
 
 ## Output on Chrome Console
 
-Cool. Lets see what we have on the console.
+Cool. Let's see what we have on the console.
 
 ![adding validations in backbone models](/wp-content/uploads/2012/12/adding-validations-in-backbone-models.png)
 
-Pretty simple right? Lets move forward and see how handle data presentation ie views in backbone js.
+Pretty simple right? Let's move forward and see how to handle data presentation, i.e., views in Backbone js.
 
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

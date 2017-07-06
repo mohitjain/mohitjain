@@ -4,12 +4,8 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/12/ajaxify-your-site-with-remote-true/
-
-
-
 categories: tips-and-tricks utilities
 ---
-
 Here is a small application which is basically a scaffold but create, edit, update and destroy are done using ajax ie remote => true option in rails. [See Demo.][1]
 
  [1]: http://ajaxified-scaffold.herokuapp.com/ "Demo of the application"
@@ -31,11 +27,11 @@ So the very first thing is understand repond_to block. If you run a scaffold com
 
 {% endhighlight %}
 
-[which basically means this will respond to only two kind of request one is html and second is json.][2]
+[which means this will respond to only two kinds of request one is HTML and second is json.][2]
 
- [2]: http://api.rubyonrails.org/classes/ActionController/MimeResponds/ClassMethods.html#method-i-respond_to "Rails api doc for repond_to block"
+ [2]: http://api.rubyonrails.org/classes/ActionController/MimeResponds/ClassMethods.html#method-i-respond_to "Rails API doc for repond_to block."
 
-Now for your your ajax request your need to tell controller to respond to js request which can be done but adding a line ie.
+Now for your-your ajax request your need to tell the controller to respond to js request which can be done but adding a line i.e.,.
 {% highlight ruby %}
 
 # GET /products/new
@@ -53,9 +49,9 @@ Now for your your ajax request your need to tell controller to respond to js req
 
 {% endhighlight %}
 
-Now you have told controller to send response for js request. Create a file ie new.js.erb. This is the file where you write some js code to make the response to do the desired stuff.
+Now you have told the controller to send the response for js request. Create a file ie new.js.erb. This is the file where you write some js code to make the response to do the desired stuff.
 
-Cool. Lets start from scratch.
+Cool. Let's start from scratch.
 
 **Step 1:** Make a new application
 **Step 2:** Generate a scaffold
@@ -98,7 +94,7 @@ Now if you try to submit the form, it will be submitted as normal form. To make 
 {% highlight ruby %}
 <%= form_for @product, :remote => true do |f| %> # adding remote=> true to form.
 {% endhighlight %}
-Now refresh and try to submit the form. Form will be submitted but request is not handled properly on controller end. Here is the same code for create action.
+Now refresh and try to submit the form. The form will be submitted, but the request is not handled properly on controller end. Here is the same code for create action.
 
 {% highlight ruby %}
 # POST /products
@@ -162,16 +158,16 @@ and a product.html.erb partial ie _product.html.erb
 </tr>
 {% endhighlight %}
 
-Once you make this modifications. You can see that redering a new form and create a new product is completely ajaxified. In the same way you can do for edit form and update and for destroy.
+Once you make this modification. You can see that rendering a new form and create a new product is completely Ajaxified. In the same way, you can do for edit form and update and for destroy.
 
 [Source code: Clone this repo to see the whole code][3]
 
- [3]: https://github.com/mohitjain/ajaxified_scaffold "Source code for Ajaxified Scaffold"
+ [3]: https://github.com/mohitjain/ajaxified_scaffold "Source code for Ajaxified Scaffold."
 
-This is how you can a lot of things to ajaxify your site with respond_to and remote => true.
+This is how you can do a lot of things to Ajaxify your site with respond_to and remote => true.
 
 **Update:**
 
-[Do checkout how to add validations in ajax based forms][4]
+[Do check out how to add validations in ajax based forms][4]
 
-[4]: http://www.codebeerstartups.com/2013/01/adding-validations-in-your-ajax-based-controllers-ajaxify-your-site  "Adding validations in your ajax based controllers – Ajaxify your site – Part 2"
+[4]: http://www.codebeerstartups.com/2013/01/adding-validations-in-your-ajax-based-controllers-ajaxify-your-site  "Adding validations in your ajax based controllers – Ajaxify your site – Part 2."

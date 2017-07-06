@@ -6,7 +6,7 @@ date: 2013-07-10 04:06
 categories: omniauth facebook ruby ruby-on-rails
 ---
 
-Lets assume we have to parse this hash. There can be case we are not getting the keys as a response. So this post is about handling those cases.
+Let's assume we have to parse this hash. There can be the case we are not getting the keys as a response. So this post is about handling those cases.
 
 {% highlight ruby %}
 
@@ -38,41 +38,41 @@ auth = {
 
 ## General Scenario
 
-So in the best case scenario we will be having all the keys. So the code like this will work.
+So in the best case scenario, we will be having all the keys. So the code like this will work.
 
 {% highlight ruby %}
 
-	user_email = auth[:info][:email]
-	user_nickname = auth[:info][:nickname]
-	user_location = auth[:info][:location]
+    user_email = auth[:info][:email]
+    user_nickname = auth[:info][:nickname]
+    user_location = auth[:info][:location]
 
 {% endhighlight %}
 
 ## Exceptional Scenario
 
-Now think about this case when we don't have location key in the response. So we got an hash like this:
+Now think about this case when we don't have location key in the response. So we got a hash like this:
 
 {% highlight ruby %}
 
-	auth = {
-	  :provider => 'facebook',
-	  :uid => '1234567',
-	  :info => {
-	    :nickname => 'jbloggs',
-	    :email => 'joe@bloggs.com',
-	    :name => 'Joe Bloggs',
-	    :first_name => 'Joe',
-	    :last_name => 'Bloggs',
-	    :image => 'http://graph.facebook.com/1234567/picture?type=square',
-	    :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
-	    :verified => true
-	  },
-	  :credentials => {
-	    :token => 'ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
-	    :expires_at => 1321747205, # when the access token expires (it always will)
-	    :expires => true # this will always be true
-	  }
-	}
+    auth = {
+      :provider => 'facebook',
+      :uid => '1234567',
+      :info => {
+        :nickname => 'jbloggs',
+        :email => 'joe@bloggs.com',
+        :name => 'Joe Bloggs',
+        :first_name => 'Joe',
+        :last_name => 'Bloggs',
+        :image => 'http://graph.facebook.com/1234567/picture?type=square',
+        :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
+        :verified => true
+      },
+      :credentials => {
+        :token => 'ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
+        :expires_at => 1321747205, # when the access token expires (it always will)
+        :expires => true # this will always be true
+      }
+    }
 
 {% endhighlight %}
 
@@ -90,7 +90,7 @@ user_location = auth[:info][:location] # will return nil here...
 {% endhighlight %}
 
 
-As we all know there is no surety of the hash from the provider so we cant trust it and this 'nil' value can later on create issues as we start using it assuming everything is coming perfectly fine from provider.
+As we all know there is no surety of the hash from the provider so we cant trust it and this 'nil' value can, later on, create issues as we start using it assuming everything is coming perfectly fine from the provider.
 
 So if you want to generate an error in this case when key is not found a simple way can be using statement modifiers ie
 
@@ -146,19 +146,19 @@ auth[:info].fetch(:location, &default)
 
 ## Caution
 
-Another thing to note with fetch is, there is another way to pass second parameter is method ie:
+Another thing to note with fetch is, there is another way to pass the second parameter is method ie:
 
 {% highlight ruby %}
 
 def default
-	"This is my default value"
+    "This is my default value"
 end
 
 auth[:info].fetch(:location, default)
 
 {% endhighlight %}
 
-But the problem with second one is default method. This method will be computed everytime wheather your key exists or not, which can be a problem in case you are doing some heavy computation. Using block will execute if and only if key doesn't exists.
+But the problem with the second one is default method. This method will be computed every time whether your key exists or not, which can be a problem in case you are doing some heavy computation. Using block will execute if and only if the key doesn't exist.
 
 ## Fetch also works on arrays
 
@@ -173,9 +173,4 @@ a.fetch(10)  # => example.rb:39:in `fetch': index 10 outside of array bounds: -4
 
 {% endhighlight %}
 
-Thats all :)
-
-
-
-
-
+That's all :)

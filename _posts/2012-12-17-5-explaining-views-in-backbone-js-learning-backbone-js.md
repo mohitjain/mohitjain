@@ -28,30 +28,30 @@ featured: true
 
 ## Agenda
 
-In previous lessons we saw how to define models and add validations. In this lesson we will be checking out views in backbone js. Views are basically how you display your data.
+In previous lessons, we saw how to define models and add validations. In this lesson, we will be checking out views in Backbone js. Views are basically how you display your data.
 
 ## What we have till now
 
-In order to make things simpler lets remove validations and functions from model. So we have this.
+To make things simpler let's remove validations and functions from the model. So we have this.
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 {% endhighlight %}
 
-So now we want to add a view for a person. For simplicity lets take about list items. So every person will be displayed in a `li` tag. In order to define that view lets create a person view ie:
+So now we want to add a view for a person. For simplicity, let's take about list items. So every person will be displayed in a `li` tag. To define that view lets create a person view, i.e.,
 
 {% highlight javascript %}
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li'
+    tagName: 'li'
 });
 
 {% endhighlight %}
@@ -72,18 +72,18 @@ personView.$el // is jquery tied up view for this object.
 
 ## Output on Chrome Console
 
-Lets head back to chrome developer tools and see what we have in this object.
+Let's head back to chrome developer tools and see what we have in this object.
 
 ![Define a basic view](/wp-content/uploads/2012/12/Screen-Shot-2012-12-16-at-8.53.11-PM.png?fit=283,227)
 
-## Adding html elements like class, id
+## Adding HTML elements like class, id
 
-You can also add other things like css class name, element id etc using some other attributes like
+You can also add other things like cs class name, element id, etc. using some other attributes like
 
 {% highlight javascript %}
 
 var PersonView = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
         className: 'person',
         id: 'person-id' // although this is not a good way but I think got the idea.
 });
@@ -91,14 +91,14 @@ var PersonView = Backbone.View.extend({
 
 ## Rendering the view
 
-So backbone offers constructor for the views ie known as initialize ie it will be automatically called when you initiate a view.
+So backbone offers constructor for the views, i.e., known as initializing, i.e., it will be automatically called when you initiate a view.
 
 {% highlight javascript %}
 initialize: function(){
 }
 {% endhighlight %}
 
-Backbone also offers a method render that will render out the output for the data of the model associated with that view. ie
+Backbone also provides a method render that will render out the output for the data of the model associated with that view. ie
 
 {% highlight javascript %}
 
@@ -109,16 +109,16 @@ render: function(){
 
 <!--more-->
 
-So lets add all these in out class, so we have something like this:
+So let's add all these in out class, so we have something like this:
 
 {% highlight javascript %}
 
 var Person = Backbone.Model.extend({
-	defaults: {
-		name: 'Guest User',
-		age: 23,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 23,
+        occupation: 'worker'
+    }
 });
 
 var PersonView = Backbone.View.extend({
@@ -139,15 +139,15 @@ var PersonView = Backbone.View.extend({
 // var personView = new PersonView({ model: person });
 {% endhighlight %}
 
-So in the above code we defined certain things.
+So in the above code, we defined certain things.
 
-*   initialize function that will called on PersonView initialization.
-*   render method that add the content in the view
+*   initialize function that will call on PersonView initialization.
+*   render method that adds the content in the view
 *   initialize function is calling render method which will add content in view.
 
 ## Fire up the console and fire these commands
 
-Lets head towards chrome console and execute these commands to see what we have.
+Let's head towards Chrome console and execute these commands to see what we have.
 
 {% highlight javascript %}
 
@@ -170,7 +170,7 @@ Here is what we have on console:
 
 ## Problem in the thought process.
 
-I hope you got an idea. But the problem with this code is defination of render method ie:
+I hope you got an idea. But the problem with this code is definition of render method, i.e.,
 
 {% highlight javascript %}
 
@@ -178,10 +178,10 @@ this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + 
 
 {% endhighlight %}
 
-As our views get complexed like having images and other things. This will become messy. We are lucky that backbone js has templates for that. So lets head to the new lesson templates in backbone js.
+As our views get complexed like having images and other things. This will become messy. We are lucky that backbone js has templates for that. So let's head to the new lesson templates in backbone js.
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

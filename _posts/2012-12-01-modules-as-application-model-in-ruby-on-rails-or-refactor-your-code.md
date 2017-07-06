@@ -4,14 +4,11 @@ author: Mohit Jain
 layout: post
 comments: true
 permalink: /2012/12/modules-as-application-model-in-Ruby on Rails-or-refactor-your-code/
-
 summary: extra_long
-
 categories: optimization performance quick-solution tips-and-tricks utilities
 ---
-
-Yesterday I was working on [active_admin][1]. This is the first time I am using active admin in any of my project, I find it pretty awesome. If you never used it then [just it a try][2]. So while building dashboard for the active admin. I felt of the need to something like application_model ;) so that the place where I used modules as application model in ruby on rails
-I was implementing [highcharts][3] in my application and I want to calculate Daily counts in last 30 days for most of the models likes users, products etc
+Yesterday I was working on [active_admin][1]. This is the first time I am using active admin in any of my projects; I find it pretty impressive. If you never used it then [just it a try][2]. So while building the dashboard for the active admin. I felt the need to something like application_model ;) so that the place where I used modules as application model in ruby on rails
+I was implementing [highcharts][3] in my application, and I want to calculate Daily counts in last 30 days for most of the models likes users, products, etc
 
 ## Before
 
@@ -36,7 +33,7 @@ Now Same functionality i need for product model and other models too. So instead
 ## After
 
 In lib directory, create a directory ie modules (or name it whatever you want to.)
-Now create a file ie act\_as\_countable.rb there and paste this code.
+Now create a file i.e., act\_as\_countable.rb there and paste this code.
 
 {% highlight ruby %}
 
@@ -106,8 +103,8 @@ module ActAsCountable
   end
 end
 {% endhighlight %}
-Note: You need to add load these modules via specifying the path in application_controller.rb. Also you need to restart your application.
+Note: You need to add load these modules via specifying the path in application_controller.rb. Also, you need to restart your application.
 {% highlight ruby %}
 config.autoload_paths  = Dir["#{config.root}/lib/modules/**"]
 {% endhighlight %}
-You can use module even to refactor the code. For example. Generally my user model has lot of methods related to fetch data from facebook, once user signs up. So create a module for those instance methods.
+You can use module even to refactor the code. For example. My user model has a lot of methods related to fetching data from Facebook, once the user signs up. So create a module for those instance methods.

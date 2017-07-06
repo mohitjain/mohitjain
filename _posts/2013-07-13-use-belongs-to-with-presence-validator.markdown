@@ -8,7 +8,7 @@ keywords: belongs_to, validations, associations
 ---
 
 
-Assume we have two models: User and Image. User has one image and image belongs to user. The code below:
+Assume we have two models: User and Image. User has one image and image belongs to a user. The code below:
 
 {% highlight ruby %}
 class User < ActiveRecord::Base
@@ -20,7 +20,7 @@ class Image < ActiveRecord::Base
 end
 {% endhighlight %}
 
-Now we want to add validation for image to check if user is there or not.
+Now we want to add validation for the image to check if the user is there or not.
 
 <!--more-->
 
@@ -31,7 +31,7 @@ class Image < ActiveRecord::Base
 end
 {% endhighlight %}
 
-So by adding just one line whenever you are trying to save image object, it will fire a query with respect to the user_id to check weather that user exists or not. In case user doesn't exits "image.save" with return an error.
+So by adding just one line whenever you are trying to save image object, it will fire a query with respect to the user_id to check whether that user exists or not. In case the user doesn't exit "image.save" with return an error.
 
 
 Happy Hacking :)

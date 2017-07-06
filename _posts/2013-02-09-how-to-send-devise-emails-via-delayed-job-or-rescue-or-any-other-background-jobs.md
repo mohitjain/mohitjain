@@ -7,7 +7,6 @@ permalink: /2013/02/how-to-send-devise-emails-via-delayed-job-or-rescue-or-any-o
 categories: optimization performance tips-and-tricks
 ---
 
-
 All always prefer to use [devise][1] in my application. But the problem is emails. Devise send emails synchronously but if you want to send then asynchronously here is a quick tip for you. Use [devise-async][2] gem.
 
  [1]: https://github.com/plataformatec/devise "Devise gem"
@@ -42,7 +41,7 @@ Devise::Async.backend = :delayed_job
 
 {% endhighlight %}
 
-Thats it. Now this will send all the devise emails via delayed job or rescue or any other background jobs.
+That's it. Now this will send all the devise emails via delayed job or rescue or any other background jobs.
 
 Make sure your devise-asyn gem is below devise gem else you will get an error like:
 

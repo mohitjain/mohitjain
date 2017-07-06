@@ -9,9 +9,9 @@ categories: migrations ruby-on-rails
 ---
 
 
-In Rails 2 in migrations there were only 2 methods: up and down. They are called on running migrations up and down respectively with rake tasks rake db:migrate and rake db:rollback.
+In Rails 2 in migrations, there were only 2 methods: up and down. They are called on running migrations up and down respectively with rake tasks rake db:migrate and rake db:rollback.
 
-Rails 3 produced us great method change which allowed us to write there code which creates a table and drops the table automatically on rolling migration back. But unfortunately there was a problem - you didn't have opportunity to say "don't run this peace of code on down but run this only on up". So the solution was just to use old syntax. Since Rails 4 has released there is a feature to fix this situation.
+Rails 3 produced us great method change which allowed us to write the code which creates a table and drops the table automatically on rolling migration back. But unfortunately there was a problem - you didn't have the opportunity to say "don't run this piece of code on down but run this only on up". So the solution was just to use old syntax. Since Rails 4 has released there is a feature to fix this situation.
 
 <!--more-->
 

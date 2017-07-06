@@ -9,15 +9,14 @@ permalink: /2012/12/clear-your-logs-in-development-automatically-when-they-are-t
 categories: optimization performance quick-solution tips-and-tricks utilities
 ---
 
-If you want to clear your logs in development automatically when they are too large in  here is a simple way to do that.
+If you want to remove your logs in development automatically when they are too large in here is an easy way to do that.
 
-{% highlight ruby %}
+{% highlight Ruby %}
 
 # config/initializers/clear_logs.rb
 # This snippet simply clears your logs when they are too large.
-# Large logs mean looooong search in TextMate. You know it :)
 # Every time you run rails server or rails console it checks log sizes
-# and clears the logs for you if necessary.
+# and makes the logs for you if necessary.
 
 if Rails.env.development?
   MAX_LOG_SIZE = 2.megabytes

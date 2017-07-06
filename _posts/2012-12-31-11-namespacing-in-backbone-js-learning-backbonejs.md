@@ -30,7 +30,7 @@ featured: true
 ## Agenda
 
 
-So far we declared everything as a global function ie Person, PersonView, PersonCollection etc. Namespacing helps us to structure our application in much nicer way and keep the application with limited global variables.
+So far we declared everything as a global function i.e., Person, PersonView, PersonCollection, etc. Namespacing helps us to structure our application in the much nicer way and keep the application with limited global variables.
 
 ## Quick Look
 
@@ -41,21 +41,21 @@ Take a look on this.
 (function(){
 
 window.App = {
-	Models: {},
-	Collections: {},
-	Views: {}
+    Models: {},
+    Collections: {},
+    Views: {}
 };
 
 window.template = function(id){
-	return _.template( $('#' + id).html() );
+    return _.template( $('#' + id).html() );
 };
 })();
 {% endhighlight %}
-In the above code we specified App as a name space. You can define what ever you want to as per your project name. And in the App namespace, we specified some other name space ie Models, Collections, Views. You can define templates if you have multiple templates. But for this example, I am keep template as totally different global variable.
+In the above code, we specified App as a name space. You can define what ever you want to as per your project name. And in the App namespace, we specified some other name space i.e., Models, Collections, Views. You can define templates if you have multiple templates. But for this example, I keep template as a totally different global variable.
 
 ## Understanding the namespacing
 
-Cool. Now lets take a look on our current naming conventions, We have
+Cool. Now let's take a look at our current naming conventions, We have
 
 {% highlight javascript %}
 
@@ -64,14 +64,14 @@ PersonView
 PeopleCollection
 PeopleView
 
-// following the same now with namespace..
+// following the same now with namespace.
 
 App.Models.Person
 App.Views.PersonView
 App.Collections.PeopleCollection
 App.Views.PeopleView
 
-// The above code is ok but there are redundancy in the naming which can be improved like this:
+// The above code is ok, but there is redundancy in the naming which can be improved like this:
 
 App.Models.Person
 App.Views.Person
@@ -93,75 +93,75 @@ So here is the new `main.js` file using namespacing in backbone js. *(Please che
 (function(){  // whole blocked is wrapped into anonymous Jquery function..
 
 window.App = {   // defining app name space, You can rename it as per your project name..
-	Models: {},
-	Collections: {},
-	Views: {}
+    Models: {},
+    Collections: {},
+    Views: {}
 };
 
 window.template = function(id){
-	return _.template( $('#' + id).html() );
+    return _.template( $('#' + id).html() );
 };
 
 
 // Person Model
 App.Models.Person = Backbone.Model.extend({   // Person model referencing the App namespace model.
-	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
-	}
+    defaults: {
+        name: 'Guest User',
+        age: 30,
+        occupation: 'worker'
+    }
 });
 
 // A List of People
 // Same here. People is referencing now collection from App namespace
 App.Collections.People = Backbone.Collection.extend({
-	model: App.Models.Person   // Change here for Person Reference from App models namespace
+    model: App.Models.Person   // Change here for Person Reference from App models namespace
 });
 
 
 // View for all people
 /// Same here. People is referencing now views from App namespace
 App.Views.People = Backbone.View.extend({
-	tagName: 'ul',
+    tagName: 'ul',
 
-	render: function(){
-		this.collection.each(function(person){
+    render: function(){
+        this.collection.each(function(person){
                         // Change here for Person Reference from App Views namespace
-			var personView = new App.Views.Person({ model: person });
-			this.$el.append(personView.render().el);
-		}, this);
+            var personView = new App.Views.Person({ model: person });
+            this.$el.append(personView.render().el);
+        }, this);
 
-		return this;
-	}
+        return this;
+    }
 });
 
 // The View for a Person
 // Change here for Person Reference from App Views namespace
 App.Views.Person = Backbone.View.extend({
-	tagName: 'li',
+    tagName: 'li',
 
-	template: template('personTemplate'),
-	render: function(){
-		this.$el.html( this.template(this.model.toJSON()));
-		return this;
-	}
+    template: template('personTemplate'),
+    render: function(){
+        this.$el.html( this.template(this.model.toJSON()));
+        return this;
+    }
 });
 // Change here for Person Reference from App Collections namespace
 var peopleCollection = new App.Collections.People([
-	{
-		name: 'Mohit Jain',
-		age: 26
-	},
-	{
-		name: 'Taroon Tyagi',
-		age: 25,
-		occupation: 'web designer'
-	},
-	{
-		name: 'Rahul Narang',
-		age: 26,
-		occupation: 'Java Developer'
-	}
+    {
+        name: 'Mohit Jain',
+        age: 26
+    },
+    {
+        name: 'Taroon Tyagi',
+        age: 25,
+        occupation: 'web designer'
+    },
+    {
+        name: 'Rahul Narang',
+        age: 26,
+        occupation: 'Java Developer'
+    }
 ]);
 
 // Change here for Person Views from App Views namespace
@@ -175,4 +175,4 @@ Now just refresh your page and you will see same collections views output but in
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself, and I will try to reply back asap.

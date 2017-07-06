@@ -7,7 +7,7 @@ keywords:  development, rubygems, gems, best gems, awesome gems
 categories: rubygems, development
 ---
 
-Rubygems are best thing that happened in ruby on rails. So today here is my list of gems in development group that helps to make things faster or sometimes bring simplicity to the development process
+Rubygems are the best thing that happened in ruby on rails. So today here is my list of gems in development group that helps to make things faster or sometimes bring simplicity to the development process
 
 {% highlight ruby %}
 
@@ -64,15 +64,14 @@ If you would like to use Better Errors' advanced features (REPL, local/instance 
 
 {% endhighlight %}
 
-* [bullet](https://github.com/flyerhzm/bullet): The Bullet gem is designed to help you increase your application's performance by reducing the number of queries it makes. It will watch your queries while you develop your application and notify you when you should add eager loading (N+1 queries), when you're using eager loading that isn't necessary and when you should use counter cache. Best practice is to use Bullet in development mode or custom mode (staging, profile, etc.). The last thing you want is your clients getting alerts about how lazy you are.
+* [bullet](https://github.com/flyerhzm/bullet): The Bullet gem is designed to help you increase your application's performance by reducing the number of queries it makes. It will watch your queries while you develop your application and notify you when you should add eager loading (N+1 queries), when you're using eager loading that isn't necessary and when you should use the counter cache. Best practice is to use Bullet in development mode or custom mode (staging, profile, etc.). The last thing you want is your clients getting alerts about how lazy you are.
 
 * [debugger](https://github.com/cldwalker/debugger) Best debugger for your rails application.
 
 * [flay](https://github.com/seattlerb/flay) Flay analyzes code for structural similarities. Differences in literal
-values, variable, class, method names, whitespace, programming style,
-braces vs do/end, etc are all ignored. Making this totally rad.
+values, variable, class, method names, whitespace, programming style, braces vs do/end etc are all ignored. Making this totally rad.
 
-* [hirb](https://github.com/cldwalker/hirb):A mini view framework for console/irb that's easy to use, even while under its influence. Console goodies include a no-wrap table, auto-pager, tree and menu. A console gem that will display your results something like this:
+* [hirb](https://github.com/cldwalker/hirb):A mini view framework for console/irb that's easy to use, even while under its influence. Console goodies include a no-wrap table, auto-pager, tree, and menu. A console gem that will display your results something like this:
 
 {% highlight ruby %}
 
@@ -97,7 +96,7 @@ $ localtunnel-beta 8000
 
 * [lol_dba](https://github.com/plentz/lol_dba): lol_dba is a small package of rake tasks that scan your application models and displays a list of columns that probably should be indexed. Also, it can generate .sql migration scripts.
 
-* [mailcatcher](https://github.com/sj26/mailcatcher): MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface. Run mailcatcher, set your favourite app to deliver to smtp://127.0.0.1:1025 instead of your default SMTP server, then check out http://127.0.0.1:1080 to see the mail that's arrived so far.
+* [mailcatcher](https://github.com/sj26/mailcatcher): MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface. Run mail catcher, set your favorite app to deliver to smtp://127.0.0.1:1025 instead of your default SMTP server, then check out http://127.0.0.1:1080 to see the mail that's arrived so far.
 
 ![mailcatcher](/wp-content/images/mailcatcher.png?fit=750,274)
 
@@ -109,14 +108,14 @@ $ localtunnel-beta 8000
 
 * [quiet_assets](https://github.com/evrone/quiet_assets): Mutes assets pipeline log messages.
 
-* [rack-mini-profiler](https://github.com/harleyttd/miniprofiler): Middleware that displays speed badge for every html page. Designed to work both in production and in development.
+* [rack-mini-profiler](https://github.com/harleyttd/miniprofiler): Middleware that displays speed badge for every HTML page. Designed to work both in production and in development.
 
 ![miniprofiler](/wp-content/images/miniprofiler.png?fit=750,274)
 
 
 * [railroady](https://github.com/preston/railroady): RailRoady generates Rails 3 model (AcitveRecord, Mongoid, Datamapper) and controller UML diagrams as cross-platform .svg files, as well as in the DOT language.
 
-* [rails-footnotes](https://github.com/josevalim/rails-footnotes): Every Rails page has footnotes that gives information about your application and links back to your editor
+* [rails-footnotes](https://github.com/josevalim/rails-footnotes): Every Rails page has footnotes that give information about your application and links back to your editor
 
 ![footernotes](/wp-content/images/footernotes.png?fit=750,274)
 
@@ -132,14 +131,4 @@ $ localtunnel-beta 8000
 
 * [zeus](https://github.com/burke/zeus) Boot any rails app in under a second.
 
-
 Please let me know if you have some other cool gems. It will great to know about some cool gems.
-
-
-
-
-
-
-
-
-

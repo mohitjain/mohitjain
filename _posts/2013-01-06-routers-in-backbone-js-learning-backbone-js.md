@@ -30,23 +30,23 @@ featured: true
 
 ## Agenda
 
-So here we are back on backbone js. I got lot of feedback emails from the readers telling me how much they are loving the series. Thanks to all of them.
+So here we are back on backbone js. I got a lot of feedback emails from the readers telling me how much they are loving the series. Thanks to all of them.
 
-Ok. In this lesson we will learning routers in backbone js. Routing is pretty awesome in backbone js, if you are ruby on rails developer you will find it pretty simpler to that you are doing in ruby on rails.
+Ok. In this lesson, we will learn routers in backbone js. Routing is pretty awesome in backbone js, if you are ruby on rails developer you will find it pretty simpler to that you are doing in ruby on rails.
 
 ## What we have till now
 
-Lets start from a bare bone code ie:
+Let's start from a bare bone code ie:
 
 {% highlight javascript %}
 
 (function(){
 
   window.App = {
-  	Models: {},
-  	Collections: {},
-  	Views: {},
-  	Router: {}
+      Models: {},
+      Collections: {},
+      Views: {},
+      Router: {}
   };
 
 })();
@@ -55,7 +55,7 @@ Lets start from a bare bone code ie:
 
 ## Defining a router
 
-A simple Name spaced model, collection, views and a new one router. So lets define a router ie:
+A simple Name spaced model, collection, views, and a new one router. So lets define a router ie:
 
 {% highlight javascript %}
 
@@ -67,18 +67,18 @@ App.Router = Backbone.Router.extend({
 
 ## Defining a root route
 
-Now just for simplicity lets add a root route ie when page has been loaded..
+Now just for simplicity lets add a root route ie when the page has been loaded.
 
 {% highlight javascript %}
 
 App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index'
-	},
+    routes: {
+        '': 'index'
+    },
 
-	index: function(){
-		$(document.body).append("Index route has been called..");
-	}
+    index: function(){
+        $(document.body).append("Index route has been called..");
+    }
 
 });
 
@@ -86,25 +86,25 @@ App.Router = Backbone.Router.extend({
 
 <!--more-->
 
-So now we need to initiate the router and one thing we need to do is: Enabling backbone history so that backbone start monitoring hash changes in url.
+So now we need to initiate the router and one thing we need to do is: Enabling backbone history so that backbone starts monitoring hash changes in URL.
 
 {% highlight javascript %}
 
 (function(){
 
 window.App = {
-	Models: {},
-	Collections: {},
-	Views: {},
-	Router: {}
+    Models: {},
+    Collections: {},
+    Views: {},
+    Router: {}
 };
 App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index'
-	},
-	index: function(){
-		$(document.body).append("Index route has been called..");
-	}
+    routes: {
+        '': 'index'
+    },
+    index: function(){
+        $(document.body).append("Index route has been called..");
+    }
 });
 
 new App.Router;
@@ -114,100 +114,100 @@ Backbone.history.start();
 
 {% endhighlight %}
 
-So if we open index.html in browser we will see a string as specified in the browser. Something like this. (Please make sure you check url from the screenshot ie file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html )
+So if we open index.html in the browser we will see a string as specified in the browser. Something like this. (Please make sure you check URL from the screenshot ie file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html )
 
 ![routes in backbone js 1](/wp-content/uploads/2013/01/routes-in-backbone-js-1.png?fit=733,229)
 
 
 ## Adding a hash tag route
 
-Ok lets move ahead and add a route for hash tag.
+Ok, lets move ahead and add a route for the hash tag.
 
 {% highlight javascript %}
 
 App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index',
-		'show': 'show'
-	},
+    routes: {
+        '': 'index',
+        'show': 'show'
+    },
 
-	index: function(){
-		$(document.body).append("Index route has been called..");
-	},
+    index: function(){
+        $(document.body).append("Index route has been called..");
+    },
 
-	show: function(){
-		$(document.body).append("Show route has been called..");
-	},
+    show: function(){
+        $(document.body).append("Show route has been called..");
+    },
 
 });
 
 {% endhighlight %}
 
-So if we open index.html in browser we will see a string as specified in the browser. Something like this. (Please make sure you check url from the screenshot ie
+So if we open index.html in the browser we will see a string as specified in the browser. Something like this. (Please make sure you check URL from the screenshot ie
 
      file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html#show )
 
 
 ![routes in backbone js 2](/wp-content/uploads/2013/01/routes-in-backbone-js-21.png?fit=758,155)
 
-Ok Lets add a better route for show. Think about this. You want to say show/1 or show/2 or show/3 and based upon the number you want to display something. Here is how you can do something like that..
+Ok, Lets add a better route for the show. Think about this. You want to say show/1 or show/2 or show/3 and based upon the number you want to display something. Here is how you can do something like that.
 
 ## Passing a param in the route
 
 {% highlight javascript %}
 
 App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index',
-		'show/:id': 'show'
-	},
+    routes: {
+        '': 'index',
+        'show/:id': 'show'
+    },
 
-	index: function(){
-		$(document.body).append("Index route has been called..");
-	},
+    index: function(){
+        $(document.body).append("Index route has been called..");
+    },
 
-	show: function(id){
-		$(document.body).append("Show route has been called.. with id equals : "   id);
-	},
+    show: function(id){
+        $(document.body).append("Show route has been called.. with id equals : "   id);
+    },
 
 });
 
 {% endhighlight %}
 
-So if we open index.html in browser we will see a string as specified in the browser. Something like this. (Please make sure you check url from the screenshot ie
+So if we open index.html in the browser we will see a string as specified in the browser. Something like this. (Please make sure you check URL from the screenshot ie
 
     file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html#show/3 )
 
 
 ![routes in backbone js 3](/wp-content/uploads/2013/01/routes-in-backbone-js-3.png?fit=894,214)
 
-Ok if I want to specify something like: #download/3/12/23 in this case the above id routes will not work. So to handle that, take a look on this..
+Ok if I want to specify something like #download/3/12/23 in this case the above id routes will not work. So to handle that, take a look on this.
 
 {% highlight javascript %}
 
 App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index',
-		'show/:id': 'show',
-		'download/*random': 'download'
-	},
+    routes: {
+        '': 'index',
+        'show/:id': 'show',
+        'download/*random': 'download'
+    },
 
-	index: function(){
-		$(document.body).append("Index route has been called..");
-	},
+    index: function(){
+        $(document.body).append("Index route has been called..");
+    },
 
-	show: function(id){
-		$(document.body).append("Show route has been called.. with id equals : "   id);
-	},
+    show: function(id){
+        $(document.body).append("Show route has been called.. with id equals : "   id);
+    },
 
-	download: function(random){
-		$(document.body).append("download route has been called.. with random equals : "   random);
-	}
+    download: function(random){
+        $(document.body).append("download route has been called.. with random equals : "   random);
+    }
 
 });
 {% endhighlight %}
 
-So if we open index.html in browser we will see a string as specified in the browser. Something like this. (Please make sure you check url from the screenshot ie
+So if we open index.html in a browser we will see a string as specified in the browser. Something like this. (Please make sure you check URL from the screenshot ie
 
 {% highlight javascript %}
 
@@ -216,45 +216,45 @@ So if we open index.html in browser we will see a string as specified in the bro
 
 ![routes in backbone js 4](/wp-content/uploads/2013/01/routes-in-backbone-js-4.png?fit=866,148)
 
-Another usefull route that I feel most of the application need is for search and last is default route in case nothing is specified that one will be called..
+Another useful route that I feel most of the application need is for search and last is default route in case nothing is specified that one will be called.
 
 {% highlight javascript %}
 
 App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index',
-		'show/:id': 'show',
-		'download/*random': 'download',
-		'search/:query': 'search',
-		'*default': 'default'
-	},
+    routes: {
+        '': 'index',
+        'show/:id': 'show',
+        'download/*random': 'download',
+        'search/:query': 'search',
+        '*default': 'default'
+    },
 
-	index: function(){
-		$(document.body).append("Index route has been called..");
-	},
+    index: function(){
+        $(document.body).append("Index route has been called..");
+    },
 
-	show: function(id){
-		$(document.body).append("Show route has been called.. with id equals : "   id);
-	},
+    show: function(id){
+        $(document.body).append("Show route has been called.. with id equals : "   id);
+    },
 
-	download: function(random){
-		$(document.body).append("download route has been called.. with random equals : "   random);
-	},
+    download: function(random){
+        $(document.body).append("download route has been called.. with random equals : "   random);
+    },
 
-	search: function(query){
-		$(document.body).append("Search route has been called.. with query equals : "   query);
-	},
+    search: function(query){
+        $(document.body).append("Search route has been called.. with query equals : "   query);
+    },
 
-	default: function(default){
-		$(document.body).append("This route is not hanled.. you tried to access: "   default);
+    default: function(default){
+        $(document.body).append("This route is not handled.. you tried to access: "   default);
 
-	}
+    }
 
 });
 
 {% endhighlight %}
 
-You can try this for search url ie:
+You can try this for search URL ie:
 
 {% highlight javascript %}
 
@@ -262,7 +262,7 @@ file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/in
 
 {% endhighlight %}
 
-and to check default route here is one example..
+and to check default route here is one example.
 
 {% highlight javascript %}
 
@@ -270,10 +270,10 @@ file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/in
 
 {% endhighlight %}
 
-Thats all for this lesson ie routers in backbone js.
+That's all for this lesson ie routers in backbone js.
 
 ***
 
 ## Source code
 
-If you are facing any issues. Checkout the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
+If you are facing any issues. Check out the source code files at [github](https://github.com/mohitjain/learning_basics_backbone "Source Code for the post"). I will be creating more and more directories in the same repo regarding each post. Still, if you have any doubts you can comment on the blog post itself and I will try to reply back asap.
