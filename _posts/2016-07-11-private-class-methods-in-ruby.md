@@ -89,7 +89,7 @@ end
 
 {% endhighlight %}
 
-## 2. class <<  self
+## 2. Using self as block
 
 Block of class methods :)
 
