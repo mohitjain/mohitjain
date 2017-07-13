@@ -3,7 +3,7 @@ layout: post
 title: Private Class Methods In Ruby
 author: Mohit Jain
 comments: true
-categories: Private Class Methds, Ruby
+categories: Private Class Methods, Ruby
 description: How to define private class methods in ruby
 ---
 
@@ -89,7 +89,7 @@ end
 
 {% endhighlight %}
 
-## 2. class << self
+## 2. class <<  self
 
 Block of class methods :)
 
