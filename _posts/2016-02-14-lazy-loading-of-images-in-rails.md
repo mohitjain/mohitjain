@@ -7,9 +7,7 @@ categories: Image optimizations, lazy-loading
 description: How to lazy load images in ruby on rails.
 ---
 
-Recently I joined a company that [Thrillophilia](http://www.thrillophilia.com/) a tours and activities company in India, and where I need to solve a problem of lazy loading of images, cause the site is image heavy. I came across a lot of lazy loading javascript plugins, but finally came to know about [Layzr plugin](https://github.com/callmecavs/layzr.js) simple, lightweight and works like charm.
-
-<!--more-->
+I recently came across a lot of lazy loading javascript plugins, but finally came to know about [Layzr plugin](https://github.com/callmecavs/layzr.js) simple, lightweight and works like charm.
 
 But the problem is the usage. So what we use in rails:
 

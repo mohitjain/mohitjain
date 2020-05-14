@@ -1,62 +1,78 @@
-gems: [jekyll-paginate]
-# Site Settings
-title: "Codebeerstartups"
-email: "jain.mohit27@gmail.com"
-description: "Every Dog has one Blog"
-baseurl: ""
+# Site settings
+title: Mohit Jain
+description: >-
+lang: en-US
+timezone: Asia/New-Delhi
+image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+repo:
+mode: dark # default theme "dark" | "light"
+
+# Profile settings
+author:
+  name: Mohit Jain
+  bio:
+  username: jainmohit27
+  email: jain.mohit27@gmail.com
+  avatar: /wp-content/avatar.jpg
+
+# Url settings
 url: "http://codebeerstartups.com"
-logourl: ""
-fa-logo: "fa-bookmark-o"
-paginate: 5
-future: true
+baseurl:
+permalink: /:title/
+google_analytics:
+fb_appid:
 
-# Author Settings
-author_name: "Mohit Jain"
-author_url: "http://codebeerstartups.com"
-author_bio: "Rails Developer"
-author_email: "jain.mohit27@gmail.com"
-author_image: "/assets/img/author.jpg"
+# Collection setting
+collections:
+  posts:
+    output: true
 
-
-# Social Settings
-twitter_url: "http://twitter.com/jainmohit27"
-facebook_url: "http://facebook.com/jain.mohit27"
-github_url: "http://github.com/mohitjain"
-youtube_url: ""
-dribbble_url: ""
-googleplus_url: "https://plus.google.com/+MohitJain27"
-instagram_url: ""
-pinterest_url: "https://www.pinterest.com/mohitjain27/"
-linkedin_url: "https://www.linkedin.com/profile/view?id=40603170"
-
-
-# Theme Settings
-theme_disqus_shortname: "codebeerstartups"
-theme_google_comments: false
-theme_analytics_id: "UA-30450850-3"
-theme_analytics_domain: "codebeerstartups.com"
-theme_reading_time: true
-theme_autoload_comments: true
-theme_always_show_nav: false
-
-
-# SASS Settings
-# DO NOT MODIFY
-sass:
- sass_dir: "assets/css/"
- style: :compressed
-
-
-# Build Settings
+# Markdown settings
 markdown: kramdown
-permalink: /:year/:month/:title/
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
 
-jekyll-archives:
-  enabled: all
-  layout: 'page'
-  permalinks:
-    year: '/:year/'
-    month: '/:year/:month/'
-    day: '/:year/:month/:day/'
-    category: 'blog/categories/:name/'
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: false
 
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
+
+# Build settings
+sass:
+  style: compressed
+
+include:
+  - _redirects
+  - .htaccess
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sass-converter
+  - jekyll-sitemap
+  - jekyll-postfiles

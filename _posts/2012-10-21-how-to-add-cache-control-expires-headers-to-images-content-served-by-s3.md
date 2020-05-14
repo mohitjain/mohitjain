@@ -2,7 +2,6 @@
 title: How to add cache-control, expires headers to images (Content) served by S3
 layout: post
 comments: true
-permalink:  /2012/10/how-to-add-cache-control-expires-headers-to-images-content-served-by-s3/
 description: How to add cache-control, expires headers to images (Content) served by S3
 keywords: amazon s3, paperclip, caching, expiry-headers, images
 categories: optimization performance ruby-on-rails
@@ -15,20 +14,20 @@ Adding cache control and expiry headers. Caching images improves the user experi
 
 From the previous blog post:
 
-##Before:
+## Before:
 
 {% highlight ruby %}
-has_attached_file :attachment, {
-    :styles => {
-      :medium => ["654x500>", :jpg],
-      :thumb =>["200x200#", :jpg]
-    }
+    has_attached_file :attachment, {
+      :styles => {
+        :medium => ["654x500>", :jpg],
+        :thumb =>["200x200#", :jpg]
+      }
 {% endhighlight %}
 
-##After:
+## After:
 
 {% highlight ruby %}
-has_attached_file :attachment, {
+  has_attached_file :attachment, {
     :styles => {
       :medium => ["654x500>", :jpg],
       :thumb =>["200x200#", :jpg]
@@ -39,19 +38,23 @@ has_attached_file :attachment, {
       }
     }
 {% endhighlight %}
-##Another improvement:
+
+## Another improvement:
+
 {% highlight ruby %}
-has_attached_file :attachment, {
-  :styles => {
-    :medium => ["654x500>", :jpg],
-    :thumb =>["200x200#", :jpg]
-  },
-  :convert_options => {
-    :medium => "-quality 80 -interlace Plane",
-    :thumb => "-quality 80 -interlace Plane"
-  },
-  :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate }
-  }.merge(PAPERCLIP_STORAGE_OPTIONS)
+
+  has_attached_file :attachment, {
+    :styles => {
+      :medium => ["654x500>", :jpg],
+      :thumb =>["200x200#", :jpg]
+    },
+    :convert_options => {
+      :medium => "-quality 80 -interlace Plane",
+      :thumb => "-quality 80 -interlace Plane"
+    },
+    :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate }
+    }.merge(PAPERCLIP_STORAGE_OPTIONS)
+
 {% endhighlight %}
 
 PS: <em>Make sure you reprocess all the attachments :)</em>

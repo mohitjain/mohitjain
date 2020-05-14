@@ -3,7 +3,6 @@ title: How to implement action caching in ruby on rails with ajax enabled
 author: Mohit Jain
 layout: post
 comments: true
-permalink: /2013/02/how-to-implement-action-caching-in-ruby-on-rails-with-ajax-enabled/
 categories: optimization performance quick-solution tips-and-tricks
 ---
 
@@ -13,7 +12,7 @@ As a ruby on rails developer, you can implement caching pretty fast. As all, we 
 *   Action Caching
 *   Fragment caching
 
- <!--more-->
+
 
 
 So here is the major difference in three type of caching and then let's just implement action_caching in just a few lines.
@@ -26,7 +25,7 @@ Ok. Let's move to action caching in Ruby on rails and you can enable caching by 
 
 {% highlight ruby %}
 
-config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = true
 
 {% endhighlight %}
 
@@ -34,7 +33,7 @@ Lets cache index action of products controller. You can do that by specifying th
 
 {% highlight ruby %}
 
-caches_action :index
+  caches_action :index
 
 {% endhighlight %}
 
@@ -46,7 +45,7 @@ You have pagination implemented on this index action and you want to cache diffe
 
 {% highlight ruby %}
 
-caches_action :index, :cache_path => Proc.new { |c| c.params }
+  caches_action :index, :cache_path => Proc.new { |c| c.params }
 
 {% endhighlight %}
 
@@ -56,7 +55,7 @@ You have pagination implemented on this index action and you want to cache diffe
 
 {% highlight ruby %}
 
-caches_action :index, :unless => :current_user, :cache_path => Proc.new { |c| c.params }
+  caches_action :index, :unless => :current_user, :cache_path => Proc.new { |c| c.params }
 
 {% endhighlight %}
 
@@ -68,7 +67,7 @@ You have pagination implemented on this index action and you want to cache diffe
 
 {% highlight ruby %}
 
-caches_action :index, :unless => :current_user, :cache_path => Proc.new { |c| c.params },:expires_in => 10.minutes
+  caches_action :index, :unless => :current_user, :cache_path => Proc.new { |c| c.params },:expires_in => 10.minutes
 
 {% endhighlight %}
 
@@ -79,7 +78,7 @@ Sometimes we want to reject a specific parameter may some query string parameter
 
 {% highlight ruby %}
 
-caches_action :index, :unless => :current_user, :cache_path => Proc.new { |c| c.params.except(:reject_this_specific_parameter)},:expires_in => 10.minutes
+  caches_action :index, :unless => :current_user, :cache_path => Proc.new { |c| c.params.except(:reject_this_specific_parameter)},:expires_in => 10.minutes
 
 {% endhighlight %}
 
@@ -93,15 +92,15 @@ So paste this code in your application.js (You may want to bind it to a live eve
 
 {% highlight javascript %}
 
-$(function(){
-  $('.pagination a').click(function(){
-    $.ajax({
-      url: this.href,
-      dataType: 'script'
+  $(function(){
+    $('.pagination a').click(function(){
+      $.ajax({
+        url: this.href,
+        dataType: 'script'
+      });
+      return false;
     });
-    return false;
   });
-});
 
 {% endhighlight %}
 
@@ -109,7 +108,7 @@ And in the controller:
 
 {% highlight ruby %}
 
-caches_action :index, cache_path: proc { |c| c.params.except(:_).merge(format: request.format)}
+  caches_action :index, cache_path: proc { |c| c.params.except(:_).merge(format: request.format)}
 
 {% endhighlight %}
 

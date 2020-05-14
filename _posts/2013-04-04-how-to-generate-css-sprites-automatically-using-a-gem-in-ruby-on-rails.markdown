@@ -11,17 +11,17 @@ Something like this:
 
 {% highlight css %}
 
-.twitter_icon,.facebook_icon,.login_button,.logout_button {
-  background: url('/images/css_sprite.png?1270170265')no-repeat;
-}
-.twitter_icon { background-position:0px0px; width:14px; height:14px;}
-.facebook_icon { background-position:0px-19px; width:14px; height:14px;}
-.login_button { background-position:0px-38px; width:103px; height:36px;}
-.logout_button { background-position:0px-79px; width:103px; height:36px;}
+  .twitter_icon,.facebook_icon,.login_button,.logout_button {
+    background: url('/images/css_sprite.png?1270170265')no-repeat;
+  }
+  .twitter_icon { background-position:0px0px; width:14px; height:14px;}
+  .facebook_icon { background-position:0px-19px; width:14px; height:14px;}
+  .login_button { background-position:0px-38px; width:103px; height:36px;}
+  .logout_button { background-position:0px-79px; width:103px; height:36px;}
 
 {% endhighlight %}
 
-<!--more-->
+
 
 
 These are CSS sprite best practice I follow. Now it's time to see how to implement these in a Rails application.

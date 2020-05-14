@@ -16,7 +16,7 @@ There are a lot of work around for optimizations and one of them in caching the 
 ie [splashmath](http://splashmath.com/?utm_campaign=codebeerstartups) and that has over 9 millions users using it across multiple platforms. The amount of traffic that
 we get is pretty huge and caching one of the things that helped us to solve out scaling problems. Here is a quick idea to cache your queries in Memcache.
 
-<!--more-->
+
 
 ## Basic requirements
 
@@ -30,13 +30,13 @@ There are few requirements for this. First is the [dalli](https://github.com/mpe
 
 {% highlight ruby %}
 
-class Grade < ActiveRecord::Base
-  has_many :skills
-end
+  class Grade < ActiveRecord::Base
+    has_many :skills
+  end
 
-class Skills < ActiveRecord::Base
-  belongs_to :grade
-end
+  class Skills < ActiveRecord::Base
+    belongs_to :grade
+  end
 
 {% endhighlight %}
 
@@ -44,8 +44,8 @@ So in order to get skills for a grade, its pretty simple
 
 {% highlight ruby %}
 
-grade = Grade.first
-skills = grade.skills
+  grade = Grade.first
+  skills = grade.skills
 
 {% endhighlight %}
 
@@ -57,12 +57,12 @@ Assuming you have configured dalli gem easily and you have Memcached up and runn
 
 {% highlight ruby %}
 
-def cached_skills
-  Rails.cache.fetch([self.class.name, id, :skills], expires_in: 240.hours)
-  {
-    skills.to_a
-  }
-end
+  def cached_skills
+    Rails.cache.fetch([self.class.name, id, :skills], expires_in: 240.hours)
+    {
+      skills.to_a
+    }
+  end
 
 {% endhighlight %}
 
@@ -71,7 +71,7 @@ So instead of fetching skills like
 
 {% highlight ruby %}
 
-grade.skills
+  grade.skills
 
 {% endhighlight %}
 
@@ -79,11 +79,11 @@ we are gonna get it like
 
 {% highlight ruby %}
 
-grade.cached_skills
+  grade.cached_skills
 
 {% endhighlight %}
 
-<!--more-->
+
 
 So whats its gonna do. It's gonna fetch the results first time from the database and store it in a cache.
 Next time its gonna return the results from the cache. Note few things here.
@@ -96,9 +96,10 @@ into array by using to_a else active-record-relation will be cached and database
 
 {% highlight ruby %}
 
-skills.to_a
+  skills.to_a
 
 {% endhighlight %}
+
 ## Expiring the cache.
 
  We are caching the query results but we are not expiring the results. What if some skill has changed. Grade object is
@@ -107,12 +108,12 @@ skill to expire its grade object's cache
 
 {% highlight ruby %}
 
-# in skill model
-after_commit :flush_cache
+  # in skill model
+  after_commit :flush_cache
 
-def flush_cache
-  Rails.cache.delete([self.grade.class.name, self.grade_id, :skills])
-end
+  def flush_cache
+    Rails.cache.delete([self.grade.class.name, self.grade_id, :skills])
+  end
 
 {% endhighlight %}
 
@@ -125,13 +126,13 @@ We redefine the models like this
 
 {% highlight ruby %}
 
-class Grade < ActiveRecord::Base
-  has_many :skills
-end
+  class Grade < ActiveRecord::Base
+    has_many :skills
+  end
 
-class Skills < ActiveRecord::Base
-  belongs_to :grade, touch: true
-end
+  class Skills < ActiveRecord::Base
+    belongs_to :grade, touch: true
+  end
 
 {% endhighlight %}
 
@@ -140,11 +141,11 @@ Note we have added touch: true in skills, and now we redefine our cached_skills 
 
 {% highlight ruby %}
 
-def cached_skills
-  Rails.cache.fetch([self.class.name, updated_at.to_i, :skills], expires_in: 240.hours) {
-    skills.to_a
-  }
-end
+  def cached_skills
+    Rails.cache.fetch([self.class.name, updated_at.to_i, :skills], expires_in: 240.hours) {
+      skills.to_a
+    }
+  end
 
 {% endhighlight %}
 
@@ -159,34 +160,34 @@ skill has been changed all the other cache keys for grade relationships will be 
 
 {% highlight ruby %}
 
-class Grade < ActiveRecord::Base
-  has_many :skills
-end
+  class Grade < ActiveRecord::Base
+    has_many :skills
+  end
 
-class Skill < ActiveRecord::Base
-  belongs_to :grade, touch: true
-end
+  class Skill < ActiveRecord::Base
+    belongs_to :grade, touch: true
+  end
 
-class Topic < ActiveRecord::Base
-  belongs_to :grade, touch: true
-end
+  class Topic < ActiveRecord::Base
+    belongs_to :grade, touch: true
+  end
 
 
 {% endhighlight %}
 
 {% highlight ruby %}
-# In Grade model
-def cached_skills
-  Rails.cache.fetch([self.class.name, updated_at.to_i, :skills], expires_in: 240.hours) {
-    skills.to_a
-  }
-end
+  # In Grade model
+  def cached_skills
+    Rails.cache.fetch([self.class.name, updated_at.to_i, :skills], expires_in: 240.hours) {
+      skills.to_a
+    }
+  end
 
-def cached_topics
-  Rails.cache.fetch([self.class.name, updated_at.to_i, :topics], expires_in: 240.hours) {
-    topics.to_a
-  }
-end
+  def cached_topics
+    Rails.cache.fetch([self.class.name, updated_at.to_i, :topics], expires_in: 240.hours) {
+      topics.to_a
+    }
+  end
 
 {% endhighlight %}
 
@@ -201,8 +202,8 @@ Using the same base principle you can cache lot of queries like
 
 {% highlight ruby %}
 
-Grade.cached_find_by_id(1)
-Skill.first.cached_grade
+  Grade.cached_find_by_id(1)
+  Skill.first.cached_grade
 
 {% endhighlight %}
 

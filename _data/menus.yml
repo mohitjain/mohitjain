@@ -1,0 +1,12 @@
+- title: Home
+  url: /
+  external: false
+
+# - title: about
+#   url: /about/
+#   external: false
+
+#Example:
+- title: Github
+  url: https://github.com/mohitjain
+  external: true

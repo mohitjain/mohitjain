@@ -9,13 +9,13 @@ categories: optimization performance quick-solution tips-and-tricks utilities
 I have seen lot of people use collect in ruby on rails. For example:
 
 {% highlight ruby %}
-User.first.gifts.collect(&:id)# Bad smell.
+  User.first.gifts.collect(&:id)# Bad smell.
 {% endhighlight %}
 
 Use pluck in case you just want to get id ie:
 
 {% highlight ruby %}
-User.first.gifts.pluck(:id)
+  User.first.gifts.pluck(:id)
 {% endhighlight %}
 
 ## Explanation
@@ -26,10 +26,9 @@ User.first.gifts.pluck(:id)
 When you do:
 
 {% highlight ruby %}
-User.first.gifts.collect(&:id)
+  User.first.gifts.collect(&:id)
 {% endhighlight %}
 
-<!--more-->
 
 You have objects with all fields loaded and you simply get the ‘id’ thanks to the method based on Enumerable.
 

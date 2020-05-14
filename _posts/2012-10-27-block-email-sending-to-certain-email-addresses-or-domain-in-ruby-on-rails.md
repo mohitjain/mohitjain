@@ -3,26 +3,25 @@ title: Block email sending to certain email addresses or domain in ruby on rails
 author: Mohit Jain
 layout: post
 comments: true
-permalink:  /2012/10/block-email-sending-to-certain-email-addresses-or-domain-in-Ruby on Rails/
 categories: tips-and-tricks
 ---
 If you want to block email sending to some particular user or some specific email format, then interceptor is your friend :) Just place this code in your config/initializers/email_filters.rb
 
 {% highlight ruby %}
 
-class EmailAddressFilter
-  def self.delivering_email(message)
-    message.perform_deliveries = false
+  class EmailAddressFilter
+    def self.delivering_email(message)
+      message.perform_deliveries = false
 
-    # your checks here; return if @abc.com, etc.. is matched
-    return unless message.to.join("").match(/@abc.com/).nil?
+      # your checks here; return if @abc.com, etc.. is matched
+      return unless message.to.join("").match(/@abc.com/).nil?
 
-    # otherwise, the email should be sent
-    message.perform_deliveries = true
+      # otherwise, the email should be sent
+      message.perform_deliveries = true
+    end
   end
-end
 
-ActionMailer::Base.register_interceptor(EmailAddressFilter)
+  ActionMailer::Base.register_interceptor(EmailAddressFilter)
 
 {% endhighlight %}
 

@@ -1,29 +1,28 @@
 ---
-title: '13 Routers in backbone js &#8211; Learning backbone js'
+title: 'Routers in backbone js - Learning backbone js'
 author: Mohit Jain
 layout: post
 comments: true
-permalink: /2013/01/routers-in-backbone-js-learning-backbone-js/
 categories: Backbone.js
 banner_image: "/media/backbone.jpg"
 featured: true
 ---
 
 
-> This entry is part 13 of 14 in the series for [A Complete Guide for Learning Backbone Js](/2012/12/a-complete-guide-for-learning-backbone-js/)
+> This entry is part 13 of 14 in the series for [A Complete Guide for Learning Backbone Js](/a-complete-guide-for-learning-backbone-js/)
 
-* [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)
-* [Representing your data in javascript](/2012/12/2-representing-your-data-in-javascript-learning-backbone-js)
-* [Defining Models in backbone js](/2012/12/3-defining-models-in-backbone-js-learning-backbone-js)
-* [Adding Validations in models backbone js ](/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js)
-* [Explaining views in backbone js](/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js)
-* [How to use templates in backbone js ](/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js)
-* [How to improve templates in backbone js](/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js)
-* [Collections in backbone js](/2012/12/8-collections-in-backbone-js-learning-backbone-js)
-* [Collection views in backbone js ](/2012/12/9-collection-views-in-backbone-js-learning-backbone-js)
-* [Template helpers in backbone js](/2012/12/template-helpers-in-backbone-js-learning-backbonejs)
-* [How to use namespace in backbone js ](/2012/12/11-namespacing-in-backbone-js-learning-backbonejs)
-* [How to handle dom events in backbone js and define your custom events](/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
+* [Introduction and Installation](/introduction-to-backbone-js-and-setting-up-an-working-environment)
+* [Representing your data in javascript](/representing-your-data-in-javascript-learning-backbone-js)
+* [Defining Models in backbone js](/defining-models-in-backbone-js-learning-backbone-js)
+* [Adding Validations in models backbone js ](/adding-validations-in-models-in-backbone-js-learning-backbone-js)
+* [Explaining views in backbone js](/explaining-views-in-backbone-js-learning-backbone-js)
+* [How to use templates in backbone js ](/how-to-use-templates-in-backbone-js-learning-backbone-js)
+* [How to improve templates in backbone js](/how-to-improve-templates-in-backbone-js-learning-backbone-js)
+* [Collections in backbone js](/collections-in-backbone-js-learning-backbone-js)
+* [Collection views in backbone js ](/collection-views-in-backbone-js-learning-backbone-js)
+* [Template helpers in backbone js](/template-helpers-in-backbone-js-learning-backbonejs)
+* [How to use namespace in backbone js ](/namespacing-in-backbone-js-learning-backbonejs)
+* [How to handle dom events in backbone js and define your custom events](/listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
 * [Routing in backbone js](/2013/01/routers-in-backbone-js-learning-backbone-js)
 
 ***
@@ -40,16 +39,16 @@ Let's start from a bare bone code ie:
 
 {% highlight javascript %}
 
-(function(){
+  (function(){
 
-  window.App = {
-      Models: {},
-      Collections: {},
-      Views: {},
-      Router: {}
-  };
+    window.App = {
+        Models: {},
+        Collections: {},
+        Views: {},
+        Router: {}
+    };
 
-})();
+  })();
 
 {% endhighlight %}
 
@@ -59,9 +58,9 @@ A simple Name spaced model, collection, views, and a new one router. So lets def
 
 {% highlight javascript %}
 
-App.Router = Backbone.Router.extend({
+  App.Router = Backbone.Router.extend({
 
-});
+  });
 
 {% endhighlight %}
 
@@ -71,46 +70,46 @@ Now just for simplicity lets add a root route ie when the page has been loaded.
 
 {% highlight javascript %}
 
-App.Router = Backbone.Router.extend({
-    routes: {
-        '': 'index'
-    },
+  App.Router = Backbone.Router.extend({
+      routes: {
+          '': 'index'
+      },
 
-    index: function(){
-        $(document.body).append("Index route has been called..");
-    }
+      index: function(){
+          $(document.body).append("Index route has been called..");
+      }
 
-});
+  });
 
 {% endhighlight %}
 
-<!--more-->
+
 
 So now we need to initiate the router and one thing we need to do is: Enabling backbone history so that backbone starts monitoring hash changes in URL.
 
 {% highlight javascript %}
 
-(function(){
+  (function(){
 
-window.App = {
-    Models: {},
-    Collections: {},
-    Views: {},
-    Router: {}
-};
-App.Router = Backbone.Router.extend({
-    routes: {
-        '': 'index'
-    },
-    index: function(){
-        $(document.body).append("Index route has been called..");
-    }
-});
+  window.App = {
+      Models: {},
+      Collections: {},
+      Views: {},
+      Router: {}
+  };
+  App.Router = Backbone.Router.extend({
+      routes: {
+          '': 'index'
+      },
+      index: function(){
+          $(document.body).append("Index route has been called..");
+      }
+  });
 
-new App.Router;
-Backbone.history.start();
+  new App.Router;
+  Backbone.history.start();
 
-})();
+  })();
 
 {% endhighlight %}
 
@@ -125,21 +124,21 @@ Ok, lets move ahead and add a route for the hash tag.
 
 {% highlight javascript %}
 
-App.Router = Backbone.Router.extend({
-    routes: {
-        '': 'index',
-        'show': 'show'
-    },
+  App.Router = Backbone.Router.extend({
+      routes: {
+          '': 'index',
+          'show': 'show'
+      },
 
-    index: function(){
-        $(document.body).append("Index route has been called..");
-    },
+      index: function(){
+          $(document.body).append("Index route has been called..");
+      },
 
-    show: function(){
-        $(document.body).append("Show route has been called..");
-    },
+      show: function(){
+          $(document.body).append("Show route has been called..");
+      },
 
-});
+  });
 
 {% endhighlight %}
 
@@ -156,21 +155,21 @@ Ok, Lets add a better route for the show. Think about this. You want to say show
 
 {% highlight javascript %}
 
-App.Router = Backbone.Router.extend({
-    routes: {
-        '': 'index',
-        'show/:id': 'show'
-    },
+  App.Router = Backbone.Router.extend({
+      routes: {
+          '': 'index',
+          'show/:id': 'show'
+      },
 
-    index: function(){
-        $(document.body).append("Index route has been called..");
-    },
+      index: function(){
+          $(document.body).append("Index route has been called..");
+      },
 
-    show: function(id){
-        $(document.body).append("Show route has been called.. with id equals : "   id);
-    },
+      show: function(id){
+          $(document.body).append("Show route has been called.. with id equals : "   id);
+      },
 
-});
+  });
 
 {% endhighlight %}
 
@@ -185,26 +184,27 @@ Ok if I want to specify something like #download/3/12/23 in this case the above 
 
 {% highlight javascript %}
 
-App.Router = Backbone.Router.extend({
-    routes: {
-        '': 'index',
-        'show/:id': 'show',
-        'download/*random': 'download'
-    },
+  App.Router = Backbone.Router.extend({
+      routes: {
+          '': 'index',
+          'show/:id': 'show',
+          'download/*random': 'download'
+      },
 
-    index: function(){
-        $(document.body).append("Index route has been called..");
-    },
+      index: function(){
+          $(document.body).append("Index route has been called..");
+      },
 
-    show: function(id){
-        $(document.body).append("Show route has been called.. with id equals : "   id);
-    },
+      show: function(id){
+          $(document.body).append("Show route has been called.. with id equals : "   id);
+      },
 
-    download: function(random){
-        $(document.body).append("download route has been called.. with random equals : "   random);
-    }
+      download: function(random){
+          $(document.body).append("download route has been called.. with random equals : "   random);
+      }
 
-});
+  });
+
 {% endhighlight %}
 
 So if we open index.html in a browser we will see a string as specified in the browser. Something like this. (Please make sure you check URL from the screenshot ie
@@ -220,37 +220,37 @@ Another useful route that I feel most of the application need is for search and 
 
 {% highlight javascript %}
 
-App.Router = Backbone.Router.extend({
-    routes: {
-        '': 'index',
-        'show/:id': 'show',
-        'download/*random': 'download',
-        'search/:query': 'search',
-        '*default': 'default'
-    },
+  App.Router = Backbone.Router.extend({
+      routes: {
+          '': 'index',
+          'show/:id': 'show',
+          'download/*random': 'download',
+          'search/:query': 'search',
+          '*default': 'default'
+      },
 
-    index: function(){
-        $(document.body).append("Index route has been called..");
-    },
+      index: function(){
+          $(document.body).append("Index route has been called..");
+      },
 
-    show: function(id){
-        $(document.body).append("Show route has been called.. with id equals : "   id);
-    },
+      show: function(id){
+          $(document.body).append("Show route has been called.. with id equals : "   id);
+      },
 
-    download: function(random){
-        $(document.body).append("download route has been called.. with random equals : "   random);
-    },
+      download: function(random){
+          $(document.body).append("download route has been called.. with random equals : "   random);
+      },
 
-    search: function(query){
-        $(document.body).append("Search route has been called.. with query equals : "   query);
-    },
+      search: function(query){
+          $(document.body).append("Search route has been called.. with query equals : "   query);
+      },
 
-    default: function(default){
-        $(document.body).append("This route is not handled.. you tried to access: "   default);
+      default: function(default){
+          $(document.body).append("This route is not handled.. you tried to access: "   default);
 
-    }
+      }
 
-});
+  });
 
 {% endhighlight %}
 
@@ -258,7 +258,7 @@ You can try this for search URL ie:
 
 {% highlight javascript %}
 
-file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html#search/my_query
+  file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html#search/my_query
 
 {% endhighlight %}
 
@@ -266,7 +266,7 @@ and to check default route here is one example.
 
 {% highlight javascript %}
 
-file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html#junk
+  file://localhost/Users/mohit/projects/codebeerstartups/routes\_in\_backbonejs/index.html#junk
 
 {% endhighlight %}
 

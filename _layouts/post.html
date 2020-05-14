@@ -1,127 +1,73 @@
 ---
-layout: default
+layout: compress
 ---
 
-<div class="index">
-    <div class="wrapper">
-        <h1 class="right">{{ page.title }}</h1>
-        <h2 class="left">Introduction</h2>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-<div class="profile {% if page.featured == true %} featured {% endif %}">
-    {% if site.author_image != "" %}<img src="{{ site.author_image }}" class="profileimage" alt="user">{% endif %}
-    <h4>{{ site.author_name }}</h4>
-    <ul>
-    	{% if site.twitter_url != '' %}
-        <li><a href="{{ site.twitter_url }}" class="smallsocialbutton twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        {% endif %}
-        {% if site.facebook_url != '' %}
-        <li><a href="{{ site.facebook_url }}" class="smallsocialbutton facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-        {% endif %}
-        {% if site.github_url != '' %}
-        <li><a href="{{ site.github_url }}" class="smallsocialbutton github" target="_blank"><i class="fa fa-github"></i></a></li>
-        {% endif %}
-        {% if site.instagram_url != '' %}
-        <li><a href="{{ site.instagram_url }}" class="smallsocialbutton instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
-        {% endif %}
-        <li><a href="{{ site.url }}/feed.xml" class="smallsocialbutton rss" target="_blank"><i class="fa fa-rss"></i></a></li>
-    </ul>
-    <p>{{ site.author_bio }}</p>
-    <hr>
-</div>
+{% include header.html %}
 
-<div id="cover" class="cover {% if page.featured == true %} featured {% endif %}">
-    <div class="background" style="background-image:url('{{ page.banner_image }}');"></div>
-    <header class="wrapper">
-        <h2>
-        	{% for category in page.categories %}
-				{{ category }}
-          	{% endfor %}
-        </h2>
-        <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-        <span>
-            Posted by <a href="{{ site.author_url }}" target="_blank">{{ site.author_name }}</a>
-                on <i class="fa fa-clock-o"></i> <time datetime="{{ page.date| date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>.
-        </span>
-    </header>
-    <i class="fa fa-chevron-down movedown"></i>
-</div>
+<body>
+  {% include navbar.html %}
+  <div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+      <article itemscope itemtype="https://schema.org/BlogPosting">
 
-<section class="posts wrapper">
-    <article class="post {% if page.featured == true %} featured {% endif %}">
-
-        <header>
-            <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
-            <h2>
-            	{% for category in page.categories %}
-					{{ category }}
-          		{% endfor %}
-            </h2>
-            <h1 id="posttitle"><a href="#">{{ page.title }}</a></h1>
-            <span>
-                Posted by <a href="{{author.website}}" target="_blank">{{ site.author_name }}</a>
-                on <i class="fa fa-clock-o"></i> <time datetime="{{ page.date| date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>.
+        <header class="header">
+          {% if page.tags and page.tags != empty %}
+          <div class="tags">
+            {% assign tags = page.tags %}
+            <span itemprop="keywords">
+              {% for tag in tags %}
+              <a class="tag"
+                href="/tags/#{{tag | downcase | slugify}}">{{tag | upcase }}</a>{% unless forloop.last %},{% endunless %}
+              {% endfor %}
             </span>
+          </div>
+          {% endif %}
+          <h1 class="header-title" itemprop="headline">{{ page.title | escape }}</h1>
+          {% if page.date %}
+          <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ page.date | date: "%b %d, %Y" }}
+            </time>
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+              <span itemprop="name">{{ site.author.name }}</span>
+            </span>
+            <time hidden datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateModified">
+              {{ page.date | date: "%b %d, %Y" }}
+            </time>
+            <span hidden itemprop="publisher" itemtype="Person">{{ site.author.name }}</span>
+            <span hidden itemprop="image">{{ page.image }}</span>
+            <span hidden itemprop="mainEntityOfPage">{{ page.excerpt }}</span>
+          </div>
+          {% endif %}
         </header>
 
-        <section class="postbody">
-            {{ content }}
-        </section>
-
-        <footer>
-            <ul class="share left">
-                <li><a href="http://twitter.com/share?text={{ page.title }}&url={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="smallbutton lightgray"><i class="fa fa-twitter"></i>Twitter</a></li>
-                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="smallbutton lightgray"><i class="fa fa-facebook"></i>Facebook</a></li>
-            </ul>
-        </footer>
-
-        <div class="postprofile">
-            <img src="{{ site.author_image }}" class="author" alt="user">
-            <div class="info">
-                <h4>{{ site.author_name }}</h4>
-                <a href="{{ site.author_url }}">{{ site.author_url }}</a>
-                <p>{{ site.author_bio }}</p>
-                <ul class="social">
-       				{% if site.twitter_url != '' %}
-                    <li><a href="{{ site.twitter_url }}" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    {% endif %}
-					{% if site.facebook_url != '' %}
-                    <li><a href="{{ site.facebook_url }}" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    {% endif %}
-					{% if site.github_url != '' %}
-                    <li><a href="{{ site.github_url }}" class="github" target="_blank"><i class="fa fa-github-alt"></i></a></li>
-                    {% endif %}
-					{% if site.youtube_url != '' %}
-                    <li><a href="{{ site.youtube_url }}" class="youtube" target="_blank"><i class="fa fa-youtube"></i></a></li>
-					{% endif %}
-					{% if site.dribbble_url != '' %}
-                    <li><a href="{{ site.dribbble_url }}" class="dribbble" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-					{% endif %}
-					{% if site.googleplus_url != '' %}
-                    <li><a href="{{ site.googleplus_url }}" class="googleplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-					{% endif %}
-					{% if site.instagram_url != '' %}
-                    <li><a href="{{ site.instagram_url }}" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
-					{% endif %}
-					{% if site.pinterest_url != '' %}
-                    <li><a href="{{ site.pinterest_url }}" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-					{% endif %}
-					{% if site.linkedin_url != '' %}
-                    <li><a href="{{ site.linkedin_url }}" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-					{% endif %}
-                    <li><a href="{{ site.url }}/feed.xml" class="rss" target="_blank"><i class="fa fa-rss"></i></a></li>
-                </ul>
-            </div>
+        <div class="page-content" itemprop="articleBody">
+          {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
+          {% if page.tweet %}
+          <p>Comments this article on 
+            <a href="https://twitter.com/{{site.username}}/status/{{page.tweet}}">Twitter</a>.
+          </p>
+          {% endif %}
         </div>
+      </article>
+      {% if page.comments %}
+        {% include comments.html%}
+      {% endif %}
 
+    </main>
+    {% if page.modified %}
+      <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
+    {% endif %}
+    {% if page.next or page.previous %}
+      {% include navigation.html %}
+    {% endif %}
+  </div>
 
-        <div class="comments">
-            <a href="javascript:;" class="readmore smallbutton blue"><i class="fa fa-comments"></i>View Comments...</a>
-            <div id="disqus_thread"></div>
-            <div id="g-comments"></div>
-        </div>
+  {% include footer.html %}
 
-    </article>
+</body>
 
-</section>
+</html>

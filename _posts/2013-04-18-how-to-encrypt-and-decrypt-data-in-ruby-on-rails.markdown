@@ -9,41 +9,39 @@ categories:  encryption-and-decryption
 
 [AESCrypt](https://github.com/Gurpartap/aescrypt) is a simple gem to encryption and decryption in ruby on rails. From the readme file.
 
-##Installation
+## Installation
 
 Add this line to your application's Gemfile:
 
 {% highlight ruby %}
 
-gem 'aescrypt'
+  gem 'aescrypt'
 
 {% endhighlight %}
-
-<!--more-->
 
 and run bundler
 
-##Usage
+## Usage
 
 {% highlight ruby %}
 
-message = "top secret message"
-password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+  message = "top secret message"
+  password = "this_is_a_secret_key_that_you_and_only_you_should_know"
 
 {% endhighlight %}
 
-##Encrypting
+## Encrypting
 
 {% highlight ruby %}
 
-encrypted_data = AESCrypt.encrypt(message, password)
+  encrypted_data = AESCrypt.encrypt(message, password)
 
 {% endhighlight %}
 
-##Decrypting
+## Decrypting
 
 {% highlight ruby %}
 
-message = AESCrypt.decrypt(encrypted_data, password)
+  message = AESCrypt.decrypt(encrypted_data, password)
 
 {% endhighlight %}

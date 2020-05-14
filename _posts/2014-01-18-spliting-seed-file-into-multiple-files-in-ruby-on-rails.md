@@ -11,7 +11,7 @@ categories: ruby-on-rails
 
 Last month I joined a new job after a break of almost 4 months. You can check out the [product](http://www.splashmath.com?utm_source=codebeerstartups) and there we had a small problem that our seed file was growing very fast. So we did a small thing to maintain our seed file. Here is a small tip if you are having a massive seed file and it's pretty easy to implement.
 
-<!--more-->
+
 
 We can store all our seeds inside the folder db/seeds and inside the db/seeds.rb we write the following:
 

@@ -11,39 +11,38 @@ I need a script to find out empty columns in my application which has a pretty m
 
 Here is a small snippet for the same.
 
-<!--more-->
 
 ## Snippet
 
 {% highlight ruby %}
 
-require 'rubygems'
-require 'active_record'
+  require 'rubygems'
+  require 'active_record'
 
-def query table, column
-  "select #{table}.#{column.name} from #{table} where #{table}.#{column.name} is not null or #{table}.#{column.name} != '' limit 1"
-end
+  def query table, column
+    "select #{table}.#{column.name} from #{table} where #{table}.#{column.name} is not null or #{table}.#{column.name} != '' limit 1"
+  end
 
-ActiveRecord::Base.establish_connection(
-  adapter: 'mysql2',
-  database: 'my_sample_database',
-  host: 'localhost',
-  username: 'username',
-  password: 'password',
-  pool: 5
-)
+  ActiveRecord::Base.establish_connection(
+    adapter: 'mysql2',
+    database: 'my_sample_database',
+    host: 'localhost',
+    username: 'username',
+    password: 'password',
+    pool: 5
+  )
 
-connection = ActiveRecord::Base.connection
+  connection = ActiveRecord::Base.connection
 
-connection.tables.each do |table|
-  connection.columns(table).each do |column|
-    next if column.name == 'id'
+  connection.tables.each do |table|
+    connection.columns(table).each do |column|
+      next if column.name == 'id'
 
-    if ActiveRecord::Base.connection.execute(query table, column).to_a.empty?
-      puts "#{table} | #{column.name}"
+      if ActiveRecord::Base.connection.execute(query table, column).to_a.empty?
+        puts "#{table} | #{column.name}"
+      end
     end
   end
-end
 
 {% endhighlight %}
 

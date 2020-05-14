@@ -3,7 +3,6 @@ title: How to test emails in development mode in ruby on rails
 author: Mohit Jain
 layout: post
 comments: true
-permalink: /2013/01/how-to-test-emails-in-development-mode-in-ruby-on-rails/
 categories: quick-solution tips-and-tricks utilities
 ---
 
@@ -16,11 +15,11 @@ I was always looking for a solution for the same, Especially after working on [e
 Pretty easy to use and configure. Add in the gem file, add some code in config/development.rb and start the mail catcher daemon. Let's do it one by one.
 
 Add this in your gem file.
-<!--more-->
+
 
 {% highlight ruby %}
 
-gem 'mailcatcher'
+  gem 'mailcatcher'
 
 {% endhighlight %}
 
@@ -28,8 +27,8 @@ Run bundler and in your development configuration file config/development.rb, se
 
 {% highlight ruby %}
 
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 
 {% endhighlight %}
 
@@ -37,11 +36,11 @@ and start your rails app and mail catcher daemon from terminal just by typing ma
 
 {% highlight ruby %}
 
-mailcatcher
-Starting MailCatcher
-==> smtp://127.0.0.1:1025
-==> http://127.0.0.1:1080
-*** MailCatcher runs as a daemon by default. Go to the web interface to quit.
+  mailcatcher
+  Starting MailCatcher
+  ==> smtp://127.0.0.1:1025
+  ==> http://127.0.0.1:1080
+  *** MailCatcher runs as a daemon by default. Go to the web interface to quit.
 
 {% endhighlight %}
 
@@ -52,4 +51,4 @@ Another awesome feature of MailCatcher is that you can view both the HTML and pl
 **
 Sample Output**
 
-![How to test emails in development mode in ruby on rails and run tests for various devices like iphone, ipad, blackberry etc.](/wp-content/uploads/2013/01/How-to-test-emails-in-development-mode-in-ruby-on-rails.png?fit=1266,669)
+![How to test emails in development mode in ruby on rails and run tests for various devices like iphone, ipad, blackberry etc.](/wp-content/uploads/How-to-test-emails-in-development-mode-in-ruby-on-rails.png?fit=1266,669)

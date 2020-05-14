@@ -11,19 +11,19 @@ In a couple of days, I will start a series of various tutorials for learning bac
 
 Here is the list of the upcoming posts for learning backbone js:
 
-* [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)
-* [Representing your data in javascript](/2012/12/2-representing-your-data-in-javascript-learning-backbone-js)
-* [Defining Models in backbone js](/2012/12/3-defining-models-in-backbone-js-learning-backbone-js)
-* [Adding Validations in models backbone js ](/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js)
-* [Explaining views in backbone js](/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js)
-* [How to use templates in backbone js ](/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js)
-* [How to improve templates in backbone js](/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js)
-* [Collections in backbone js](/2012/12/8-collections-in-backbone-js-learning-backbone-js)
-* [Collection views in backbone js ](/2012/12/9-collection-views-in-backbone-js-learning-backbone-js)
-* [Template helpers in backbone js](/2012/12/template-helpers-in-backbone-js-learning-backbonejs)
-* [How to use namespace in backbone js ](/2012/12/11-namespacing-in-backbone-js-learning-backbonejs)
-* [How to handle dom events in backbone js and define your custom events](/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
+* [Introduction and Installation](/introduction-to-backbone-js-and-setting-up-an-working-environment)
+* [Representing your data in javascript](/representing-your-data-in-javascript-learning-backbone-js)
+* [Defining Models in backbone js](/defining-models-in-backbone-js-learning-backbone-js)
+* [Adding Validations in models backbone js ](/adding-validations-in-models-in-backbone-js-learning-backbone-js)
+* [Explaining views in backbone js](/explaining-views-in-backbone-js-learning-backbone-js)
+* [How to use templates in backbone js ](/how-to-use-templates-in-backbone-js-learning-backbone-js)
+* [How to improve templates in backbone js](/how-to-improve-templates-in-backbone-js-learning-backbone-js)
+* [Collections in backbone js](/collections-in-backbone-js-learning-backbone-js)
+* [Collection views in backbone js ](/collection-views-in-backbone-js-learning-backbone-js)
+* [Template helpers in backbone js](/template-helpers-in-backbone-js-learning-backbonejs)
+* [How to use namespace in backbone js ](/namespacing-in-backbone-js-learning-backbonejs)
+* [How to handle dom events in backbone js and define your custom events](/listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
 * [Routing in backbone js](/2013/01/routers-in-backbone-js-learning-backbone-js)
 
 
-** PS: This series is not for advanced users. **
+**PS: This series is not for advanced users.**

@@ -8,36 +8,36 @@ categories: performance improvements ruby-on-rails
 According to the law of Demeter, a model should only talk to its immediate association, don't talk to the association's association and association's property, it is a case of loose coupling.
 
 
-##Bad Smell
+## Bad Smell
 
 {% highlight ruby %}
 
-class Invoice < ActiveRecord::Base
-  belongs_to :user
-end
+  class Invoice < ActiveRecord::Base
+    belongs_to :user
+  end
 
-<%= @invoice.user.name %>
-<%= @invoice.user.address %>
-<%= @invoice.user.cellphone %>
+  <%= @invoice.user.name %>
+  <%= @invoice.user.address %>
+  <%= @invoice.user.cellphone %>
 
 {% endhighlight %}
 
 In this example, invoice model calls the association(user)'s property(name, address, and cellphone), which violates the law of Demeter. We should add some wrapper methods.
 
-<!--more-->
 
-##Refactor
+
+## Refactor
 
 {% highlight ruby %}
 
-class Invoice < ActiveRecord::Base
-  belongs_to :user
-  delegate :name, :address, :cellphone, :to => :user, :prefix => true
-end
+  class Invoice < ActiveRecord::Base
+    belongs_to :user
+    delegate :name, :address, :cellphone, :to => :user, :prefix => true
+  end
 
-<%= @invoice.user_name %>
-<%= @invoice.user_address %>
-<%= @invoice.user_cellphone %>
+  <%= @invoice.user_name %>
+  <%= @invoice.user_address %>
+  <%= @invoice.user_cellphone %>
 
 {% endhighlight %}
 

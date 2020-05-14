@@ -1,5 +1,5 @@
 ---
-title: '1. Introduction to backbone js and setting up an working environment &#8211; Learning Backbone js'
+title: 'Introduction to backbone js and setting up an working environment - Learning Backbone js'
 author: Mohit Jain
 layout: post
 comments: true
@@ -8,20 +8,20 @@ featured: true
 categories: Backbone.js
 ---
 
-> This entry is part 1 of 14 in the series for [A Complete Guide for Learning Backbone Js](/2012/12/a-complete-guide-for-learning-backbone-js/)
+> This entry is part 1 of 14 in the series for [A Complete Guide for Learning Backbone Js](/a-complete-guide-for-learning-backbone-js/)
 
-* [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)
-* [Representing your data in javascript](/2012/12/2-representing-your-data-in-javascript-learning-backbone-js)
-* [Defining Models in backbone js](/2012/12/3-defining-models-in-backbone-js-learning-backbone-js)
-* [Adding Validations in models backbone js ](/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js)
-* [Explaining views in backbone js](/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js)
-* [How to use templates in backbone js ](/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js)
-* [How to improve templates in backbone js](/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js)
-* [Collections in backbone js](/2012/12/8-collections-in-backbone-js-learning-backbone-js)
-* [Collection views in backbone js ](/2012/12/9-collection-views-in-backbone-js-learning-backbone-js)
-* [Template helpers in backbone js](/2012/12/template-helpers-in-backbone-js-learning-backbonejs)
-* [How to use namespace in backbone js ](/2012/12/11-namespacing-in-backbone-js-learning-backbonejs)
-* [How to handle dom events in backbone js and define your custom events](/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
+* [Introduction and Installation](/introduction-to-backbone-js-and-setting-up-an-working-environment)
+* [Representing your data in javascript](/representing-your-data-in-javascript-learning-backbone-js)
+* [Defining Models in backbone js](/defining-models-in-backbone-js-learning-backbone-js)
+* [Adding Validations in models backbone js ](/adding-validations-in-models-in-backbone-js-learning-backbone-js)
+* [Explaining views in backbone js](/explaining-views-in-backbone-js-learning-backbone-js)
+* [How to use templates in backbone js ](/how-to-use-templates-in-backbone-js-learning-backbone-js)
+* [How to improve templates in backbone js](/how-to-improve-templates-in-backbone-js-learning-backbone-js)
+* [Collections in backbone js](/collections-in-backbone-js-learning-backbone-js)
+* [Collection views in backbone js ](/collection-views-in-backbone-js-learning-backbone-js)
+* [Template helpers in backbone js](/template-helpers-in-backbone-js-learning-backbonejs)
+* [How to use namespace in backbone js ](/namespacing-in-backbone-js-learning-backbonejs)
+* [How to handle dom events in backbone js and define your custom events](/listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
 * [Routing in backbone js](/2013/01/routers-in-backbone-js-learning-backbone-js)
 
 ***
@@ -83,7 +83,7 @@ So once downloaded I will create a js folder for all the js and index.html file 
 
 Now open you index.html file in chrome and open chrome developer tools and open console tab, and if installation is proper then you should have access to global variable Backbone
 
-![Backbone Load test](/wp-content/uploads/2012/12/Screen-Shot-2012-12-16-at-5.30.02-AM.png)
+![Backbone Load test](/wp-content/uploads/Screen-Shot-2012-12-16-at-5.30.02-AM.png)
 
 That's all in the installation. Let's start the journey :)
 

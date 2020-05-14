@@ -10,13 +10,12 @@ A lot of time I got pissed to find where is the method is defined in the case wh
 
 For example, You have a method full_name in the user model, now, in this case, you know the location but the question is how you can find the location of the file. Here is the thing. Open rails console and try this:
 
-<!--more-->
+
 
 {% highlight ruby %}
 
-User.first.method(:full_name).source_location
-
-["/Users/mohit/projects/my_awesome_app/app/models/user.rb", 17]
+  User.first.method(:full_name).source_location
+  ["/Users/mohit/projects/my_awesome_app/app/models/user.rb", 17]
 
 {% endhighlight %}
 
@@ -24,9 +23,8 @@ Or let's assume there is a class method defined in some module, placed somewhere
 
 {% highlight ruby %}
 
-User.method(:my_class_method_defined_in_some_module).source_location
-
-["/Users/mohit/projects/my_awesome_app/lib/modules/my_awesome_module.rb", 7]
+  User.method(:my_class_method_defined_in_some_module).source_location
+  ["/Users/mohit/projects/my_awesome_app/lib/modules/my_awesome_module.rb", 7]
 
 {% endhighlight %}
 

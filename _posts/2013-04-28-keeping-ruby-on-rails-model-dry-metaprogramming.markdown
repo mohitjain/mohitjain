@@ -10,38 +10,38 @@ If you find some methods whose definitions are more or less similar, only differ
 
 Consider this simple example where we have an article with three states.
 
-<!--more-->
+
 
 ## Before
 
 {% highlight ruby %}
 
-class Article < ActiveRecord::Base
+  class Article < ActiveRecord::Base
 
-  def self.all_published
-    where("state = ?", "published")
-  end
+    def self.all_published
+      where("state = ?", "published")
+    end
 
-  def self.all_draft
-    where("state = ?", "draft")
-  end
+    def self.all_draft
+      where("state = ?", "draft")
+    end
 
-  def self.all_spam
-     where("state = ?", "spam")
-  end
+    def self.all_spam
+       where("state = ?", "spam")
+    end
 
-  def published?
-    self.state == 'published'
-  end
+    def published?
+      self.state == 'published'
+    end
 
-  def draft?
-    self.state == 'draft'
-  end
+    def draft?
+      self.state == 'draft'
+    end
 
-  def spam?
-    self.state == 'spam'
+    def spam?
+      self.state == 'spam'
+    end
   end
-end
 
 {% endhighlight %}
 
@@ -51,25 +51,25 @@ Now this code can be written as:
 
 {% highlight ruby %}
 
-class Article < ActiveRecord::Base
+  class Article < ActiveRecord::Base
 
-  STATES = ['draft', 'published', 'spam']
+    STATES = ['draft', 'published', 'spam']
 
-  class <<self
-    STATES.each do |state_name|
-      define_method "all_#{state_name}" do
-        where("state = ?", state_name)
+    class <<self
+      STATES.each do |state_name|
+        define_method "all_#{state_name}" do
+          where("state = ?", state_name)
+        end
       end
     end
-  end
 
-  STATES.each do |state_name|
-    define_method "#{state_name}?" do
-      self.state == state_name
+    STATES.each do |state_name|
+      define_method "#{state_name}?" do
+        self.state == state_name
+      end
     end
-  end
 
-end
+  end
 
 {% endhighlight %}
 

@@ -3,7 +3,6 @@ title: Use cookie-free domains for components in ruby on rails application.
 author: Mohit Jain
 layout: post
 comments: true
-permalink: /2013/01/use-cookie-free-domains-for-components-in-ruby-on-rails-application/
 categories: optimization performance quick-solution Server tips-and-tricks utilities
 ---
 
@@ -15,24 +14,24 @@ We can do the same thing in Ruby on Rails by defining a different domain for app
 Create a subdomain for your application and use that subdomain to deliver assets for the application. So once subdomain created and propagated paste this in your production.rb
 
 {% highlight ruby %}
-config.action_controller.asset_host ="http://assets.myawesomedomain.com"
+  config.action_controller.asset_host ="http://assets.myawesomedomain.com"
 {% endhighlight %}
 Then create an asset host like this
 
 **For Nginx:**
 
 {% highlight ruby %}
-server {
-    listen 80;
-    server_name assets.myawesomedomain.com;
-    root /home/deployer/my_rails_app/production/current/public;
-}
+  server {
+      listen 80;
+      server_name assets.myawesomedomain.com;
+      root /home/deployer/my_rails_app/production/current/public;
+  }
 {% endhighlight %}
 **For Apache**
 
 {% highlight ruby %}
-ServerName assets.myawesomedomain.com
-DocumentRoot /home/deployer/my_rails_app/production/current/public
+  ServerName assets.myawesomedomain.com
+  DocumentRoot /home/deployer/my_rails_app/production/current/public
 {% endhighlight %}
 
 Now just restart your server and again deploy your application. You will see all the assets are loaded from assets.myawesomedomain.com without cookies. Check [GTMetrics][1] ratings for more optimisations.

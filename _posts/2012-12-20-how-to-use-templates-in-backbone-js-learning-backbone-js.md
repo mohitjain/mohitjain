@@ -1,5 +1,5 @@
 ---
-title: '6. How to use templates in backbone js &#8211; Learning Backbone js'
+title: 'How to use templates in backbone js - Learning Backbone js'
 author: Mohit Jain
 layout: post
 comments: true
@@ -8,20 +8,20 @@ banner_image: "/media/backbone.jpg"
 featured: true
 ---
 
-> This entry is part 6 of 14 in the series for [A Complete Guide for Learning Backbone Js](/2012/12/a-complete-guide-for-learning-backbone-js/)
+> This entry is part 6 of 14 in the series for [A Complete Guide for Learning Backbone Js](/a-complete-guide-for-learning-backbone-js/)
 
-* [Introduction and Installation](/2012/12/introduction-to-backbone-js-and-setting-up-an-working-environment)
-* [Representing your data in javascript](/2012/12/2-representing-your-data-in-javascript-learning-backbone-js)
-* [Defining Models in backbone js](/2012/12/3-defining-models-in-backbone-js-learning-backbone-js)
-* [Adding Validations in models backbone js ](/2012/12/4-adding-validations-in-models-in-backbone-js-learning-backbone-js)
-* [Explaining views in backbone js](/2012/12/5-explaining-views-in-backbone-js-learning-backbone-js)
-* [How to use templates in backbone js ](/2012/12/how-to-use-templates-in-backbone-js-learning-backbone-js)
-* [How to improve templates in backbone js](/2012/12/how-to-improve-templates-in-backbone-js-learning-backbone-js)
-* [Collections in backbone js](/2012/12/8-collections-in-backbone-js-learning-backbone-js)
-* [Collection views in backbone js ](/2012/12/9-collection-views-in-backbone-js-learning-backbone-js)
-* [Template helpers in backbone js](/2012/12/template-helpers-in-backbone-js-learning-backbonejs)
-* [How to use namespace in backbone js ](/2012/12/11-namespacing-in-backbone-js-learning-backbonejs)
-* [How to handle dom events in backbone js and define your custom events](/2012/12/12-listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
+* [Introduction and Installation](/introduction-to-backbone-js-and-setting-up-an-working-environment)
+* [Representing your data in javascript](/representing-your-data-in-javascript-learning-backbone-js)
+* [Defining Models in backbone js](/defining-models-in-backbone-js-learning-backbone-js)
+* [Adding Validations in models backbone js ](/adding-validations-in-models-in-backbone-js-learning-backbone-js)
+* [Explaining views in backbone js](/explaining-views-in-backbone-js-learning-backbone-js)
+* [How to use templates in backbone js ](/how-to-use-templates-in-backbone-js-learning-backbone-js)
+* [How to improve templates in backbone js](/how-to-improve-templates-in-backbone-js-learning-backbone-js)
+* [Collections in backbone js](/collections-in-backbone-js-learning-backbone-js)
+* [Collection views in backbone js ](/collection-views-in-backbone-js-learning-backbone-js)
+* [Template helpers in backbone js](/template-helpers-in-backbone-js-learning-backbonejs)
+* [How to use namespace in backbone js ](/namespacing-in-backbone-js-learning-backbonejs)
+* [How to handle dom events in backbone js and define your custom events](/listening-to-dom-events-in-backbone-js-learning-backbone-js) ([Live Demo](http://listen-dom-events-backbone.herokuapp.com))
 * [Routing in backbone js](/2013/01/routers-in-backbone-js-learning-backbone-js)
 
 ***
@@ -36,31 +36,32 @@ So from the previous lesson, we have this PersonView:
 
 {% highlight javascript %}
 
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'Guest User',
-        age: 23,
-        occupation: 'worker'
+  var Person = Backbone.Model.extend({
+      defaults: {
+          name: 'Guest User',
+          age: 23,
+          occupation: 'worker'
+      }
+  });
+
+  var PersonView = Backbone.View.extend({
+     tagName: 'li',
+
+     initialize: function(){
+       this.render();
+     },
+
+     render: function(){
+       this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
     }
-});
+  });
 
-var PersonView = Backbone.View.extend({
-   tagName: 'li',
+  // calls from console
 
-   initialize: function(){
-     this.render();
-   },
+  // var person = new Person;
+  // var personView = new PersonView({ model: person });
+  //$(document.body).html(personView.el);  // this is not ideal but good enough for demo.
 
-   render: function(){
-     this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
-  }
-});
-
-// calls from console
-
-// var person = new Person;
-// var personView = new PersonView({ model: person });
-//$(document.body).html(personView.el);  // this is not ideal but good enough for demo.
 {% endhighlight %}
 
 ## What was the problem
@@ -69,7 +70,7 @@ The problem is this code is:
 
 {% highlight javascript %}
 
-this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
+  this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
 
 {% endhighlight %}
 
@@ -81,94 +82,96 @@ Let's use a template, and we pass data to that template, and in return, that tem
 
 {% highlight javascript %}
 
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'Guest Worker',
-        age: 23,
-        occupation: 'worker'
-    }
-});
+  var Person = Backbone.Model.extend({
+      defaults: {
+          name: 'Guest Worker',
+          age: 23,
+          occupation: 'worker'
+      }
+  });
 
-var PersonView = Backbone.View.extend({
-    tagName: 'li',
+  var PersonView = Backbone.View.extend({
+      tagName: 'li',
 
-    my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+      my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 
-    initialize: function(){
-        this.render();
-    },
+      initialize: function(){
+          this.render();
+      },
 
-    render: function(){
-        this.$el.html( this.my_template(this.model.toJSON()));
-    }
-});
+      render: function(){
+          this.$el.html( this.my_template(this.model.toJSON()));
+      }
+  });
 
-// calls from console
+  // calls from console
 
-// var person = new Person;
-// var personView = new PersonView({ model: person });
-//$(document.body).html(personView.el);  // this is not ideal but good enough for demo.
+  // var person = new Person;
+  // var personView = new PersonView({ model: person });
+  //$(document.body).html(personView.el);  // this is not ideal but good enough for demo.
 
 {% endhighlight %}
-<!--more-->
+
 
 So we introduced a new line i.e.,
 
 {% highlight javascript %}
-my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+  my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 {% endhighlight %}
+
 Backbone js has a feature that you can define a template using underscore js that we included in lesson 1, and it will compile the template, and then when ever you pass the data, it will return the HTML view as per the code. So in the above line, we defined a template using
 
 {% highlight javascript %}
-_.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>")
+  _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>")
 {% endhighlight %}
 
 and we assigned it to
 
 {% highlight javascript %}
-my_template = .......
+  my_template = .......
 {% endhighlight %}
+
 Now backbone js will compile it and define a function behind the scenes. Next modification that we did was:
 
 {% highlight javascript %}
-this.$el.html( this.my_template(this.model.toJSON()));
-// it was
-//this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
+  this.$el.html( this.my_template(this.model.toJSON()));
+  // it was
+  //this.$el.html( this.model.get('name') + ' (' + this.model.get('age') + ') - ' + this.model.get('occupation') );
 {% endhighlight %}
 
 We called the template and we need to pass the data to that template. We will have access to the model object as we will call:
 
 {% highlight javascript %}
-// calls from console
-// var person = new Person;
-// var personView = new PersonView({ model: person });
+  // calls from console
+  // var person = new Person;
+  // var personView = new PersonView({ model: person });
 {% endhighlight %}
 
 So personView has access to the model, and previously we have seen that toJSON() method just pass the object parameters. Cool. Now let's see the code again and discuss the full flow:
 
 {% highlight javascript %}
 
-var Person = Backbone.Model.extend({
-    defaults: {
-        name: 'Guest Worker',
-        age: 23,
-        occupation: 'worker'
-    }
-});
+  var Person = Backbone.Model.extend({
+      defaults: {
+          name: 'Guest Worker',
+          age: 23,
+          occupation: 'worker'
+      }
+  });
 
-var PersonView = Backbone.View.extend({
-    tagName: 'li',
+  var PersonView = Backbone.View.extend({
+      tagName: 'li',
 
-    my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+      my_template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
 
-    initialize: function(){
-        this.render();
-    },
+      initialize: function(){
+          this.render();
+      },
 
-    render: function(){
-        this.$el.html( this.my_template(this.model.toJSON()));
-    }
-});
+      render: function(){
+          this.$el.html( this.my_template(this.model.toJSON()));
+      }
+  });
 
 {% endhighlight %}
 
@@ -176,12 +179,10 @@ var PersonView = Backbone.View.extend({
 
 {% highlight javascript %}
 
-
-
-var person = new Person;  // a person object created...
-var personView = new PersonView({ model: person });
-personView.el   // ---->; You can call this method and it will display the view..
-$(document.body).html(personView.el);  //  --->; This will add output to the dom. This is not ideal but good enough for demo.
+  var person = new Person;  // a person object created...
+  var personView = new PersonView({ model: person });
+  personView.el   // ---->; You can call this method and it will display the view..
+  $(document.body).html(personView.el);  //  --->; This will add output to the dom. This is not ideal but good enough for demo.
 
 {% endhighlight %}
 
@@ -200,7 +201,7 @@ Cool :)
 
 Now Lets see what chrome developer tools say:
 
-![defining templates in backbone js](/wp-content/uploads/2012/12/defining-templates-in-backbone-js.png?fit=693,520)
+![defining templates in backbone js](/wp-content/uploads/defining-templates-in-backbone-js.png?fit=693,520)
 
 The templates we will be defined is known as inline templates. We can improve this code too. Let's see that in the next lesson.
 
